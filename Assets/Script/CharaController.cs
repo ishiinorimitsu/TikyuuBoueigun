@@ -5,10 +5,10 @@ using UnityEngine;
 public class CharaController : MonoBehaviour
 {
     [SerializeField]
-    private float jumpForce = 10;  //ジャンプ力
+    private float jumpForce;  //ジャンプ力
 
     [SerializeField]
-    private float moveSpeed = 10;  //水平方向への移動力
+    private float moveSpeed;  //水平方向への移動力
 
     private float moveX;  //x軸方向への移動力
 
@@ -49,7 +49,7 @@ public class CharaController : MonoBehaviour
     //ジャンプの移動
     public void Jump()
     {
-        rb.AddForce(new Vector3(0, jumpForce *1000,0));
+        rb.AddForce(transform.up*jumpForce);
     }
 }
 

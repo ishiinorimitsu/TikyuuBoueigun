@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = targetObj.transform.position - targetPos;  //ターゲットが移動した分だけカメラも移動する
+        transform.position += targetObj.transform.position - targetPos;  //ターゲットが移動した分だけカメラも移動する(-targetPosをする理由は、これをしないともともと持っているtargetposの座標もプラスされ、「移動分」にならないから。)
 
         targetPos = targetObj.transform.position;
     }
