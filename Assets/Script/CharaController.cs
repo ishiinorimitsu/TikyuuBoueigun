@@ -43,7 +43,7 @@ public class CharaController : MonoBehaviour
     //…•½•ûŒü‚Ö‚ÌˆÚ“®
     public void Move()
     {
-        rb.velocity = new Vector3(moveX, 0, moveZ);
+        rb.velocity = new Vector3(moveX, rb.velocity.y, moveZ);
     }
 
     //ƒWƒƒƒ“ƒv‚ÌˆÚ“®
