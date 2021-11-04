@@ -79,7 +79,7 @@ public class CharaController : MonoBehaviour
     {
         BulletController createBullet = Instantiate(bulletPrefab,bulletStartPosition.position,Quaternion.identity);   //e’e‚ğ¶¬‚·‚é
 
-        createBullet.GetComponent<Rigidbody>().AddForce(createBullet.transform.forward * bulletPower*100);      //‘O•û‚É”­Ë‚·‚é
+        createBullet.GetComponent<Rigidbody>().AddForce(bulletStartPosition.transform.forward * bulletPower*100);      //‘O•û‚É”­Ë‚·‚é(ƒLƒƒƒ‰‚ÌŒü‚«‚Ì³–Ê)
     }
 }
 
