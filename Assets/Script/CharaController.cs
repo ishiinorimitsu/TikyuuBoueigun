@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharaController : MonoBehaviour
 {
+    //-------------------------移動関係---------------------------------------//
+
     [SerializeField]
     private float jumpForce;  //ジャンプ力
 
@@ -15,6 +17,19 @@ public class CharaController : MonoBehaviour
     private float moveZ;  //z軸方向への移動力
 
     private Rigidbody rb;  //Rigidbodyに力を加えるので、それを入れる。
+
+    //-------------------------銃の発射関係---------------------------------------//
+
+    [SerializeField]
+    private BulletController bulletPrefab;  //弾のプレファブを入れる。
+
+    [SerializeField]
+    private Transform bulletStartPosition;  //弾を生成する地点（銃口の場所）
+
+    private float bulletPower = 10;   //どのくらいのパワーで弾が飛んでいくか
+
+
+
 
     void Start()
     {
@@ -31,6 +46,12 @@ public class CharaController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))  //スペースキーを押したときにメソッドが発動される。
         {
             Jump();
+        }
+
+        if (Input.GetButtonDown("Fire1")){
+            Shot();
+
+            Debug.Log("ok");
         }
     }
 
@@ -50,6 +71,15 @@ public class CharaController : MonoBehaviour
     public void Jump()
     {
         rb.AddForce(transform.up*jumpForce);
+    }
+
+    //----------------------------------弾を発射する処理----------------------------------------------------------//
+
+    private void Shot()
+    {
+        BulletController createBullet = Instantiate(bulletPrefab,bulletStartPosition.position,Quaternion.identity);   //銃弾を生成する
+
+        createBullet.GetComponent<Rigidbody>().AddForce(createBullet.transform.forward * bulletPower*100);      //前方に発射する
     }
 }
 
