@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CharaController : MonoBehaviour
 {
+    //------------------------アニメーション-------------------------------------//
+
+    [SerializeField]
+    private Animator anim;
+
     //-------------------------移動関係---------------------------------------//
 
     [SerializeField]
@@ -26,14 +31,15 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private Transform bulletStartPosition;  //弾を生成する地点（銃口の場所）
 
-    private float bulletPower = 10;   //どのくらいのパワーで弾が飛んでいくか
-
-
+    [SerializeField]
+    private float bulletPower = 1000;   //どのくらいのパワーで弾が飛んでいくか
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -65,6 +71,8 @@ public class CharaController : MonoBehaviour
     public void Move()
     {
         rb.velocity = new Vector3(moveX, rb.velocity.y, moveZ);
+
+        //anim.Play();
     }
 
     //ジャンプの移動
@@ -77,9 +85,9 @@ public class CharaController : MonoBehaviour
 
     private void Shot()
     {
-        BulletController createBullet = Instantiate(bulletPrefab,bulletStartPosition.position,Quaternion.identity);   //銃弾を生成する
+        BulletController createBullet = Instantiate(bulletPrefab,bulletStartPosition.position,bulletStartPosition.rotation);   //銃弾を生成する
 
-        createBullet.GetComponent<Rigidbody>().AddForce(bulletStartPosition.transform.forward * bulletPower*100);      //前方に発射する(キャラの向きの正面)
+        createBullet.GetComponent<Rigidbody>().AddForce(bulletStartPosition.transform.forward * bulletPower);      //前方に発射する(キャラの向きの正面)
     }
 }
 
