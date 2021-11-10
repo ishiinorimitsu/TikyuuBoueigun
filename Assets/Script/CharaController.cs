@@ -33,6 +33,9 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private float bulletPower = 1000;   //‚Ç‚Ì‚­‚ç‚¢‚Ìƒpƒ[‚Å’e‚ª”ò‚ñ‚Å‚¢‚­‚©
 
+    [SerializeField]
+    private List<WeaponData> weaponDataList = new List<WeaponData>();
+
 
     void Start()
     {
@@ -110,6 +113,7 @@ public class CharaController : MonoBehaviour
 
     //----------------------------------’e‚ğ”­Ë‚·‚éˆ—----------------------------------------------------------//
 
+    
     
 }
 

@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
 
     private float z;       //横方向へのカメラの回転方向
 
+    private float cameraRotateSpeed = 200f;  //どれくらいのスピードでカメラが回転するか
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class CameraController : MonoBehaviour
             Debug.Log("OK!");
 
             //対象のオブジェクトの周りを回す。引数は、（何の周りをまわるか、どの方向に回るか、どのくらいのスピードで回るか）
-            transform.RotateAround(targetPos, Vector3.up, x * Time.deltaTime * 200f);      
+            transform.RotateAround(targetPos, Vector3.up, x * Time.deltaTime * cameraRotateSpeed);      
 
             Debug.Log("OK2");
         }
@@ -47,7 +49,7 @@ public class CameraController : MonoBehaviour
 
             Debug.Log("OK3");
 
-            transform.RotateAround(targetPos, transform.right, z * Time.deltaTime * 200f);
+            transform.RotateAround(targetPos, transform.right, z * Time.deltaTime * cameraRotateSpeed);
 
             Debug.Log("OK4");
         }
