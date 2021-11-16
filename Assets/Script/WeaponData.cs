@@ -12,7 +12,7 @@ public class WeaponData
     public int maxAttackCount;   //武器に一度のリロードで何発まで打てるか（発）
     public BulletController bulletPrefab;   //撃つ弾
     public int fuelEnergy;  //消耗するエネルギー（％）
-    public float bulletPower;  //弾の速度
+    public float bulletSpeed;  //弾の速度
 
     [Multiline]
     public string discription;   //武器の説明

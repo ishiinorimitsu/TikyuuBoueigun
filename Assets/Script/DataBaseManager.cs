@@ -21,10 +21,4 @@ public class DataBaseManager : MonoBehaviour
             Destroy(gameObject);                //2‰ñ–Ú‚©‚ç‚Í‚±‚¿‚ç‚ªs‚í‚êA‚Q‰ñ–ÚˆÈ~‚É‘ã“ü‚³‚ê‚½DataBaseManager‚Ííœ‚³‚ê‚éB
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

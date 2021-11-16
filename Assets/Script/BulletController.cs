@@ -12,7 +12,7 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
     
     public void Shot(CharaController charaController)
     {
-        bulletPowerSpeed = weaponGenerator.weaponDataList[0].bulletPower;
+        bulletPowerSpeed = GameData.instance.equipWeaponData.bulletSpeed;    //装備している武器からの情報を得たいときはこのようにやる。
 
         Rigidbody rb = this.GetComponent<Rigidbody>();
 
