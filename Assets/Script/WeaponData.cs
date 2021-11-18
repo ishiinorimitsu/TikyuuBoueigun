@@ -5,7 +5,7 @@ public class WeaponData
 {
     public string weaponName;   //武器の名前
     public int weaponNo;   //武器の番号
-    public Sprite charaSprite;   //武器の見た目
+    public Sprite weaponSprite;   //武器の見た目
 
     public int weaponAttackPower;   //武器の一発撃った時のダメージ（ダメージ）
     public int attackRange;   //武器の射程（ｍ）

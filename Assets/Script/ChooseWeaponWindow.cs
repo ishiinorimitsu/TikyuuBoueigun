@@ -12,7 +12,7 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
     private CanvasGroup canvasGroup; @ //‚±‚ÌCanvasGroup‚Ìalpha‚ğ’²ß‚·‚é‚±‚Æ‚ÅŒ©‚¦‚é‚æ‚¤‚É/Œ©‚¦‚È‚¢‚æ‚¤‚É‚·‚éB
 
     [SerializeField]
-    private Image imgPickupChara;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ğ“ü‚ê‚é
+    private Image imgPickupWeapon;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ğ“ü‚ê‚é
 
     [SerializeField]
     private Text txtPickupWeaponName;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚Ì–¼‘O‚ğ“ü‚ê‚é@
@@ -21,7 +21,7 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
     private Text txtPickupWeaponAttackPower;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚ÌUŒ‚—Í‚ğ“ü‚ê‚é
 
     [SerializeField]
-    private Text txtPickupWeaponAttackRangeType;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚Ì‰æ‘œË’ö‚ğ“ü‚ê‚é
+    private Text txtPickupWeaponAttackRangeType;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚ÌË’ö‚ğ“ü‚ê‚é
 
     [SerializeField]
     private Text txtPickupWeaponMaxShot;@@//Œ»İ‘I‚Î‚ê‚Ä‚¢‚é•Ší‚ÌÅ‘å’e”‚ğ“ü‚ê‚é
@@ -29,22 +29,52 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
     [SerializeField]
     private Text txtWeaponDescription;   //Œ»İ‘I‘ğ‚³‚ê‚Ä‚¢‚é•Ší‚Ìà–¾‚ğ“ü‚ê‚éB
 
-    //[SerializeField]
-    //private SelectCharaDetail selectCharaDetailPrefab;    //ƒLƒƒƒ‰‚ğ‘I‘ğ‚·‚éƒ{ƒ^ƒ“—p‚ÌPrefab‚ğƒAƒTƒCƒ“‚·‚éB
+    [SerializeField]
+    private SelectWeaponDetail selectWeaponDetailPrefab;    //•Ší‚ğ‘I‘ğ‚·‚éƒ{ƒ^ƒ“—p‚ÌPrefab‚ğƒAƒTƒCƒ“‚·‚éB
 
-    //[SerializeField]
-    //private Transform selectCharaDetailTran;   //ƒLƒƒƒ‰‚Ìƒ{ƒ^ƒ“‚ğ¶¬‚·‚éˆÊ’u‚ğƒAƒTƒCƒ“‚·‚éB
+    [SerializeField]
+    private Transform selectCharaDetailTran;   //ƒLƒƒƒ‰‚Ìƒ{ƒ^ƒ“‚ğ¶¬‚·‚éˆÊ’u‚ğƒAƒTƒCƒ“‚·‚éB
 
     //[SerializeField]
     //private List<SelectCharaDetail> selectCharaDetailslList = new List<SelectCharaDetail>();  //¶¬‚·‚éƒLƒƒƒ‰‚Ìƒ{ƒ^ƒ“‚ğŠÇ—‚·‚é
 
-    //[SerializeField]
-    //private CharaData chooseCharaData;   //Œ»İ‘I‘ğ‚µ‚Ä‚¢‚éƒLƒƒƒ‰‚Ìî•ñ‚ğŠÇ—‚·‚é
+    [SerializeField]
+    private WeaponData chooseWeaponData;   //Œ»İ‘I‘ğ‚µ‚Ä‚¢‚éƒLƒƒƒ‰‚Ìî•ñ‚ğŠÇ—‚·‚é
 
     //private CharaGenerator charaGenerator;
 
+
+    void Start()
+    {
+        SetUpChooseWeaponWindow();
+    }
+
     public void SetUpChooseWeaponWindow()   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
     {
+        for(int i = 0; i < 5; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
+        {
+            //ƒ{ƒ^ƒ“‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é
+            SelectWeaponDetail selectWeaponDetail = Instantiate(selectWeaponDetailPrefab, selectCharaDetailTran, false);
 
+            //ƒ{ƒ^ƒ“‚Éˆ—‚ğ’Ç‰Á‚·‚é
+            selectWeaponDetail.SetUpSelectWeaponDetail(this,DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
+        }
+    }
+
+    public void SetSelectWeaponDetail(WeaponData weaponData)
+    {
+        chooseWeaponData = weaponData;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ª“ü—Í‚³‚ê‚éB
+
+        imgPickupWeapon.sprite = weaponData.weaponSprite;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
+
+        txtPickupWeaponName.text = weaponData.weaponName;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‚ÉA–¼‘OƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì–¼‘O‚ª“ü—Í‚³‚ê‚éB
+
+        txtPickupWeaponAttackPower.text = weaponData.weaponAttackPower.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
+
+        txtPickupWeaponAttackRangeType.text = weaponData.attackRange.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
+
+        txtPickupWeaponMaxShot.text = weaponData.maxAttackCount.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÌÅ‘å’e”‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ÌÅ‘å’e”‚ª“ü—Í‚³‚ê‚éB
+
+        txtWeaponDescription.text = weaponData.discription;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ìà–¾‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ìà–¾‚ª“ü—Í‚³‚ê‚éB
     }
 }

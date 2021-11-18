@@ -7,36 +7,36 @@ public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚Ìƒ
 {
     private WeaponData weaponData;   //ì¬‚·‚éƒ{ƒ^ƒ“‚Ìƒf[ƒ^‚ª“ü‚éB
 
-    private ChooseWeaponWindow chooseWeaponInfo;  //‚±‚Ìƒ{ƒ^ƒ“‚ÍChooseWeaponWindow‚Ì’†‚É‚ ‚éB
+    private ChooseWeaponWindow chooseWeaponWindow;  //‚±‚Ìƒ{ƒ^ƒ“‚ÍChooseWeaponWindow‚Ì’†‚É‚ ‚éB
 
     [SerializeField]
-    private Image charaImage;   //“¾‚½‰æ‘œƒf[ƒ^‚ğu‚±‚±‚É•\¦‚³‚¹‚Ü‚·‚æv‚ÆA©g‚ÌImageƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘ã“ü‚·‚éB
+    private Image weaponImage;   //“¾‚½‰æ‘œƒf[ƒ^‚ğu‚±‚±‚É•\¦‚³‚¹‚Ü‚·‚æv‚ÆA©g‚ÌImageƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘ã“ü‚·‚éB
 
     [SerializeField]
-    private Button btnSelectCharaDetail;  //‚Ì‚¿‚Éu‚±‚Ìƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒƒ\ƒbƒhv‚ğ’Ç‰Á‚·‚é‚½‚ßA©g‚ÌButtonƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘ã“ü‚·‚éB
+    private Button btnSelectWeaponDetail;  //‚Ì‚¿‚Éu‚±‚Ìƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒƒ\ƒbƒhv‚ğ’Ç‰Á‚·‚é‚½‚ßA©g‚ÌButtonƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘ã“ü‚·‚éB
 
-    public void SetUpSelectCharaDetail(ChooseWeaponWindow chooseWeaponWindow,WeaponData weaponData)
+    public void SetUpSelectWeaponDetail(ChooseWeaponWindow chooseWeaponWindow,WeaponData weaponData)
     {
-        this.chooseWeaponInfo = chooseWeaponWindow;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
+        this.chooseWeaponWindow = chooseWeaponWindow;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
 
         this.weaponData = weaponData;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
 
         ChangeActiveButton(false);      //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚é‚Ü‚Åƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚È‚­‚·‚é
 
-        charaImage.sprite = this.weaponData.charaSprite;   //Image‚É‚ ‚é‰æ‘œ‚ğƒ{ƒ^ƒ“‚É•\¦‚·‚éB
+        weaponImage.sprite = this.weaponData.weaponSprite;   //Image‚É‚ ‚é‰æ‘œ‚ğƒ{ƒ^ƒ“‚É•\¦‚·‚éB
 
-        //btnSelectCharaDetail.onClick.AddListener(OnClickSelectCharaDetail);   //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—
+        btnSelectWeaponDetail.onClick.AddListener(OnClickSelectCharaDetail);   //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—
 
         ChangeActiveButton(true);       //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚½‚çƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚é‚æ‚¤‚É‚·‚é
     }
 
-    //private void OnClickSelectCharaDetail()
-    //{
-    //    WeaponInfo.SetSelectCharaDetail(charaData);    //chooseWeaponWindow“à‚Ìˆ—‚ğ”­“®B‰Ÿ‚µ‚½ƒ{ƒ^ƒ“‚Ìî•ñ‚ğƒZƒbƒg‚·‚éB
-    //}
+    private void OnClickSelectCharaDetail()
+    {
+        chooseWeaponWindow.SetSelectWeaponDetail(weaponData);    //chooseWeaponWindow“à‚Ìˆ—‚ğ”­“®B‰Ÿ‚µ‚½ƒ{ƒ^ƒ“‚Ìî•ñ‚ğƒZƒbƒg‚·‚éB
+    }
 
     private void ChangeActiveButton(bool isSwitch)
     {
-        btnSelectCharaDetail.interactable = isSwitch;   //‰Ÿ‚¹‚é‚©‰Ÿ‚¹‚È‚¢‚©‚ğ‚â‚é‚Æ‚«‚Í‚±‚±‚Éì—p‚³‚¹‚éB
+        btnSelectWeaponDetail.interactable = isSwitch;   //‰Ÿ‚¹‚é‚©‰Ÿ‚¹‚È‚¢‚©‚ğ‚â‚é‚Æ‚«‚Í‚±‚±‚Éì—p‚³‚¹‚éB
     }
 }
