@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ìì¬A‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì“Á’¥‚ğ•\¦‚·‚éƒƒ\ƒbƒh‚È‚Ç‚ğ‘‚­B
 {
     [SerializeField]
-    private Button btnSubmit;@@//Œˆ’èƒ{ƒ^ƒ“‚ğ“ü‚ê‚éB
+    public Button btnSubmit;@@//Œˆ’èƒ{ƒ^ƒ“‚ğ“ü‚ê‚éB
 
     [SerializeField]
     private CanvasGroup canvasGroup; @ //‚±‚ÌCanvasGroup‚Ìalpha‚ğ’²ß‚·‚é‚±‚Æ‚ÅŒ©‚¦‚é‚æ‚¤‚É/Œ©‚¦‚È‚¢‚æ‚¤‚É‚·‚éB
@@ -43,14 +43,13 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
 
     //private CharaGenerator charaGenerator;
 
+    [SerializeField]
+    private ChooseWeaponManager chooseWeaponManager;    //ChooseWeaponManager‚ğ“ü‚ê‚é
 
-    void Start()
+    public void SetUpChooseWeaponWindow(ChooseWeaponManager chooseWeaponManager)   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
     {
-        SetUpChooseWeaponWindow();
-    }
+        this.chooseWeaponManager = chooseWeaponManager;
 
-    public void SetUpChooseWeaponWindow()   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
-    {
         for(int i = 0; i < 5; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
         {
             //ƒ{ƒ^ƒ“‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é
@@ -59,13 +58,15 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
             //ƒ{ƒ^ƒ“‚Éˆ—‚ğ’Ç‰Á‚·‚é
             selectWeaponDetail.SetUpSelectWeaponDetail(this,DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
         }
+
+        btnSubmit.onClick.AddListener(() => chooseWeaponManager.SubmitWeapon(chooseWeaponData));   //AddListener‚Íˆø”‚ª‚ ‚é‚Æ‚«‚Í‚±‚ÌŒ`‚É‚·‚éB
     }
 
     public void SetSelectWeaponDetail(WeaponData weaponData)
     {
         chooseWeaponData = weaponData;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ª“ü—Í‚³‚ê‚éB
 
-        imgPickupWeapon.sprite = weaponData.weaponSprite;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
+        //imgPickupWeapon.sprite = weaponData.weaponSprite;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
 
         txtPickupWeaponName.text = weaponData.weaponName;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‚ÉA–¼‘OƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì–¼‘O‚ª“ü—Í‚³‚ê‚éB
 

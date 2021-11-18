@@ -23,10 +23,15 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
         }
     }
 
-    private void Start()
-    {
-        chooseWeaponData = DataBaseManager.instance.weaponDataSO.weaponDataList;
+    //private void Start()
+    //{
+    //    chooseWeaponData = DataBaseManager.instance.weaponDataSO.weaponDataList;
 
-        equipWeaponData = chooseWeaponData[1];
+    //    equipWeaponData = chooseWeaponData[1];
+    //}
+
+    public void AddWeaponData(WeaponData weaponData)
+    {
+        chooseWeaponData.Add(weaponData);
     }
 }
