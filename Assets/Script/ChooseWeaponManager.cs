@@ -50,6 +50,8 @@ public class ChooseWeaponManager : MonoBehaviour
 
         weapon2.onClick.AddListener(() => ChooseWeapon(WeaponSlotType.slot2));
 
+        gameStartButton.interactable = false;
+
         gameStartButton.onClick.AddListener(OnClickGameStart);
     }
 
@@ -94,13 +96,25 @@ public class ChooseWeaponManager : MonoBehaviour
 
                 break;
         }
-        //「決定ボタン」を押したとき、それがslot2だったその情報が「武器2」に入る
+
+        Debug.Log(weaponData1);
+
+        Debug.Log(weaponData2);
+
+        if (weaponData1 != null && weaponData2 != null)
+        {
+            gameStartButton.interactable = true;
+        }
+        else
+        {
+            gameStartButton.interactable = false;
+        }
 
         weaponInfo.gameObject.SetActive(false);
     }
 
     private void OnClickGameStart()
-    {
+    {  
         GameData.instance.AddWeaponData(weaponData1);
 
         GameData.instance.AddWeaponData(weaponData2);

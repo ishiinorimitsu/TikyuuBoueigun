@@ -66,7 +66,7 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
     {
         chooseWeaponData = weaponData;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ª“ü—Í‚³‚ê‚éB
 
-        //imgPickupWeapon.sprite = weaponData.weaponSprite;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
+        imgPickupWeapon.sprite = weaponData.weaponSprite;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
 
         txtPickupWeaponName.text = weaponData.weaponName;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‚ÉA–¼‘OƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì–¼‘O‚ª“ü—Í‚³‚ê‚éB
 
