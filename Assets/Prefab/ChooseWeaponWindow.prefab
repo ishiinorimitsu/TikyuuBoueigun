@@ -1431,7 +1431,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6727675316830149307}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnSubmit: {fileID: 6727675316167840498}
   canvasGroup: {fileID: 6727675316830149287}
-  imgPickupWeapon: {fileID: 0}
+  imgPickupWeapon: {fileID: 6727675316314603352}
   txtPickupWeaponName: {fileID: 6727675316954693918}
   txtPickupWeaponAttackPower: {fileID: 6727675315996390355}
   txtPickupWeaponAttackRangeType: {fileID: 6727675315693021840}
@@ -1516,6 +1516,7 @@ MonoBehaviour:
     fuelEnergy: 0
     bulletSpeed: 0
     discription: 
+  chooseWeaponManager: {fileID: 0}
 --- !u!225 &6727675316830149287
 CanvasGroup:
   m_ObjectHideFlags: 0

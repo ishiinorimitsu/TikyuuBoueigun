@@ -6,9 +6,6 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
                                                     //弾の動きや攻撃力などは銃のほうのスクリプトに書く
 {
     private float bulletPowerSpeed;  //弾の速度
-
-    [SerializeField]
-    private WeaponGenerator weaponGenerator;
     
     public void Shot(CharaController charaController)
     {

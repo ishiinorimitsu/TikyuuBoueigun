@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharaController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CharaController : MonoBehaviour
 
     private Rigidbody rb;  //Rigidbodyに力を加えるので、それを入れる。
 
+
     //-------------------------銃の発射関係---------------------------------------//
 
     [SerializeField]
@@ -37,9 +39,29 @@ public class CharaController : MonoBehaviour
     private List<WeaponData> weaponDataList = new List<WeaponData>();
 
 
+    //---------------------------エネルギー関係------------------------------------//
+
+    public float maxEnergy;     //最大エネルギー量
+
+    public float minEnergy;     //最小エネルギー量（のちの範囲指定で使う）
+
+    public float currentEnergy;       //現在のエネルギー量
+
+    public float jumpEnergy; 　　//一回ジャンプするごとに消費するエネルギー、1を基準として％で計算するよりも、持ち点のように100あって、10ずつ減るみたいなほうが作りやすい
+
+    public float attackEnergy;　　//一回攻撃するごとに使うエネルギー
+
+    public float cureEnergy;    //地面にいる間に回復するエネルギー
+
+    public UIManager UIManager;   //UIManagerにデータを送れるようにする。
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();　　　//Rigidbodyを代入しておく
+
+        currentEnergy = maxEnergy;    //ゲームが開始したときに最大エネルギー量にしておく。
+
+        UIManager.SetSliderValue(maxEnergy);
     }
 
     // Update is called once per frame
@@ -49,7 +71,7 @@ public class CharaController : MonoBehaviour
 
         z = Input.GetAxis("Vertical");  //垂直方向の移動がある場合、１が代入される
 
-        if (Input.GetButtonDown("Jump"))  //スペースキーを押したときにメソッドが発動される。
+        if (Input.GetButtonDown("Jump")　& currentEnergy >= jumpEnergy)  //スペースキーを押したときにメソッドが発動される。
         {
             anim.SetTrigger("Jump");
 
@@ -108,13 +130,31 @@ public class CharaController : MonoBehaviour
     //ジャンプの移動
     public void Jump()
     {
-        rb.AddForce(transform.up*jumpForce);
+        rb.AddForce(transform.up*jumpForce);   //ジャンプする処理
+
+        JumpEnergyDecrease();   //ジャンプするごとにエネルギーを減らす。
+
+        UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
     }
 
-    //----------------------------------弾を発射する処理----------------------------------------------------------//
+    //----------------------------------エネルギーに関する処理----------------------------------------------------------//
 
+    private void JumpEnergyDecrease()
+    {
+        currentEnergy -= jumpEnergy;　　//現在のエネルギー量からジャンプエナジーを減らす。
+    }
     
-    
+    private void OnCollisionStay(Collision col)
+    {
+        if(col.gameObject.tag == "ground")
+        {
+            currentEnergy += cureEnergy;
+
+            currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);
+
+            UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+        }
+    }
 }
 
 

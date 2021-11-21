@@ -50,6 +50,9 @@ public class ChooseWeaponManager : MonoBehaviour
 
         weapon2.onClick.AddListener(() => ChooseWeapon(WeaponSlotType.slot2));
 
+        weaponData1 = null;
+        weaponData2 = null;    //‚±‚Ì2s‚ª‚È‚¢‚Æ[SerializedField]‚ª‚ ‚é‚ÆAnull‚É‚È‚ç‚È‚¢
+
         gameStartButton.interactable = false;
 
         gameStartButton.onClick.AddListener(OnClickGameStart);
