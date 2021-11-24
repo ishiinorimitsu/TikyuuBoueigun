@@ -100,11 +100,7 @@ public class ChooseWeaponManager : MonoBehaviour
                 break;
         }
 
-        Debug.Log(weaponData1);
-
-        Debug.Log(weaponData2);
-
-        if (weaponData1 != null && weaponData2 != null)
+        if (weaponData1 != null && weaponData2 != null)     //どちらも何か入っていないと出撃できないようにする
         {
             gameStartButton.interactable = true;
         }
@@ -116,6 +112,9 @@ public class ChooseWeaponManager : MonoBehaviour
         weaponInfo.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 出撃ボタンを押したときの処理
+    /// </summary>
     private void OnClickGameStart()
     {  
         GameData.instance.AddWeaponData(weaponData1);

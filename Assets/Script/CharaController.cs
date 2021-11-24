@@ -33,10 +33,18 @@ public class CharaController : MonoBehaviour
     public Transform bulletStartPosition;  //弾を生成する地点（銃口の場所）
 
     [SerializeField]
-    private float bulletPower = 1000;   //どのくらいのパワーで弾が飛んでいくか
+    private float bulletPower;   //どのくらいのパワーで弾が飛んでいくか
 
     [SerializeField]
     private List<WeaponData> weaponDataList = new List<WeaponData>();
+
+    [SerializeField]
+    private float currentBullet;    //今の弾数を入れる。
+
+    [SerializeField]
+    private float maxBullet;    //最大弾数を入れる。
+
+    private float minBullet = 0;   //最小球数
 
 
     //---------------------------エネルギー関係------------------------------------//
@@ -55,13 +63,21 @@ public class CharaController : MonoBehaviour
 
     public UIManager UIManager;   //UIManagerにデータを送れるようにする。
 
-    void Start()
+    public void GameStart()
     {
         rb = GetComponent<Rigidbody>();　　　//Rigidbodyを代入しておく
 
         currentEnergy = maxEnergy;    //ゲームが開始したときに最大エネルギー量にしておく。
 
-        UIManager.SetSliderValue(maxEnergy);
+        UIManager.SetEnergySliderValue(maxEnergy);   //エネルギーに関するもののセット
+
+        UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxAttackCount);   //最大弾数をセット
+
+        maxBullet = GameData.instance.equipWeaponData.maxAttackCount;  //最大球数を装備している武器から得る
+
+        currentBullet = maxBullet;   //ゲームが開始したときに最大弾数にしておく。
+
+        bulletPower = GameData.instance.equipWeaponData.bulletSpeed;　　//弾の速度は装備している武器の速度
     }
 
     // Update is called once per frame
@@ -78,13 +94,33 @@ public class CharaController : MonoBehaviour
             Jump();
         }
 
+
+        //-----------------------------------------銃を発射する----------------------------------------------------//
+
+
         if (Input.GetButtonDown("Fire1")){
 
-            BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
+            if (currentBullet > 0)
+            {
 
-            createBullet.Shot(this);
+                BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
 
-            anim.SetTrigger("Shot");
+                createBullet.Shot(this);
+
+                anim.SetTrigger("Shot");
+
+                currentEnergy -= GameData.instance.equipWeaponData.fuelEnergy;   //今のエネルギーを撃つたびに減らしていく
+
+                currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);  //今のエネルギーの範囲を指定する
+
+                UIManager.UpdateDisplayEnergy(currentEnergy);  //エネルギーの処理を反映させる
+
+                currentBullet = currentBullet - 1;    //今の球数を撃つたびに1ずつ減らしていく
+
+                currentBullet = Mathf.Clamp(currentBullet, minBullet, maxBullet);   //今の球数の範囲を指定する
+
+                UIManager.UpdateDisplayBullet(currentBullet);   //弾数の処理を反映させる
+            }
         }
     }
 

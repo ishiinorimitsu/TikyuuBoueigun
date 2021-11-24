@@ -30,8 +30,14 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
     //    equipWeaponData = chooseWeaponData[1];
     //}
 
+
+    /// <summary>
+    /// ‘I‚ñ‚¾•Ší‚ğŸ‚ÌƒV[ƒ“‚É‚Á‚Ä‚¢‚­‚½‚ß‚Éˆê‰ñ‚±‚ÌƒXƒNƒŠƒvƒg‚É‚Á‚Ä‚­‚é
+    /// </summary>
     public void AddWeaponData(WeaponData weaponData)
     {
         chooseWeaponData.Add(weaponData);
+
+        equipWeaponData = chooseWeaponData[0];
     }
 }

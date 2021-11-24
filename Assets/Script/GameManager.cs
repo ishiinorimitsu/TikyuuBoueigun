@@ -7,8 +7,12 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
     [SerializeField]
     private WeaponGenerator weaponGenerator;
 
+    [SerializeField]
+    private CharaController charaController;   //ƒXƒ^[ƒgƒƒ\ƒbƒh‚·‚×‚Ä‚ğ‚±‚±‚É‘‚­‚½‚ß‚É‚Á‚Ä‚­‚é
+
     void Start()
     {
         //weaponGenerator.AddWeaponData();
+        charaController.GameStart();
     }
 }
