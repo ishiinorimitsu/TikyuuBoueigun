@@ -24,9 +24,6 @@ public class CharaController : MonoBehaviour
 
     private Rigidbody rb;  //Rigidbodyに力を加えるので、それを入れる。
 
-    private bool isJump;   
-
-
     //-------------------------銃の発射関係---------------------------------------//
 
     [SerializeField]
@@ -47,6 +44,8 @@ public class CharaController : MonoBehaviour
     private float maxBullet;    //最大弾数を入れる。
 
     private float minBullet = 0;   //最小球数
+
+    private bool isReload;  //リロード中か
 
 
     //---------------------------エネルギー関係------------------------------------//
@@ -99,43 +98,40 @@ public class CharaController : MonoBehaviour
 
         //-----------------------------------------銃を発射する----------------------------------------------------//
 
-        if (currentBullet > 0)
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (currentBullet > 0)
             {
-
-
-
                 BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
 
                 createBullet.Shot(this);
 
                 anim.SetTrigger("Shot");
 
-                currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;   //今のエネルギーを撃つたびに減らしていく
+                //currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;   //今のエネルギーを撃つたびに減らしていく
 
-                currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);  //今のエネルギーの範囲を指定する
+                //currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);  //今のエネルギーの範囲を指定する
 
-                UIManager.UpdateDisplayEnergy(currentEnergy);  //エネルギーの処理を反映させる
+                //UIManager.UpdateDisplayEnergy(currentEnergy);  //エネルギーの処理を反映させる
 
-                currentBullet = currentBullet - 1;    //今の球数を撃つたびに1ずつ減らしていく
+                currentBullet --;    //今の球数を撃つたびに1ずつ減らしていく
 
                 currentBullet = Mathf.Clamp(currentBullet, minBullet, maxBullet);   //今の球数の範囲を指定する
 
                 UIManager.UpdateDisplayBullet(currentBullet);   //弾数の処理を反映させる
             }
-        }
-            
-            
 
-        if (currentBullet <= 0)
-        {
-            //装備している武器の「リロード時間」分だけ撃てないようにする
-            StartCoroutine(ReloadWeapon());
-            //装備している武器の「リロードエネルギー」分だけエネルギーを減らす
-            //装備している武器の「currentBullet」を最大にする
-        }
-        
+            else
+            {
+                if(isReload == false)
+                {
+                    isReload = true;   //弾がないのに連打されたとき用
+
+                    //装備している武器の「リロード時間」分だけ撃てないようにする
+                    StartCoroutine(ReloadWeapon());
+                }
+            }
+        }        
     }
 
     private void FixedUpdate()
@@ -185,8 +181,6 @@ public class CharaController : MonoBehaviour
         JumpEnergyDecrease();   //ジャンプするごとにエネルギーを減らす。
 
         UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
-
-        isJump = true;   //ジャンプしていると認識させる
     }
 
     //----------------------------------エネルギーに関する処理----------------------------------------------------------//
@@ -205,15 +199,6 @@ public class CharaController : MonoBehaviour
             currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);
 
             UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
-
-            if(isJump == true)
-            {
-                //rb.isKinematic = true;  //一瞬だけ物理演算を止める
-
-                //isJump = false;
-
-                //rb.isKinematic = false;
-            }
         }
     }
 
@@ -223,9 +208,22 @@ public class CharaController : MonoBehaviour
     /// </summary>
     private IEnumerator ReloadWeapon()
     {
+        anim.SetTrigger("Reload");
+
+        //装備している武器の「リロードエネルギー」分だけエネルギーを減らす
+        currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;
+
+        UIManager.UpdateDisplayEnergy(currentEnergy);
+
         yield return new WaitForSeconds(GameData.instance.equipWeaponData.reloadTime);
+
+        //装備している武器の「currentBullet」を最大にする
+        currentBullet = maxBullet;
+
+        UIManager.UpdateDisplayBullet(currentBullet);
+
+        isReload = false;
     }
-    
 }
 
 
