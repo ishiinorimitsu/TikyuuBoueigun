@@ -24,6 +24,8 @@ public class CharaController : MonoBehaviour
 
     private Rigidbody rb;  //Rigidbodyに力を加えるので、それを入れる。
 
+    private bool isJump;   
+
 
     //-------------------------銃の発射関係---------------------------------------//
 
@@ -97,11 +99,12 @@ public class CharaController : MonoBehaviour
 
         //-----------------------------------------銃を発射する----------------------------------------------------//
 
-
-        if (Input.GetButtonDown("Fire1")){
-
-            if (currentBullet > 0)
+        if (currentBullet > 0)
+        {
+            if (Input.GetButtonDown("Fire1"))
             {
+
+
 
                 BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
 
@@ -109,7 +112,7 @@ public class CharaController : MonoBehaviour
 
                 anim.SetTrigger("Shot");
 
-                currentEnergy -= GameData.instance.equipWeaponData.fuelEnergy;   //今のエネルギーを撃つたびに減らしていく
+                currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;   //今のエネルギーを撃つたびに減らしていく
 
                 currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);  //今のエネルギーの範囲を指定する
 
@@ -122,6 +125,17 @@ public class CharaController : MonoBehaviour
                 UIManager.UpdateDisplayBullet(currentBullet);   //弾数の処理を反映させる
             }
         }
+            
+            
+
+        if (currentBullet <= 0)
+        {
+            //装備している武器の「リロード時間」分だけ撃てないようにする
+            StartCoroutine(ReloadWeapon());
+            //装備している武器の「リロードエネルギー」分だけエネルギーを減らす
+            //装備している武器の「currentBullet」を最大にする
+        }
+        
     }
 
     private void FixedUpdate()
@@ -171,6 +185,8 @@ public class CharaController : MonoBehaviour
         JumpEnergyDecrease();   //ジャンプするごとにエネルギーを減らす。
 
         UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+
+        isJump = true;   //ジャンプしていると認識させる
     }
 
     //----------------------------------エネルギーに関する処理----------------------------------------------------------//
@@ -189,8 +205,27 @@ public class CharaController : MonoBehaviour
             currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);
 
             UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+
+            if(isJump == true)
+            {
+                //rb.isKinematic = true;  //一瞬だけ物理演算を止める
+
+                //isJump = false;
+
+                //rb.isKinematic = false;
+            }
         }
     }
+
+    //-----------------------------------銃を発射する処理に関するメソッド----------------------------------------------------//
+    /// <summary>
+    /// 装備している武器の「リロード時間」分だけ撃てないようにする
+    /// </summary>
+    private IEnumerator ReloadWeapon()
+    {
+        yield return new WaitForSeconds(GameData.instance.equipWeaponData.reloadTime);
+    }
+    
 }
 
 
