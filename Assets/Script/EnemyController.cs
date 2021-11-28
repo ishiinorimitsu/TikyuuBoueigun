@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyAttack()
     {
-        attackDirection = (player.transform.parent.transform.position - transform.position).normalized;
+        attackDirection = (player.transform.position - transform.position).normalized;
 
         EnemyBulletController bullet = Instantiate(enemyBulletControllerPrefab,enemyBulletTran.position,Quaternion.identity);
 
