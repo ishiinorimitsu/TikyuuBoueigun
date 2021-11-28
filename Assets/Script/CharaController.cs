@@ -98,9 +98,9 @@ public class CharaController : MonoBehaviour
 
         //-----------------------------------------銃を発射する----------------------------------------------------//
 
-        if (Input.GetButtonDown("Fire1"))
+        if (currentBullet > 0)
         {
-            if (currentBullet > 0)
+            if (Input.GetButtonDown("Fire1"))
             {
                 BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
 
@@ -114,24 +114,24 @@ public class CharaController : MonoBehaviour
 
                 //UIManager.UpdateDisplayEnergy(currentEnergy);  //エネルギーの処理を反映させる
 
-                currentBullet --;    //今の球数を撃つたびに1ずつ減らしていく
+                currentBullet--;    //今の球数を撃つたびに1ずつ減らしていく
 
                 currentBullet = Mathf.Clamp(currentBullet, minBullet, maxBullet);   //今の球数の範囲を指定する
 
                 UIManager.UpdateDisplayBullet(currentBullet);   //弾数の処理を反映させる
             }
+        }
 
-            else
+        else
+        {
+            if (isReload == false)
             {
-                if(isReload == false)
-                {
-                    isReload = true;   //弾がないのに連打されたとき用
+                isReload = true;   //弾がないのに連打されたとき用
 
-                    //装備している武器の「リロード時間」分だけ撃てないようにする
-                    StartCoroutine(ReloadWeapon());
-                }
+                //装備している武器の「リロード時間」分だけ撃てないようにする
+                StartCoroutine(ReloadWeapon());
             }
-        }        
+        }      
     }
 
     private void FixedUpdate()
@@ -139,20 +139,8 @@ public class CharaController : MonoBehaviour
         //移動する
         Move();
 
-        // カメラの方向から、X-Z平面の単位ベクトルを取得
-        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-
-        // 方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraForward * z + Camera.main.transform.right * x;
-
-        // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
-
-        // キャラクターの向きを進行方向に
-        if (moveForward != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveForward);
-        }
+        //カメラの向きからキャラの向きを変える。
+        LookRotation();
     }
 
     //---------------------------------移動に関する処理----------------------------------------------------------//
@@ -181,6 +169,21 @@ public class CharaController : MonoBehaviour
         JumpEnergyDecrease();   //ジャンプするごとにエネルギーを減らす。
 
         UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+    }
+
+    private void LookRotation()
+    {
+        // カメラの方向から、X-Z平面の単位ベクトルを取得
+        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+        // 方向キーの入力値とカメラの向きから、移動方向を決定
+        Vector3 moveForward = cameraForward * z + Camera.main.transform.right * x;
+
+        // キャラクターの向きを進行方向に
+        if (moveForward != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveForward);
+        }
     }
 
     //----------------------------------エネルギーに関する処理----------------------------------------------------------//
