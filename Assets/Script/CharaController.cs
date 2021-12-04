@@ -108,12 +108,6 @@ public class CharaController : MonoBehaviour
 
                 anim.SetTrigger("Shot");
 
-                //currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;   //今のエネルギーを撃つたびに減らしていく
-
-                //currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);  //今のエネルギーの範囲を指定する
-
-                //UIManager.UpdateDisplayEnergy(currentEnergy);  //エネルギーの処理を反映させる
-
                 currentBullet--;    //今の球数を撃つたびに1ずつ減らしていく
 
                 currentBullet = Mathf.Clamp(currentBullet, minBullet, maxBullet);   //今の球数の範囲を指定する
@@ -147,7 +141,7 @@ public class CharaController : MonoBehaviour
     //水平方向への移動
     public void Move()
     {
-        rb.velocity = new Vector3(x * moveSpeed,rb.velocity.y, z * moveSpeed);
+        //rb.velocity = new Vector3(x * moveSpeed,rb.velocity.y, z * moveSpeed);
 
         if(x!=0 || z != 0)
         {
@@ -178,6 +172,9 @@ public class CharaController : MonoBehaviour
 
         // 方向キーの入力値とカメラの向きから、移動方向を決定
         Vector3 moveForward = cameraForward * z + Camera.main.transform.right * x;
+
+        // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
+        rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
 
         // キャラクターの向きを進行方向に
         if (moveForward != Vector3.zero)

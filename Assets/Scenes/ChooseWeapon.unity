@@ -920,7 +920,8 @@ MonoBehaviour:
     attackRange: 0
     maxAttackCount: 0
     bulletPrefab: {fileID: 0}
-    fuelEnergy: 0
+    reloadEnergy: 0
+    reloadTime: 0
     bulletSpeed: 0
     discription: 
   weaponData2:
@@ -931,7 +932,8 @@ MonoBehaviour:
     attackRange: 0
     maxAttackCount: 0
     bulletPrefab: {fileID: 0}
-    fuelEnergy: 0
+    reloadEnergy: 0
+    reloadTime: 0
     bulletSpeed: 0
     discription: 
   weaponInfo: {fileID: 0}

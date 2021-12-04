@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
 
     private float cameraRotateSpeed = 200f;  //どれくらいのスピードでカメラが回転するか
 
+    private float limit = 300.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,26 +34,50 @@ public class CameraController : MonoBehaviour
 
         targetPos = targetObj.transform.position;
 
-        if (Input.GetButton("CameraHorizontal"))
+        if (Input.GetMouseButton(1))
         {
-            x = Input.GetAxis("CameraHorizontal");  //aが入力されたとき-1,dが入力されたときを返す。
+            x = Input.GetAxis("Mouse X");  //aが入力されたとき-1,dが入力されたとき1を返す。
 
-            Debug.Log("OK!");
+            //Debug.Log("OK!");
 
             //対象のオブジェクトの周りを回す。引数は、（何の周りをまわるか、どの方向に回るか、どのくらいのスピードで回るか）
-            transform.RotateAround(targetPos, Vector3.up, x * Time.deltaTime * cameraRotateSpeed);      
+            //transform.RotateAround(targetPos, Vector3.up, x * Time.deltaTime * cameraRotateSpeed);
 
-            Debug.Log("OK2");
-        }
-        if (Input.GetButton("CameraVertical"))
-        {
-            z = Input.GetAxis("CameraVertical");
+           // Debug.Log("OK2");
+        
+            z = Input.GetAxis("Mouse Y");
 
-            Debug.Log("OK3");
+            //Debug.Log("OK3");
 
-            transform.RotateAround(targetPos, transform.right, z * Time.deltaTime * cameraRotateSpeed);
+            //transform.RotateAround(targetPos, transform.right, z * Time.deltaTime * cameraRotateSpeed);
 
-            Debug.Log("OK4");
+            //Debug.Log("OK4");
+
+            //x軸の移動範囲の設定
+            float maxLimit = limit;
+            float minLimit = 360 - maxLimit;
+
+            //カメラの回転情報の初期値をセット
+            var localAngle = transform.localEulerAngles;
+
+            //x軸の回転情報をセット
+            localAngle.x += z;
+
+            // X 軸を稼働範囲内に収まるように制御
+            if (localAngle.x > maxLimit && localAngle.x < 180)
+            {
+                localAngle.x = maxLimit;
+            }
+            if (localAngle.x < minLimit && localAngle.x > 180)
+            {
+                localAngle.x = minLimit;
+            }
+
+            //Y軸の回転情報を設定
+            localAngle.y += x;
+
+            // カメラの回転
+            transform.localEulerAngles = localAngle;
         }
     }
 }

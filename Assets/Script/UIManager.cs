@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateDisplayEnergy(float currentEnergy)
     {
+        Debug.Log(currentEnergy);
+
         energySlider.DOValue(currentEnergy, 1.0f);  //currentEnergyまで1.0秒かけて動かす（最初の引数の値はmaxEnergyでいい。）
     }
 
@@ -55,7 +57,7 @@ public class UIManager : MonoBehaviour
     /// <param name="currentBulletCount"></param>
     public void UpdateDisplayBullet(float currentBulletCount)　　　//変化があったときの処理
     {
-        energySlider.DOValue(currentBulletCount, 1.0f);  //currentBulletCountまで1.0秒かけて動かす（最初の引数の値はmaxBulletCountでいい。）
+        bulletSlider.DOValue(currentBulletCount, 1.0f);  //currentBulletCountまで1.0秒かけて動かす（最初の引数の値はmaxBulletCountでいい。）
 
         lastBullet.text = currentBulletCount.ToString();   //今の球数を反映させる
 
