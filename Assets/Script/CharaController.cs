@@ -10,6 +10,8 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
+    public WeaponData equipWeapon;
+
     //-------------------------移動関係---------------------------------------//
 
     [SerializeField]
@@ -37,13 +39,10 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private List<WeaponData> weaponDataList = new List<WeaponData>();
 
+    private List<float> currentBulletList = new List<float>();
+
     [SerializeField]
     private float currentBullet;    //今の弾数を入れる。
-
-    [SerializeField]
-    private float maxBullet;    //最大弾数を入れる。
-
-    [SerializeField]
 
     private float minBullet = 0;   //最小球数
 
@@ -67,21 +66,25 @@ public class CharaController : MonoBehaviour
 
     public void GameStart()
     {
-        rb = GetComponent<Rigidbody>();　　　//Rigidbodyを代入しておく
+        rb = GetComponent<Rigidbody>();   //Rigidbodyを代入しておく
+
+        equipWeapon = GameData.instance.equipWeaponData;
 
         currentEnergy = maxEnergy;    //ゲームが開始したときに最大エネルギー量にしておく。
 
         UIManager.SetEnergySliderValue(maxEnergy);   //エネルギーに関するもののセット
 
-        UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxAttackCount);   //最大弾数をセット
+        UIManager.SetWeaponSliderValue(equipWeapon.maxAttackCount);   //最大弾数をセット
 
         UIManager.SetSelectedWeapon();
 
-        maxBullet = GameData.instance.equipWeaponData.maxAttackCount;  //最大球数を装備している武器から得る
+        currentBulletList.Add(GameData.instance.chooseWeaponData[0].maxAttackCount);   //ゲーム開始時に選んだ武器の一つ目の武器の最大球数を入れる。
 
-        currentBullet = maxBullet;   //ゲームが開始したときに最大弾数にしておく。
+        currentBulletList.Add(GameData.instance.chooseWeaponData[1].maxAttackCount);   //ゲーム開始時に選んだ武器の二つ目の武器の最大球数を入れる。
 
-        bulletPower = GameData.instance.equipWeaponData.bulletSpeed;　　//弾の速度は装備している武器の速度
+        currentBullet = currentBulletList[0];   //ゲームが開始したときにリストの[0]の最大弾数にしておく。
+
+        bulletPower = equipWeapon.bulletSpeed;　　//弾の速度は装備している武器の速度
     }
 
     // Update is called once per frame
@@ -113,7 +116,7 @@ public class CharaController : MonoBehaviour
 
                 currentBullet--;    //今の球数を撃つたびに1ずつ減らしていく
 
-                currentBullet = Mathf.Clamp(currentBullet, minBullet, maxBullet);   //今の球数の範囲を指定する
+                currentBullet = Mathf.Clamp(currentBullet, minBullet, equipWeapon.maxAttackCount);   //今の球数の範囲を指定する
 
                 UIManager.UpdateDisplayBullet(currentBullet);   //弾数の処理を反映させる
             }
@@ -133,11 +136,13 @@ public class CharaController : MonoBehaviour
         //---------------------------------------武器を変える-------------------------------------------------------------//
         if (Input.GetButtonDown("ChangeWeapon"))
         {
-            GameData.instance.ChangeWeapon();
+            GameData.instance.ChangeWeapon(currentBullet,currentBulletList);
 
-            Debug.Log(GameData.instance.equipWeaponData.weaponName);
+            currentBullet = currentBulletList[GameData.instance.currentEquipWeaponNo];
 
-            UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxAttackCount);
+            Debug.Log(equipWeapon.weaponName);
+
+            UIManager.SetWeaponSliderValue(equipWeapon.maxAttackCount);
 
             UIManager.SetSelectedWeapon();
         }
@@ -226,14 +231,14 @@ public class CharaController : MonoBehaviour
         anim.SetTrigger("Reload");
 
         //装備している武器の「リロードエネルギー」分だけエネルギーを減らす
-        currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;
+        currentEnergy -= equipWeapon.reloadEnergy;
 
         UIManager.UpdateDisplayEnergy(currentEnergy);
 
-        yield return new WaitForSeconds(GameData.instance.equipWeaponData.reloadTime);
+        yield return new WaitForSeconds(equipWeapon.reloadTime);
 
         //装備している武器の「currentBullet」を最大にする
-        currentBullet = maxBullet;
+        currentBullet = equipWeapon.maxAttackCount;
 
         UIManager.UpdateDisplayBullet(currentBullet);
 

@@ -10,6 +10,12 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
 
     public WeaponData equipWeaponData;   //‘•”õ‚µ‚Ä‚¢‚é•Šíi‚±‚±‚©‚ç•Ší‚Ìî•ñ‚ğ“¾‚éj
 
+    public int currentEquipWeaponNo;   //Œ»İ‘•”õ‚µ‚Ä‚¢‚é•Ší‚ÌNo,Ø‚è‘Ö‚¦‚é‚Æ‚«‚Ég‚¤B
+
+    private List<float> currentBulletList = new List<float>();
+
+    private float currentBullet;    //¡‚Ì’e”‚ğ“ü‚ê‚é
+
     private void Awake()
     {
         if(instance == null)
@@ -41,15 +47,14 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
         equipWeaponData = chooseWeaponData[0];
     }
 
-    public void ChangeWeapon()
+    public void ChangeWeapon(float currentBullet,List<float> currentBulletList)
     {
-        if(equipWeaponData == chooseWeaponData[0])
-        {
-            equipWeaponData = chooseWeaponData[1];
-        }
-        else if(equipWeaponData == chooseWeaponData[1])
-        {
-            equipWeaponData = chooseWeaponData[0];
-        }
+        currentEquipWeaponNo++;  //Œ»İ‚Ì•Ší‚ÌNo‚ğ‚P‚¸‚Â‘‚â‚·B
+
+        currentEquipWeaponNo = currentEquipWeaponNo % chooseWeaponData.Count;@@//‚»‚ê‚ğƒŠƒXƒg‚ÌÅ‘å’l‚ÅŠ„‚é
+
+        equipWeaponData = chooseWeaponData[currentEquipWeaponNo];@@//‚»‚ÌNo‚ğƒŠƒXƒg“à‚Ì‚à‚Ì‚ÆÆ‡‚·‚éB
+
+        currentBullet = currentBulletList[currentEquipWeaponNo];
     }
 }
