@@ -43,10 +43,11 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private float maxBullet;    //最大弾数を入れる。
 
+    [SerializeField]
+
     private float minBullet = 0;   //最小球数
 
     private bool isReload;  //リロード中か
-
 
     //---------------------------エネルギー関係------------------------------------//
 
@@ -73,6 +74,8 @@ public class CharaController : MonoBehaviour
         UIManager.SetEnergySliderValue(maxEnergy);   //エネルギーに関するもののセット
 
         UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxAttackCount);   //最大弾数をセット
+
+        UIManager.SetSelectedWeapon();
 
         maxBullet = GameData.instance.equipWeaponData.maxAttackCount;  //最大球数を装備している武器から得る
 
@@ -125,7 +128,19 @@ public class CharaController : MonoBehaviour
                 //装備している武器の「リロード時間」分だけ撃てないようにする
                 StartCoroutine(ReloadWeapon());
             }
-        }      
+        }
+
+        //---------------------------------------武器を変える-------------------------------------------------------------//
+        if (Input.GetButtonDown("ChangeWeapon"))
+        {
+            GameData.instance.ChangeWeapon();
+
+            Debug.Log(GameData.instance.equipWeaponData.weaponName);
+
+            UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxAttackCount);
+
+            UIManager.SetSelectedWeapon();
+        }
     }
 
     private void FixedUpdate()

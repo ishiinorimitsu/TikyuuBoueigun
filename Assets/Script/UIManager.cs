@@ -18,6 +18,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text maxBullet;    //最大弾数を入れる。
 
+    [SerializeField]
+    private Image selectedWeapon;  //選ばれている武器の画像を入れる
+
+    [SerializeField]
+    private Text selectedWeaponText;  //選ばれている武器のテキストを入れる
 
 
     //----------------------------------------エネルギーゲージの処理------------------------------------------------------//
@@ -30,7 +35,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateDisplayEnergy(float currentEnergy)
     {
-        Debug.Log(currentEnergy);
+        //Debug.Log(currentEnergy);
 
         energySlider.DOValue(currentEnergy, 1.0f);  //currentEnergyまで1.0秒かけて動かす（最初の引数の値はmaxEnergyでいい。）
     }
@@ -62,5 +67,13 @@ public class UIManager : MonoBehaviour
         lastBullet.text = currentBulletCount.ToString();   //今の球数を反映させる
 
         bulletSlider.value = currentBulletCount;    //弾数のゲージを更新する
+    }
+
+    //------------------------------------------今の武器の名前と画像に関する処理-------------------------------------------------//
+    public void SetSelectedWeapon()
+    {
+        selectedWeapon.sprite = GameData.instance.equipWeaponData.weaponSprite;    //現在選ばれている武器の画像が入る
+
+        selectedWeaponText.text = GameData.instance.equipWeaponData.weaponName;    //現在選ばれている武器の名前が入る
     }
 }

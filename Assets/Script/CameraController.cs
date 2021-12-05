@@ -41,11 +41,11 @@ public class CameraController : MonoBehaviour
             //Debug.Log("OK!");
 
             //対象のオブジェクトの周りを回す。引数は、（何の周りをまわるか、どの方向に回るか、どのくらいのスピードで回るか）
-            //transform.RotateAround(targetPos, Vector3.up, x * Time.deltaTime * cameraRotateSpeed);
+            transform.RotateAround(targetPos, Vector3.up, x * Time.deltaTime * cameraRotateSpeed);
 
            // Debug.Log("OK2");
         
-            z = Input.GetAxis("Mouse Y");
+            z = -Input.GetAxis("Mouse Y");
 
             //Debug.Log("OK3");
 
@@ -74,7 +74,7 @@ public class CameraController : MonoBehaviour
             }
 
             //Y軸の回転情報を設定
-            localAngle.y += x;
+            //localAngle.y += x;
 
             // カメラの回転
             transform.localEulerAngles = localAngle;

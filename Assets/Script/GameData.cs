@@ -40,4 +40,16 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
 
         equipWeaponData = chooseWeaponData[0];
     }
+
+    public void ChangeWeapon()
+    {
+        if(equipWeaponData == chooseWeaponData[0])
+        {
+            equipWeaponData = chooseWeaponData[1];
+        }
+        else if(equipWeaponData == chooseWeaponData[1])
+        {
+            equipWeaponData = chooseWeaponData[0];
+        }
+    }
 }
