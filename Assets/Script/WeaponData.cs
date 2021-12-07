@@ -9,7 +9,7 @@ public class WeaponData
 
     public int weaponAttackPower;   //武器の一発撃った時のダメージ（ダメージ）
     public int attackRange;   //武器の射程（ｍ）
-    public int maxAttackCount;   //武器に一度のリロードで何発まで打てるか（発）
+    public int maxBullet;   //武器に一度のリロードで何発まで打てるか（発）
     public BulletController bulletPrefab;   //撃つ弾
     public int reloadEnergy;  //リロードするときに消耗するエネルギー（％）
     public int reloadTime;  //リロードにかける時間（秒）

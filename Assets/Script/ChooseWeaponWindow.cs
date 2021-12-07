@@ -74,7 +74,7 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
 
         txtPickupWeaponAttackRangeType.text = weaponData.attackRange.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ì‰æ‘œ‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì‰æ‘œ‚ª“ü—Í‚³‚ê‚éB
 
-        txtPickupWeaponMaxShot.text = weaponData.maxAttackCount.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÌÅ‘å’e”‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ÌÅ‘å’e”‚ª“ü—Í‚³‚ê‚éB
+        txtPickupWeaponMaxShot.text = weaponData.maxBullet.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÌÅ‘å’e”‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ÌÅ‘å’e”‚ª“ü—Í‚³‚ê‚éB
 
         txtWeaponDescription.text = weaponData.discription;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ìà–¾‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ìà–¾‚ª“ü—Í‚³‚ê‚éB
     }

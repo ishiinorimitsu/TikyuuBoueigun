@@ -18,7 +18,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 21300000, guid: b470ab7c97b83a74e975b5a05c262293, type: 3}
     weaponAttackPower: 100
     attackRange: 100
-    maxAttackCount: 1
+    maxBullet: 10
     bulletPrefab: {fileID: 0}
     reloadEnergy: 30
     reloadTime: 5
@@ -29,7 +29,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 21300000, guid: 4dc30af1cdf3b3846b7d4fa81a904d6d, type: 3}
     weaponAttackPower: 10
     attackRange: 20
-    maxAttackCount: 100
+    maxBullet: 100
     bulletPrefab: {fileID: 0}
     reloadEnergy: 40
     reloadTime: 5
@@ -40,7 +40,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 21300000, guid: ceb2bd1062e4ced4f973baaf119361c2, type: 3}
     weaponAttackPower: 15
     attackRange: 50
-    maxAttackCount: 100
+    maxBullet: 1
     bulletPrefab: {fileID: 0}
     reloadEnergy: 20
     reloadTime: 20
@@ -51,7 +51,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 21300000, guid: 17e68478b19249d4cba22653135c4cdc, type: 3}
     weaponAttackPower: 500
     attackRange: 30
-    maxAttackCount: 10
+    maxBullet: 10
     bulletPrefab: {fileID: 0}
     reloadEnergy: 60
     reloadTime: 3
@@ -62,7 +62,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 21300000, guid: b46b27b5c4b434143829c16974c68609, type: 3}
     weaponAttackPower: 9999
     attackRange: 300
-    maxAttackCount: 1
+    maxBullet: 1
     bulletPrefab: {fileID: 0}
     reloadEnergy: 100
     reloadTime: 100

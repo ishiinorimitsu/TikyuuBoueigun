@@ -47,14 +47,14 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
         equipWeaponData = chooseWeaponData[0];
     }
 
-    public void ChangeWeapon(float currentBullet,List<float> currentBulletList)
+    public void ChangeWeapon()
     {
         currentEquipWeaponNo++;  //Œ»İ‚Ì•Ší‚ÌNo‚ğ‚P‚¸‚Â‘‚â‚·B
 
-        currentEquipWeaponNo = currentEquipWeaponNo % chooseWeaponData.Count;@@//‚»‚ê‚ğƒŠƒXƒg‚ÌÅ‘å’l‚ÅŠ„‚é
+        currentEquipWeaponNo = currentEquipWeaponNo % chooseWeaponData.Count;@@//‚»‚ê‚ğƒŠƒXƒg‚ÌÅ‘å’l‚ÅŠ„‚é(‚±‚Ìê‡0‚©1‚É‚È‚é)
 
         equipWeaponData = chooseWeaponData[currentEquipWeaponNo];@@//‚»‚ÌNo‚ğƒŠƒXƒg“à‚Ì‚à‚Ì‚ÆÆ‡‚·‚éB
 
-        currentBullet = currentBulletList[currentEquipWeaponNo];
+        Debug.Log(equipWeaponData.maxBullet);
     }
 }
