@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject player;   //索敵範囲内に入ってきたキャラを入れる
 
     private NavMeshAgent agent;
 
@@ -45,12 +45,12 @@ public class EnemyController : MonoBehaviour
         {
             agent.destination = player.transform.position;   //敵の目的地の設定（playerは動くから）
 
-            transform.LookAt(player.transform);   //playerのほうを向く
+            agent.updateRotation = false;
 
+            transform.LookAt(player.transform.position);
 
             if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
             {
-                Debug.Log("攻撃");
 
                 timer += Time.deltaTime;
 

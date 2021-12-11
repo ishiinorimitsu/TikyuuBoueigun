@@ -15,8 +15,9 @@ public class SearchPlayer : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             isSearch = true;
-
+            Debug.Log("OK1");
             enemyController.player = col.gameObject;
+            Debug.Log("OK2");
         }
     }
 
