@@ -9,5 +9,7 @@ public class EnemyBulletController : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
 
         rb.AddForce(direction*shotSpeed);
+
+        Destroy(gameObject,2.0f);
     }
 }

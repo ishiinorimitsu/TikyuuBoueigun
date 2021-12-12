@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     private EnemyBulletController enemyBulletControllerPrefab;   //敵の弾
 
     [SerializeField]
-    private Transform enemyBulletTran;
+    private Transform enemyBulletTran;  //弾を生成する場所
 
     [SerializeField]
     private float shotSpeed;
@@ -25,12 +25,16 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float attackInterval;
 
+    private Animator anim;
+
     private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();  //navMeshAgentを入れる
+
+        anim = GetComponent<Animator>();  //Animatorを入れる
     }
 
     // Update is called once per frame
@@ -45,10 +49,20 @@ public class EnemyController : MonoBehaviour
         {
             agent.destination = player.transform.position;   //敵の目的地の設定（playerは動くから）
 
-            agent.updateRotation = false;
+            //移動するときのアニメーションの設定、どこかしらの速度が1より大きい（移動しているとき）
+            if(agent.velocity.x > 0.2 || agent.velocity.y > 0.2 || agent.velocity.z > 0.2)
+            {
+                anim.SetBool("Idle",false);
+                anim.SetFloat("Run",1.0f);
+            }
+            else
+            {
+                anim.SetFloat("Run", 0);
+                anim.SetBool("Idle",true);
+                Debug.Log("あにめOK  ");
+            }
 
-            transform.LookAt(player.transform.position);
-
+            //攻撃範囲内に入ったら攻撃してくる
             if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
             {
 
@@ -66,7 +80,9 @@ public class EnemyController : MonoBehaviour
 
     private void EnemyAttack()
     {
-        attackDirection = (player.transform.position - transform.position).normalized;
+        anim.SetTrigger("Attack");
+
+        attackDirection = (player.transform.position - enemyBulletTran.transform.position).normalized;
 
         EnemyBulletController bullet = Instantiate(enemyBulletControllerPrefab,enemyBulletTran.position,Quaternion.identity);
 
