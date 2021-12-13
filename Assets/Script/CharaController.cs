@@ -227,7 +227,7 @@ public class CharaController : MonoBehaviour
     
     private void OnCollisionStay(Collision col)
     {
-        if(col.gameObject.tag == "ground")
+        if(col.gameObject.tag == "Ground")
         {
             currentEnergy += cureEnergy;
 

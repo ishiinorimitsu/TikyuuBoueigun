@@ -7,16 +7,20 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private Slider energySlider;     //エネルギーゲージを入れる
+    private Image energySlider;     //エネルギーゲージを入れる
+
+    private float maxEnergyCount;    //最大エネルギー量を入れる
 
     [SerializeField]
-    private Slider bulletSlider;     //残り弾数ゲージを入れる
+    private Image bulletSlider;     //残り弾数ゲージを入れる
 
     [SerializeField]
     private Text lastBullet;    //残っている弾数を入れる。
 
     [SerializeField]
-    private Text maxBullet;    //最大弾数を入れる。
+    private Text maxBullet;    //最大弾数を入れる。(Text)
+
+    private float maxBulletCount;   //最大弾数を入れる(float)
 
     [SerializeField]
     private Image selectedWeapon;  //選ばれている武器の画像を入れる
@@ -26,14 +30,16 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField]
-    private Slider HPSlider;    //HPゲージを入れる
+    private Image HPSlider;    //HPゲージを入れる
 
 
     [SerializeField]
     private Text lastHP;    //残っているHPを入れる。
 
     [SerializeField]
-    private Text maxHP;    //最大HPを入れる。
+    private Text maxHP;    //最大HPを入れる。(Text)
+
+    private float maxHPCount;    //最大HPを入れる(float)
 
 
     //----------------------------------------エネルギーゲージの処理------------------------------------------------------//
@@ -43,7 +49,9 @@ public class UIManager : MonoBehaviour
     /// <param name="maxEnergy"></param>
     public void SetEnergySliderValue(float maxEnergy)
     {
-        energySlider.maxValue = maxEnergy;     //スライダーの中のmaxValueをmaxEnergyと一緒にする。
+        this.maxEnergyCount = maxEnergy;
+
+        energySlider.fillAmount = maxEnergy;     //スライダーの中のmaxValueをmaxEnergyと一緒にする。
 
         UpdateDisplayEnergy(maxEnergy);    //まず最初はvalueの値はmaxEnergyと同じでいい。
     }
@@ -52,7 +60,9 @@ public class UIManager : MonoBehaviour
     {
         //Debug.Log(currentEnergy);
 
-        energySlider.DOValue(currentEnergy, 1.0f);  //currentEnergyまで1.0秒かけて動かす（最初の引数の値はmaxEnergyでいい。）
+        energySlider.fillAmount = currentEnergy/maxEnergyCount;  //currentEnergyまで1.0秒かけて動かす（最初の引数の値はmaxEnergyでいい。）
+
+        energySlider.DOFillAmount(currentEnergy / maxEnergyCount, 1.0f);
     }
 
 
@@ -64,7 +74,9 @@ public class UIManager : MonoBehaviour
     /// <param name="maxBullet"></param>
     public void SetWeaponSliderValue(int maxBullet,int currentBullet)     //まず準備
     {
-        bulletSlider.maxValue = maxBullet;     //スライダーの中のmaxValueをmaxBulletと一緒にする。
+        this.maxBulletCount = maxBullet;
+
+        bulletSlider.fillAmount = maxBullet;     //スライダーの中のmaxValueをmaxBulletと一緒にする。
 
         UpdateDisplayBullet(currentBullet);    //まず最初はvalueの値はmaxEnergyと同じでいい。
 
@@ -77,7 +89,7 @@ public class UIManager : MonoBehaviour
     /// <param name="currentBulletCount"></param>
     public void UpdateDisplayBullet(int currentBulletCount)　　　//変化があったときの処理
     {
-        bulletSlider.value　=　currentBulletCount;  //currentBulletCountまでvalueを動かす（最初の引数の値はmaxBulletCountでいい。）
+        bulletSlider.fillAmount　=　currentBulletCount/maxBulletCount;  //currentBulletCountまでvalueを動かす（最初の引数の値はmaxBulletCountでいい。）
 
         lastBullet.text = currentBulletCount.ToString();   //今の球数を反映させる。数字の更新
     }
@@ -93,16 +105,18 @@ public class UIManager : MonoBehaviour
     //------------------------------------------------------HPゲージの処理--------------------------------------------------------//
     public void SetHpSliderValue(int maxHp)
     {
-        HPSlider.maxValue = maxHp;     //スライダーの中のmaxValueをmaxHpと一緒にする。
+        this.maxHPCount = maxHp;
+
+        HPSlider.fillAmount = maxHp;     //スライダーの中のmaxValueをmaxHpと一緒にする。
 
         UpdateDisplayHp(maxHp);    //まず最初はvalueの値はmaxHpと同じでいい。
 
-        this.maxHP.text = maxHp.ToString();    //UIの最大HPを表示する。
+        maxHP.text = maxHp.ToString();    //UIの最大HPを表示する。
     }
 
     public void UpdateDisplayHp(int currentHp)
     {
-        HPSlider.DOValue(currentHp, 1.0f);  //currentHpまで1.0秒かけて動かす（最初の引数の値はmaxHpでいい。）
+        HPSlider.fillAmount = currentHp/maxHPCount; //currentHpまで1.0秒かけて動かす（最初の引数の値はmaxHpでいい。）
 
         lastHP.text = currentHp.ToString();   //今のHPを反映させる。数字の更新
     }
