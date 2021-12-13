@@ -65,14 +65,26 @@ public class CharaController : MonoBehaviour
 
     public UIManager UIManager;   //UIManagerにデータを送れるようにする。
 
+
+    //-------------------------------HP関係-----------------------------------------//
+
+    [SerializeField]
+    private int maxHp;    //最大HP
+
+    private int minHp = 0;    //最小HP
+
+    [SerializeField]
+    public int currentHp;    //現在のHP
+
     public void GameStart()
     {
         rb = GetComponent<Rigidbody>();   //Rigidbodyを代入しておく
 
         currentEnergy = maxEnergy;    //ゲームが開始したときに最大エネルギー量にしておく。
 
+        currentHp = maxHp;   //ゲームが開始したときに最大体力にしておく。
+
         UIManager.SetEnergySliderValue(maxEnergy);   //エネルギーに関するもののセット
-        Debug.Log(GameData.instance.equipWeaponData.maxBullet);
 
         for (int i = 0; i < GameData.instance.chooseWeaponData.Count; i++)
         {
@@ -80,10 +92,11 @@ public class CharaController : MonoBehaviour
             currentBulletList.Add(GameData.instance.chooseWeaponData[i].maxBullet);
         }
 
-        Debug.Log(currentBulletList[GameData.instance.currentEquipWeaponNo]);
         UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);   //最大弾数をセット（引数は、今選ばれている武器の最大弾数）
 
         UIManager.SetSelectedWeapon();　　//今選ばれている武器の名前と画像をセット
+
+        UIManager.SetHpSliderValue(maxHp);    //最大HPをセットする
 
         bulletPower = GameData.instance.equipWeaponData.bulletSpeed;　　//弾の速度は装備している武器の速度
     }
@@ -256,6 +269,23 @@ public class CharaController : MonoBehaviour
         UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);
 
         isReload = false;
+    }
+
+
+    //-----------------------------------------攻撃されたときの処理----------------------------------------------------------------//
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "EnemyBullet")
+        {
+            col.gameObject.TryGetComponent<EnemyBulletController>(out EnemyBulletController enemyBulletController);
+
+            currentHp -= enemyBulletController.attackPower;　　//攻撃されるたびにHpを減らす
+
+            currentHp = Mathf.Clamp(currentHp,minHp,maxHp);    //HPがマイナスになったりを防ぐ
+
+            UIManager.UpdateDisplayHp(currentHp);    //HPのゲージを更新する
+        }
     }
 }
 

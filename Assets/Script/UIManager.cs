@@ -25,7 +25,22 @@ public class UIManager : MonoBehaviour
     private Text selectedWeaponText;  //選ばれている武器のテキストを入れる
 
 
+    [SerializeField]
+    private Slider HPSlider;    //HPゲージを入れる
+
+
+    [SerializeField]
+    private Text lastHP;    //残っているHPを入れる。
+
+    [SerializeField]
+    private Text maxHP;    //最大HPを入れる。
+
+
     //----------------------------------------エネルギーゲージの処理------------------------------------------------------//
+    /// <summary>
+    /// エネルギーゲージの処理
+    /// </summary>
+    /// <param name="maxEnergy"></param>
     public void SetEnergySliderValue(float maxEnergy)
     {
         energySlider.maxValue = maxEnergy;     //スライダーの中のmaxValueをmaxEnergyと一緒にする。
@@ -62,11 +77,9 @@ public class UIManager : MonoBehaviour
     /// <param name="currentBulletCount"></param>
     public void UpdateDisplayBullet(int currentBulletCount)　　　//変化があったときの処理
     {
-        bulletSlider.value=currentBulletCount;  //currentBulletCountまでvalueを動かす（最初の引数の値はmaxBulletCountでいい。）
+        bulletSlider.value　=　currentBulletCount;  //currentBulletCountまでvalueを動かす（最初の引数の値はmaxBulletCountでいい。）
 
         lastBullet.text = currentBulletCount.ToString();   //今の球数を反映させる。数字の更新
-
-        bulletSlider.value = currentBulletCount;    //弾数のゲージを更新する
     }
 
     //------------------------------------------今の武器の名前と画像に関する処理-------------------------------------------------//
@@ -75,5 +88,22 @@ public class UIManager : MonoBehaviour
         selectedWeapon.sprite = GameData.instance.equipWeaponData.weaponSprite;    //現在選ばれている武器の画像が入る
 
         selectedWeaponText.text = GameData.instance.equipWeaponData.weaponName;    //現在選ばれている武器の名前が入る
+    }
+
+    //------------------------------------------------------HPゲージの処理--------------------------------------------------------//
+    public void SetHpSliderValue(int maxHp)
+    {
+        HPSlider.maxValue = maxHp;     //スライダーの中のmaxValueをmaxHpと一緒にする。
+
+        UpdateDisplayHp(maxHp);    //まず最初はvalueの値はmaxHpと同じでいい。
+
+        this.maxHP.text = maxHp.ToString();    //UIの最大HPを表示する。
+    }
+
+    public void UpdateDisplayHp(int currentHp)
+    {
+        HPSlider.DOValue(currentHp, 1.0f);  //currentHpまで1.0秒かけて動かす（最初の引数の値はmaxHpでいい。）
+
+        lastHP.text = currentHp.ToString();   //今のHPを反映させる。数字の更新
     }
 }

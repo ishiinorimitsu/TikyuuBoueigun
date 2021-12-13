@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour
 
     private float timer;
 
+    private int attackPower = 20;    //çUåÇóÕ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +88,7 @@ public class EnemyController : MonoBehaviour
 
         EnemyBulletController bullet = Instantiate(enemyBulletControllerPrefab,enemyBulletTran.position,Quaternion.identity);
 
-        bullet.EnemyShot(attackDirection,shotSpeed);
+        bullet.EnemyShot(attackDirection,shotSpeed,attackPower);
     }
 }
 
