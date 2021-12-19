@@ -21,8 +21,6 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
     {
         if(col.gameObject.tag == "Enemy")       //敵に当たったとき敵を壊し、自分も消滅する。
         {
-            Destroy(col.gameObject);
-
             Destroy(gameObject);
         }
     }

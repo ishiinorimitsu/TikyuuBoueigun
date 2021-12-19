@@ -918,7 +918,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 0}
     weaponAttackPower: 0
     attackRange: 0
-    maxAttackCount: 0
+    maxBullet: 0
     bulletPrefab: {fileID: 0}
     reloadEnergy: 0
     reloadTime: 0
@@ -930,7 +930,7 @@ MonoBehaviour:
     weaponSprite: {fileID: 0}
     weaponAttackPower: 0
     attackRange: 0
-    maxAttackCount: 0
+    maxBullet: 0
     bulletPrefab: {fileID: 0}
     reloadEnergy: 0
     reloadTime: 0
