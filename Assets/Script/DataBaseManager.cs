@@ -9,6 +9,9 @@ public class DataBaseManager : MonoBehaviour  //二つ以上のシーンに存在したときは
     [SerializeField]
     public WeaponDataSO weaponDataSO;   //ここにWeaponDataSOの情報を入れる。
 
+    [SerializeField]
+    public EnemyDataSO enemyDataSO;
+
     private void Awake()
     {
         if (instance == null)                    //初期値がないので最初はいつも空である。だから最初の一回目はこれが作動する。

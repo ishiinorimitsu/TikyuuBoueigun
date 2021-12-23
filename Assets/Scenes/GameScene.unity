@@ -826,6 +826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4880cf7a3569f9418ea1b71f8f2b16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 2445582728550204372, guid: 88dde6de2b41e3748bd09f62dff2da03, type: 3}
+  enemyPrefabTran: {fileID: 0}
   anim: {fileID: 4244232884589277513}
   jumpForce: 1000
   moveSpeed: 10
@@ -842,6 +844,7 @@ MonoBehaviour:
   UIManager: {fileID: 536839401}
   maxHp: 200
   currentHp: 0
+  enemyGenerator: {fileID: 1937439765}
 --- !u!1 &700285971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,6 +2392,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1937439764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937439766}
+  - component: {fileID: 1937439765}
+  m_Layer: 0
+  m_Name: EnemyGeneretor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1937439765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937439764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df21e1c1bf49cb94bbf8d2add8235beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTran:
+  - {fileID: 6634459131449801326, guid: c7cb4bc28782a464ebe4f825762f7a44, type: 3}
+  - {fileID: 1357724063728763550, guid: 473e30e2f60cab5489fef74ba0d8a93a, type: 3}
+  radius: 50
+--- !u!4 &1937439766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937439764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1121, y: 80.3, z: 1172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1942265899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2776,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3885370327478026032, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
+      propertyPath: enemyDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 124ace08fbd993840b9b869319aec423, type: 2}
     - target: {fileID: 3885370327478026033, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
       propertyPath: m_RootOrder
       value: 3

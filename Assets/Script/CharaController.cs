@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class CharaController : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyController enemyPrefab;
+
+    [SerializeField]
+    private Transform enemyPrefabTran;
+
     //------------------------アニメーション-------------------------------------//
 
     [SerializeField]
@@ -75,6 +81,10 @@ public class CharaController : MonoBehaviour
 
     [SerializeField]
     public int currentHp;    //現在のHP
+
+    //---------------------------------ゲーム情報--------------------------------------//
+    [SerializeField]
+    private EnemyGenerator enemyGenerator;
 
     public void GameStart()
     {
@@ -160,6 +170,12 @@ public class CharaController : MonoBehaviour
             UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet,currentBulletList[GameData.instance.currentEquipWeaponNo]);　　//
 
             UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
+        }
+
+        if (Input.GetButtonDown("EnemyGenerate"))
+        {
+            //Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[0].enemyPrefab,enemyGenerator.enemyTran[0].position,Quaternion.identity);
+            enemyGenerator.EnemyGeneratorMethod();
         }
     }
 

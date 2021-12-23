@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f49db0685d9bc64d8da9e7d38dec93c, type: 3}
+  m_Name: EnemyDataSO
+  m_EditorClassIdentifier: 
+  enemyDataList:
+  - enemyName: Dinosaur
+    enemyNo: 0
+    enemyPrefab: {fileID: 2445582728550204373, guid: 88dde6de2b41e3748bd09f62dff2da03, type: 3}
+    enemyAttackPower: 0
+    bloodPrefab: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
+    attackRange: 0
+    enemyBulletPrefab: {fileID: 0}
+    bulletSpeed: 0
+    discription: 
+  - enemyName: 
+    enemyNo: 0
+    enemyPrefab: {fileID: 0}
+    enemyAttackPower: 0
+    bloodPrefab: {fileID: 0}
+    attackRange: 0
+    enemyBulletPrefab: {fileID: 0}
+    bulletSpeed: 0
+    discription: 
+  - enemyName: 
+    enemyNo: 0
+    enemyPrefab: {fileID: 0}
+    enemyAttackPower: 0
+    bloodPrefab: {fileID: 0}
+    attackRange: 0
+    enemyBulletPrefab: {fileID: 0}
+    bulletSpeed: 0
+    discription: 

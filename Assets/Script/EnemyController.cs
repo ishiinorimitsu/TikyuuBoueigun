@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
                 agent.destination = player.transform.position;   //敵の目的地の設定（playerは動くから）
 
                 //移動するときのアニメーションの設定、どこかしらの速度が1より大きい（移動しているとき）
-                if (agent.velocity.x > 0.2 || agent.velocity.y > 0.2 || agent.velocity.z > 0.2)
+                if (Mathf.Abs(agent.velocity.x) > 0.2 || Mathf.Abs(agent.velocity.y) > 0.2 || Mathf.Abs(agent.velocity.z) > 0.2)
                 {
                     anim.SetBool("Idle", false);
                     anim.SetFloat("Run", 1.0f);

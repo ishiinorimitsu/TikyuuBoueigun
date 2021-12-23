@@ -1,10 +1,11 @@
 using UnityEngine;
 
+[System.Serializable]
 public class EnemyData 
 {
     public string enemyName;   //敵の名前
     public int enemyNo;   //敵の番号
-    public EnemyController enemyPrefab;   //敵のプレファブ
+    public GameObject enemyPrefab;   //敵のプレファブ
 
     public int enemyAttackPower;   //敵の一発撃った時のダメージ（ダメージ）
     public GameObject bloodPrefab;    //流す血のプレファブ
