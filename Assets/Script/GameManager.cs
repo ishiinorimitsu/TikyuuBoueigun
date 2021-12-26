@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
         enemyGenerator.PrepareEnemyGenerator();      //‚±‚Ìˆ—‚ÅA‚Ü‚¸Œ»İ‚ÌWave‚ğ1‚É‚·‚éB
 
         enemyGenerator.MatchWave();    //Å‰‚Í‚±‚±‚ÅŒ»İ‚ÌWave‚ÆEnemyGenerator“à‚ÌcurrentWaveIndex‚ğˆê’v‚³‚¹‚éB
+
+        enemyGenerator.EnemyGenerate();     //Wave1‚ÍStartƒƒ\ƒbƒh‚É‘‚¢‚Ä‚¨‚­B
     }
 
 

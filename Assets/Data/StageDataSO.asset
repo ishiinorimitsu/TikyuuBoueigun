@@ -17,8 +17,8 @@ MonoBehaviour:
     DinosaurCount: 2
     RobotCount: 0
   - GenerateEnemyTranIndex: 0
-    DinosaurCount: 4
-    RobotCount: 10
+    DinosaurCount: 3
+    RobotCount: 0
   - GenerateEnemyTranIndex: 0
-    DinosaurCount: 10
-    RobotCount: 10
+    DinosaurCount: 4
+    RobotCount: 0

@@ -168,12 +168,6 @@ public class CharaController : MonoBehaviour
 
             UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
         }
-
-        if (Input.GetButtonDown("EnemyGenerate"))
-        {
-            //Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[0].enemyPrefab,enemyGenerator.enemyTran[0].position,Quaternion.identity);
-            enemyGenerator.EnemyGenerate();
-        }
     }
 
     private void FixedUpdate()
