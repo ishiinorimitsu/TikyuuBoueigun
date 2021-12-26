@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: enemyDataSO
       value: 
       objectReference: {fileID: 11400000, guid: 124ace08fbd993840b9b869319aec423, type: 2}
+    - target: {fileID: 3885370327478026032, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
+      propertyPath: stageDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f365c323a284b6146b287f175c2b84c5, type: 2}
     - target: {fileID: 3885370327478026033, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
       propertyPath: m_RootOrder
       value: 6

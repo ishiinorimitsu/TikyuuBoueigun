@@ -10,7 +10,10 @@ public class DataBaseManager : MonoBehaviour  //二つ以上のシーンに存在したときは
     public WeaponDataSO weaponDataSO;   //ここにWeaponDataSOの情報を入れる。
 
     [SerializeField]
-    public EnemyDataSO enemyDataSO;
+    public EnemyDataSO enemyDataSO;     //ここにEnemyDataSOの情報を入れる。
+
+    [SerializeField]
+    public StageDataSO stageDataSO;     //ここにStageDataSOの情報を入れる。
 
     private void Awake()
     {

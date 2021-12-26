@@ -10,6 +10,15 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
     [SerializeField]
     private CharaController charaController;   //ƒXƒ^[ƒgƒƒ\ƒbƒh‚·‚×‚Ä‚ğ‚±‚±‚É‘‚­‚½‚ß‚É‚Á‚Ä‚­‚é
 
+    public enum Wave   //ƒQ[ƒ€‚Í‘å‘Ì‚ÌƒXƒe[ƒW‚Åwave3‚Ü‚Å‚É‚·‚é
+    {
+        wave1,     
+        wave2,
+        wave3
+    }
+
+    public Wave currentWave;     //Œ»İ‚ÌWave‚ğ“ü‚ê‚éB
+
     void Start()
     {
         //weaponGenerator.AddWeaponData();

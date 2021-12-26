@@ -6,10 +6,7 @@ using UnityEngine.UI;
 public class CharaController : MonoBehaviour
 {
     [SerializeField]
-    private EnemyController enemyPrefab;
-
-    [SerializeField]
-    private Transform enemyPrefabTran;
+    private GameManager gameManager;
 
     //------------------------アニメーション-------------------------------------//
 
@@ -175,7 +172,7 @@ public class CharaController : MonoBehaviour
         if (Input.GetButtonDown("EnemyGenerate"))
         {
             //Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[0].enemyPrefab,enemyGenerator.enemyTran[0].position,Quaternion.identity);
-            enemyGenerator.EnemyGeneratorMethod();
+            enemyGenerator.EnemyGenerate();
         }
     }
 

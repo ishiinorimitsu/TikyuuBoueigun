@@ -736,6 +736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponGenerator: {fileID: 1396733553}
   charaController: {fileID: 685917885}
+  currentWave: 0
 --- !u!4 &599758042
 Transform:
   m_ObjectHideFlags: 0
@@ -826,8 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4880cf7a3569f9418ea1b71f8f2b16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2445582728550204372, guid: 88dde6de2b41e3748bd09f62dff2da03, type: 3}
-  enemyPrefabTran: {fileID: 0}
+  gameManager: {fileID: 599758041}
   anim: {fileID: 4244232884589277513}
   jumpForce: 1000
   moveSpeed: 10
@@ -2425,6 +2425,7 @@ MonoBehaviour:
   - {fileID: 6634459131449801326, guid: c7cb4bc28782a464ebe4f825762f7a44, type: 3}
   - {fileID: 1357724063728763550, guid: 473e30e2f60cab5489fef74ba0d8a93a, type: 3}
   radius: 50
+  gameManager: {fileID: 599758041}
 --- !u!4 &1937439766
 Transform:
   m_ObjectHideFlags: 0
@@ -2780,6 +2781,10 @@ PrefabInstance:
       propertyPath: enemyDataSO
       value: 
       objectReference: {fileID: 11400000, guid: 124ace08fbd993840b9b869319aec423, type: 2}
+    - target: {fileID: 3885370327478026032, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
+      propertyPath: stageDataSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f365c323a284b6146b287f175c2b84c5, type: 2}
     - target: {fileID: 3885370327478026033, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
       propertyPath: m_RootOrder
       value: 3
