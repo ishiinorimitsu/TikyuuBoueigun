@@ -15,6 +15,10 @@ public class EnemyGenerator : MonoBehaviour
 
     private int currentWaveIndex;    //現在のWaveが第何Waveかを入れる
 
+    public int generatedEnemyCount;    //生成した敵の数
+
+    public int knockDownEnemyCount;    //倒した敵の数
+
     /// <summary>
     /// 敵を生成する処理の準備をする
     /// </summary>
@@ -33,9 +37,7 @@ public class EnemyGenerator : MonoBehaviour
         if(gameManager.currentWave == GameManager.Wave.wave1)
         {
             gameManager.currentWave = GameManager.Wave.wave2;
-        }
-
-        if(gameManager.currentWave == GameManager.Wave.wave2)
+        }else if(gameManager.currentWave == GameManager.Wave.wave2)
         {
             gameManager.currentWave = GameManager.Wave.wave3;
         }
@@ -46,7 +48,7 @@ public class EnemyGenerator : MonoBehaviour
     /// <summary>
     /// 現在のWaveからDataBasemanagerのインデックス番号と一致させるためのメソッド。
     /// </summary>
-    private void MatchWave()
+    public void MatchWave()
     {
         switch (gameManager.currentWave)    //もし現在のWaveが
         {
@@ -78,21 +80,8 @@ public class EnemyGenerator : MonoBehaviour
     /// </summary>
     public void EnemyGenerate()
     {     
-        if (gameManager.currentWave == GameManager.Wave.wave1)
-        {
-            currentWaveIndex = 0;
-        }
-        if (gameManager.currentWave == GameManager.Wave.wave2)
-        {
-            currentWaveIndex = 1;
-        }
-        if (gameManager.currentWave == GameManager.Wave.wave3)
-        {
-            currentWaveIndex = 2;
-        }
-
         //恐竜の生成
-        for (int i = 0; i < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].DinosaurCount; i++)     //今Stageのインデックス番号は１にしてある。後でそこも変える。
+        for (int i = 0; i < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].DinosaurCount; i++)     
         {
             //------------------------------------位置の指定------------------------------------------------------//
 
@@ -111,7 +100,12 @@ public class EnemyGenerator : MonoBehaviour
             //-----------------------------------生成する-------------------------------------------------------------//
 
             GameObject enemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[0].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
+
+            enemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
+
+            generatedEnemyCount++;     //生成した敵の数を数える
         }
+
 
         //ロボットの生成
         for (int j = 0;j < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].RobotCount; j++)
@@ -133,6 +127,18 @@ public class EnemyGenerator : MonoBehaviour
             //------------------------------------生成する------------------------------------------------------//
 
             GameObject robotEnemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[1].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
+
+            robotEnemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
+
+            generatedEnemyCount++;     //生成した敵の数を数える
         }
+    }
+
+    /// <summary>
+    /// GameManagerのCountUpKnockOutEnemyCountメソッドをEnemyControllerから取り出せるようにする
+    /// </summary>
+    public void SendCountUpKnockOutEnemyCount()
+    {
+        gameManager.CountUpKnockOutEnemyCount();
     }
 }

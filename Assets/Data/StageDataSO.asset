@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageDataList:
   - GenerateEnemyTranIndex: 0
-    DinosaurCount: 5
-    RobotCount: 3
-  - GenerateEnemyTranIndex: 0
-    DinosaurCount: 0
+    DinosaurCount: 2
     RobotCount: 0
   - GenerateEnemyTranIndex: 0
-    DinosaurCount: 0
-    RobotCount: 0
+    DinosaurCount: 4
+    RobotCount: 10
+  - GenerateEnemyTranIndex: 0
+    DinosaurCount: 10
+    RobotCount: 10

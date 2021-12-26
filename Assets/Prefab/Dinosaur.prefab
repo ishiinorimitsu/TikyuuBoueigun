@@ -1228,6 +1228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  blood: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
+  enemyGenerator: {fileID: 0}
   attackRange: 30
   enemyBulletControllerPrefab: {fileID: -3329901481104781890, guid: f7048cb47ca83d74c8160c970e1da06a, type: 3}
   enemyBulletTran: {fileID: 1271146070699417307}
@@ -1235,7 +1237,6 @@ MonoBehaviour:
   attackInterval: 2
   maxEnemyHP: 1000
   currentEnemyHP: 0
-  blood: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
 --- !u!195 &2445582728550204377
 NavMeshAgent:
   m_ObjectHideFlags: 0

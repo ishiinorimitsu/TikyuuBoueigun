@@ -734,9 +734,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c088ff2ba58a3944fbb1b4e5dbd3d3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponGenerator: {fileID: 1396733553}
+  enemyGenerator: {fileID: 1937439765}
   charaController: {fileID: 685917885}
-  currentWave: 0
+  currentWave: 1
 --- !u!4 &599758042
 Transform:
   m_ObjectHideFlags: 0
@@ -2368,6 +2368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  blood: {fileID: 0}
+  enemyGenerator: {fileID: 0}
   attackRange: 10
   enemyBulletControllerPrefab: {fileID: 7850669470655254781, guid: c51d44789eac02349addeb139413cf9b, type: 3}
   enemyBulletTran: {fileID: 177154436}
@@ -2375,7 +2377,6 @@ MonoBehaviour:
   attackInterval: 3
   maxEnemyHP: 0
   currentEnemyHP: 0
-  blood: {fileID: 0}
 --- !u!54 &1917335762
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2426,6 +2427,8 @@ MonoBehaviour:
   - {fileID: 1357724063728763550, guid: 473e30e2f60cab5489fef74ba0d8a93a, type: 3}
   radius: 50
   gameManager: {fileID: 599758041}
+  generatedEnemyCount: 0
+  knockDownEnemyCount: 0
 --- !u!4 &1937439766
 Transform:
   m_ObjectHideFlags: 0

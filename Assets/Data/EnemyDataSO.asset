@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyDataList:
   - enemyName: Dinosaur
     enemyNo: 0
-    enemyPrefab: {fileID: 2445582728550204373, guid: 88dde6de2b41e3748bd09f62dff2da03, type: 3}
+    enemyPrefab: {fileID: 8330051667832452141, guid: 9267d16cb24d18b4d872bace786dae6b, type: 3}
     enemyAttackPower: 0
     bloodPrefab: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
     attackRange: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚¯StartƒNƒ‰ƒX‚ğì‚éƒCƒ[ƒW
 {
     [SerializeField]
-    private WeaponGenerator weaponGenerator;
+    private EnemyGenerator enemyGenerator;
 
     [SerializeField]
     private CharaController charaController;   //ƒXƒ^[ƒgƒƒ\ƒbƒh‚·‚×‚Ä‚ğ‚±‚±‚É‘‚­‚½‚ß‚É‚Á‚Ä‚­‚é
@@ -22,6 +22,61 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
     void Start()
     {
         //weaponGenerator.AddWeaponData();
-        charaController.GameStart();
+        charaController.GameStart();      //charaController“à‚Ìstartƒƒ\ƒbƒh‚ğÀs‚·‚éB
+
+        enemyGenerator.PrepareEnemyGenerator();      //‚±‚Ìˆ—‚ÅA‚Ü‚¸Œ»İ‚ÌWave‚ğ1‚É‚·‚éB
+
+        enemyGenerator.MatchWave();    //Å‰‚Í‚±‚±‚ÅŒ»İ‚ÌWave‚ÆEnemyGenerator“à‚ÌcurrentWaveIndex‚ğˆê’v‚³‚¹‚éB
+    }
+
+
+    /// <summary>
+    /// “|‚µ‚½“G‚Ì”‚ğƒJƒEƒ“ƒg‚µAWave‚ğƒNƒŠƒA‚µ‚½‚©Šm”F‚·‚éB
+    /// </summary>
+    public void CountUpKnockOutEnemyCount()
+    {
+        enemyGenerator.knockDownEnemyCount++;    //“|‚µ‚½“G‚Ì”‚ğ{‚P
+
+        if (enemyGenerator.knockDownEnemyCount >= enemyGenerator.generatedEnemyCount)    //¶¬‚µ‚½“G‚Ì”‚ğ’´‚¦‚½‚ç(‘S•”“|‚µ‚½‚ç)
+        {
+            Debug.Log("WaveƒNƒŠƒA");
+
+            if(currentWave == Wave.wave3)     //‚à‚µŒ»İ‚ÌWave‚ª‚R‚È‚ç‚ÎAƒQ[ƒ€ƒNƒŠƒA‚Æ‚éB
+            {
+                GameClear();      //ƒQ[ƒ€ƒNƒŠƒA‚Ìƒƒ\ƒbƒh‚ğÀs‚·‚é
+            }
+            else@@//
+            {
+                StartCoroutine(WaitWaveInterval(5.0f));     //‚Ü‚¸‚T•b‚ÌƒCƒ“ƒ^[ƒoƒ‹A‚»‚ê‚©‚çŸ‚ÌWave‚ÌƒLƒƒƒ‰¶¬‚ğ‚â‚é
+            }
+        }
+    }
+
+
+    private IEnumerator WaitWaveInterval(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        //Œ»İ‚ÌWave‚ğ1‚¾‚Á‚½‚ç2‚ÖA2‚¾‚Á‚½‚ç3‚É•Ï‚¦‚éB
+        enemyGenerator.UpdateNextWave();
+
+        Debug.Log("Wave‚ğXV‚µ‚Ü‚µ‚½B");
+
+        //knockDowaEnemyCount‚ÆgeneratedEnemyCount‚ğˆê‰ñ‚O‚É–ß‚·B
+        enemyGenerator.knockDownEnemyCount = 0;
+
+        enemyGenerator.generatedEnemyCount = 0;
+
+        Debug.Log("¶¬‚µ‚½‚è“|‚µ‚½“G‚Ì”‚ğˆê‰ñƒŠƒZƒbƒg");
+
+        //Œ»İ‚ÌWave‚ğ‚à‚Æ‚Éƒf[ƒ^ƒx[ƒX‚©‚çw’è‚³‚ê‚½”‚Ì“G‚ğ¶¬‚·‚éB
+
+        enemyGenerator.EnemyGenerate();
+    }
+
+
+    private void GameClear()
+    {
+        Debug.Log("ƒQ[ƒ€ƒNƒŠƒA");
     }
 }

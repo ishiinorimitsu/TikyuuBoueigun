@@ -9,6 +9,16 @@ public class EnemyController : MonoBehaviour
 
     private NavMeshAgent agent;
 
+    private Animator anim;
+
+    [SerializeField]
+    private GameObject blood;
+
+    [SerializeField]
+    private EnemyGenerator enemyGenerator;
+
+    //----------------------------------------UŒ‚ŠÖŒW------------------------------------------------//
+
     public float attackRange;
 
     private Vector3 attackDirection;  //UŒ‚‚·‚éŒü‚«
@@ -23,7 +33,13 @@ public class EnemyController : MonoBehaviour
     private float shotSpeed;
 
     [SerializeField]
-    private float attackInterval;
+    private float attackInterval;@@@@//“G‚ÌUŒ‚‚·‚éƒCƒ“ƒ^[ƒoƒ‹
+
+    private float timer;    //‚±‚Ìƒ^ƒCƒ}[‚ªƒCƒ“ƒ^[ƒoƒ‹‚ÌŠÔ‚ğ’´‚¦‚½‚çUŒ‚‚·‚é
+
+    private int attackPower = 20;    //UŒ‚—Í
+
+    //-----------------------------------------‘Ì—ÍŠÖŒW----------------------------------------------------//
 
     [SerializeField]
     private int maxEnemyHP;    //“G‚ÌÅ‘å‘Ì—Í‚ğ“ü‚ê‚éB
@@ -31,16 +47,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private int currentEnemyHP;    //¡‚Ì“G‚Ì‘Ì—Í‚ğ“ü‚ê‚éB
 
-    private Animator anim;
 
-    private float timer;
 
-    private int attackPower = 20;    //UŒ‚—Í
-
-    [SerializeField]
-    private GameObject blood;
-
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();  //navMeshAgent‚ğ“ü‚ê‚é
@@ -74,7 +82,6 @@ public class EnemyController : MonoBehaviour
                 {
                     anim.SetFloat("Run", 0);
                     anim.SetBool("Idle", true);
-                    Debug.Log("‚ ‚É‚ßOK  ");
                 }
 
                 //UŒ‚”ÍˆÍ“à‚É“ü‚Á‚½‚çUŒ‚‚µ‚Ä‚­‚é
@@ -93,6 +100,17 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+
+    /// <summary>
+    /// EnemyGenerator‚ğæ“¾‚·‚éB
+    /// </summary>
+    /// <param name="enemyGenerator"></param>
+    public void GetEnemyGenerator(EnemyGenerator enemyGenerator)
+    {
+        this.enemyGenerator = enemyGenerator;
+    }
+
 
     private void EnemyAttack()
     {
@@ -122,15 +140,13 @@ public class EnemyController : MonoBehaviour
 
             currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //’e‚ª“–‚½‚Á‚½‚Æ‚«‚»‚Ì•Ší‚ÌUŒ‚—Í•ª“G‚ÌHP‚ğŒ¸‚ç‚·B
 
-            if(currentEnemyHP <= 0)@@//“G‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç
+            if (currentEnemyHP <= 0)  //“G‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç
             {
-                //anim.SetTrigger("Die");    //€‚ñ‚¾ƒAƒjƒ[ƒVƒ‡ƒ“‚ğ—¬‚·
+               StartCoroutine(DieAnimation());
 
-                StartCoroutine(DieAnimation());
+                enemyGenerator.SendCountUpKnockOutEnemyCount();@@@@//“|‚µ‚½“G‚Ì”‚ğˆê‘Ì‚¸‚Â‘‚â‚µ‚Ä‚¢‚­
 
-                //anim.speed = 0;
-
-                Destroy(gameObject,1.4f);    //1.4•bŒã‚ÉÁ–Å
+                Destroy(gameObject, 1.4f);    //1.4•bŒã‚ÉÁ–Å
             }
         }
     }
