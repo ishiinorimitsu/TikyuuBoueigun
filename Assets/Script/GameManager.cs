@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
     [SerializeField]
     private CharaController charaController;   //ƒXƒ^[ƒgƒƒ\ƒbƒh‚·‚×‚Ä‚ğ‚±‚±‚É‘‚­‚½‚ß‚É‚Á‚Ä‚­‚é
 
+    [SerializeField]
+    private UIManager uiManager;
+
+    public AudioSource audioSource;      //ƒI[ƒfƒBƒIƒ\[ƒXiBGMj—p‚ğ“ü‚ê‚éB
+
     public enum Wave   //ƒQ[ƒ€‚Í‘å‘Ì‚ÌƒXƒe[ƒW‚Åwave3‚Ü‚Å‚É‚·‚é
     {
         wave1,     
@@ -19,8 +24,21 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
 
     public Wave currentWave;     //Œ»İ‚ÌWave‚ğ“ü‚ê‚éB
 
+    public enum GameState
+    {
+        prepare,    //ƒQ[ƒ€‚ğŠJn‚·‚é‘O‚Ìó‘Ô
+        play,@@@//ƒQ[ƒ€ƒvƒŒƒC‚Å‚«‚éó‘Ô
+        end     //ƒQ[ƒ€ƒNƒŠƒA‚âƒQ[ƒ€ƒI[ƒo[‚Ì‘€ì‚Å‚«‚È‚¢ó‘Ô
+    }
+
+    public GameState currentGameState;    //Œ»İ‚ÌGameState
+
+
+
     void Start()
     {
+        SetGameState(GameState.prepare);     //‚Í‚¶‚ß‚ÍGameState‚ğprepare‚É•Ï‚¦‚éB
+
         //weaponGenerator.AddWeaponData();
         charaController.GameStart();      //charaController“à‚Ìstartƒƒ\ƒbƒh‚ğÀs‚·‚éB
 
@@ -29,6 +47,23 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
         enemyGenerator.MatchWave();    //Å‰‚Í‚±‚±‚ÅŒ»İ‚ÌWave‚ÆEnemyGenerator“à‚ÌcurrentWaveIndex‚ğˆê’v‚³‚¹‚éB
 
         enemyGenerator.EnemyGenerate();     //Wave1‚ÍStartƒƒ\ƒbƒh‚É‘‚¢‚Ä‚¨‚­B
+
+        uiManager.gameClearSet.alpha = 0;    //ƒQ[ƒ€ƒNƒŠƒA‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­B
+
+        uiManager.clearWindow.alpha = 0;    //ƒQ[ƒ€ƒNƒŠƒA‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­B
+
+        uiManager.gameOverSet.alpha = 0;    //ƒQ[ƒ€ƒI[ƒo[‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­B
+
+        uiManager.gameEndBackGround.alpha = 0;   //ƒQ[ƒ€‚ªI‚í‚Á‚½‚Æ‚«‚É”wŒi‚ğ‚Ú‚©‚·‚à‚ÌB
+
+        uiManager.gameOverWindow.alpha = 0;
+
+        SetGameState(GameState.play);     //ƒvƒŒƒC‚Å‚«‚éó‘Ô‚É‚·‚éB
+
+        if(currentGameState == GameState.play)
+        {
+            audioSource.Play();
+        }
     }
 
 
@@ -45,7 +80,7 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
 
             if(currentWave == Wave.wave3)     //‚à‚µŒ»İ‚ÌWave‚ª‚R‚È‚ç‚ÎAƒQ[ƒ€ƒNƒŠƒA‚Æ‚éB
             {
-                GameClear();      //ƒQ[ƒ€ƒNƒŠƒA‚Ìƒƒ\ƒbƒh‚ğÀs‚·‚é
+                uiManager.GameClear();    //ƒQ[ƒ€ƒNƒŠƒA‚Ìƒƒ\ƒbƒh‚ğÀs‚·‚é
             }
             else@@//
             {
@@ -77,8 +112,13 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
     }
 
 
-    private void GameClear()
+
+    /// <summary>
+    /// GameState‚ğˆø”‚Ì’†‚Ì‚à‚Ì‚É•ÏX‚·‚é
+    /// </summary>
+    /// <param name="nextGameState"></param>
+    public void SetGameState(GameState nextGameState)
     {
-        Debug.Log("ƒQ[ƒ€ƒNƒŠƒA");
+        currentGameState = nextGameState;    
     }
 }

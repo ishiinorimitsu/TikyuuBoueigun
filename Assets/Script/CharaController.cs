@@ -83,6 +83,21 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private EnemyGenerator enemyGenerator;
 
+
+    //---------------------------------サウンドエフェクトの内容-----------------------------------//
+
+    [SerializeField]
+    private AudioSource audioSource;    //オーディオソースを入れる。
+
+    [SerializeField]
+    private AudioClip reloadGunSE;    //銃をリロードする音
+
+    [SerializeField]
+    private AudioClip shotGunSE;     //銃を撃つ音
+
+
+
+
     public void GameStart()
     {
         rb = GetComponent<Rigidbody>();   //Rigidbodyを代入しておく
@@ -111,72 +126,95 @@ public class CharaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = Input.GetAxis("Horizontal");   //水平方向の移動がある場合、１が代入される
-
-        z = Input.GetAxis("Vertical");  //垂直方向の移動がある場合、１が代入される
-
-        if (Input.GetButtonDown("Jump")　& currentEnergy >= jumpEnergy)  //スペースキーを押したときにメソッドが発動される。
+        if(currentHp > 0)
         {
-            anim.SetTrigger("Jump");
-
-            Jump();
-        }
-
-
-        //-----------------------------------------銃を発射する----------------------------------------------------//
-
-        //今選んでいる武器の現在の弾数が０より大きかったら（まだ弾が入っていたら）
-        if (currentBulletList[GameData.instance.currentEquipWeaponNo] > 0)
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (gameManager.currentGameState == GameManager.GameState.play)   //GameStateがplayの時だけ
             {
-                BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
+                x = Input.GetAxis("Horizontal");   //水平方向の移動がある場合、１が代入される
 
-                createBullet.Shot(this);
+                z = Input.GetAxis("Vertical");  //垂直方向の移動がある場合、１が代入される
 
-                anim.SetTrigger("Shot");
+                if (Input.GetButtonDown("Jump") & currentEnergy >= jumpEnergy)  //スペースキーを押したときにメソッドが発動される。
+                {
+                    anim.SetTrigger("Jump");
 
-                currentBulletList[GameData.instance.currentEquipWeaponNo]--;    //今の球数を撃つたびに1ずつ減らしていく
+                    Jump();
+                }
 
-                currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
 
-                UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                //-----------------------------------------銃を発射する----------------------------------------------------//
+
+                //今選んでいる武器の現在の弾数が０より大きかったら（まだ弾が入っていたら）
+                if (currentBulletList[GameData.instance.currentEquipWeaponNo] > 0)
+                {
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
+
+                        createBullet.Shot(this);
+
+                        anim.SetTrigger("Shot");
+
+                        audioSource.PlayOneShot(shotGunSE);　　　//銃を撃つ音を鳴らす。
+
+                        currentBulletList[GameData.instance.currentEquipWeaponNo]--;    //今の球数を撃つたびに1ずつ減らしていく
+
+                        currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
+
+                        UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                    }
+                }
+
+                else
+                {
+                    if (isReload == false)
+                    {
+                        isReload = true;   //弾がないのに連打されたとき用
+
+                        //装備している武器の「リロード時間」分だけ撃てないようにする
+                        StartCoroutine(ReloadWeapon());
+                    }
+                }
+
+                //---------------------------------------武器を変える-------------------------------------------------------------//
+                if (Input.GetButtonDown("ChangeWeapon"))
+                {
+                    GameData.instance.ChangeWeapon();  //持っている武器を変える処理
+
+                    audioSource.PlayOneShot(reloadGunSE);
+
+                    //currentBullet = currentBulletList[GameData.instance.currentEquipWeaponNo];
+
+                    Debug.Log(GameData.instance.equipWeaponData.weaponName);
+
+                    UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);  //
+
+                    UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
+                }
+
+                //if (Input.GetButtonDown("EnemyGenerate"))
+                //{
+                //    UIManager.GameClear();
+                //}
             }
-        }
-
-        else
+        }else if(currentHp <= 0)
         {
-            if (isReload == false)
-            {
-                isReload = true;   //弾がないのに連打されたとき用
+            anim.SetTrigger("Die");    //死ぬアニメーションを流す
 
-                //装備している武器の「リロード時間」分だけ撃てないようにする
-                StartCoroutine(ReloadWeapon());
-            }
+            UIManager.GameOver();     //GameOverの処理を実装する。
         }
-
-        //---------------------------------------武器を変える-------------------------------------------------------------//
-        if (Input.GetButtonDown("ChangeWeapon"))
-        {
-            GameData.instance.ChangeWeapon();　　//持っている武器を変える処理
-
-            //currentBullet = currentBulletList[GameData.instance.currentEquipWeaponNo];
-
-            Debug.Log(GameData.instance.equipWeaponData.weaponName);
-
-            UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet,currentBulletList[GameData.instance.currentEquipWeaponNo]);　　//
-
-            UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
-        }
-    }
+    }   
 
     private void FixedUpdate()
     {
-        //移動する
-        Move();
+        if (gameManager.currentGameState == GameManager.GameState.play)
+        {
+            //移動する
+            Move();
 
-        //カメラの向きからキャラの向きを変える。
-        LookRotation();
+            //カメラの向きからキャラの向きを変える。
+            LookRotation();
+        }
     }
 
     //---------------------------------移動に関する処理----------------------------------------------------------//
@@ -274,6 +312,8 @@ public class CharaController : MonoBehaviour
         currentBulletList[GameData.instance.currentEquipWeaponNo] = GameData.instance.equipWeaponData.maxBullet;
 
         UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);
+
+        audioSource.PlayOneShot(reloadGunSE);
 
         isReload = false;
     }

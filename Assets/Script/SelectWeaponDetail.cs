@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚ÌƒXƒNƒŠƒvƒg‚É‚ÍAˆê‚Âˆê‚Â‚Ìƒ{ƒ^ƒ“‚Ìİ’èi‰Ÿ‚µ‚½‚Æ‚«‚Ì‘€ì‚È‚Çj‚ğ‘‚­BÀÛ‚Éì‚é‚Ì‚ÍChooseWeaponWindowƒXƒNƒŠƒvƒg‚Ì’†B
 {
+    [SerializeField]
+    private ChooseWeaponManager chooseWeaponManager;
+
     private WeaponData weaponData;   //ì¬‚·‚éƒ{ƒ^ƒ“‚Ìƒf[ƒ^‚ª“ü‚éB
 
     private ChooseWeaponWindow chooseWeaponWindow;  //‚±‚Ìƒ{ƒ^ƒ“‚ÍChooseWeaponWindow‚Ì’†‚É‚ ‚éB
@@ -32,7 +35,14 @@ public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚Ìƒ
 
     private void OnClickSelectCharaDetail()
     {
+        chooseWeaponManager.audioSource.PlayOneShot(chooseWeaponManager.buttonSelectSE);
+
         chooseWeaponWindow.SetSelectWeaponDetail(weaponData);    //chooseWeaponWindow“à‚Ìˆ—‚ğ”­“®B‰Ÿ‚µ‚½ƒ{ƒ^ƒ“‚Ìî•ñ‚ğƒZƒbƒg‚·‚éB
+    }
+
+    public void sendChooseWeaponManager(ChooseWeaponManager chooseWeaponManager)
+    {
+        this.chooseWeaponManager = chooseWeaponManager;
     }
 
     private void ChangeActiveButton(bool isSwitch)

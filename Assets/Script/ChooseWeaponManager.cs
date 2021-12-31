@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class ChooseWeaponManager : MonoBehaviour
 {
     [SerializeField]
+    private SelectWeaponDetail selectWeaponDetail;
+
+    [SerializeField]
     private Button weapon1;
 
     [SerializeField]
@@ -36,6 +39,20 @@ public class ChooseWeaponManager : MonoBehaviour
     [SerializeField]
     private Button gameStartButton;   //出撃するボタン
 
+    //------------------------------------------効果音に関する処理-----------------------------------------------//
+
+    public AudioSource audioSource;    //オーディオソースを入れる。
+
+    public AudioClip buttonSelectSE;     //ノーマルのボタン以外のSE
+
+    [SerializeField]
+    private AudioClip openWeaponMenu;     //武器のメニューを開く音
+
+    [SerializeField]
+    private AudioClip syutugekiButtonSE;      //出撃ボタンのSE
+
+
+
     public enum WeaponSlotType{
         slot1,
         slot2
@@ -56,10 +73,15 @@ public class ChooseWeaponManager : MonoBehaviour
         gameStartButton.interactable = false;
 
         gameStartButton.onClick.AddListener(OnClickGameStart);
+
+        selectWeaponDetail.sendChooseWeaponManager(this);      //SelectWeaponDetailにこの情報を送る
     }
 
     private void ChooseWeapon(WeaponSlotType chooseSlotType)
     {
+        //メニューを開くときの音を鳴らす
+        audioSource.PlayOneShot(openWeaponMenu);
+
         //武器を選ぶWindowを開く（スイッチを入れて、見えなくしておいたWindowを見せる。）
         if(weaponInfo == null)
         {
@@ -82,6 +104,9 @@ public class ChooseWeaponManager : MonoBehaviour
     /// </summary>
     public void SubmitWeapon(WeaponData chooseWeaponData)　　　
     {
+        //ボタンを選択したときの音を鳴らす
+        audioSource.PlayOneShot(buttonSelectSE);
+
         //「決定ボタン」を押したとき、それがslot1だったその情報が「武器１」に入る
         switch (weaponSlotType)
         {
@@ -116,7 +141,10 @@ public class ChooseWeaponManager : MonoBehaviour
     /// 出撃ボタンを押したときの処理
     /// </summary>
     private void OnClickGameStart()
-    {  
+    {
+        //出撃ボタンを選択したときの音を鳴らす
+        audioSource.PlayOneShot(syutugekiButtonSE);
+
         GameData.instance.AddWeaponData(weaponData1);
 
         GameData.instance.AddWeaponData(weaponData2);

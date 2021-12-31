@@ -48,6 +48,18 @@ public class EnemyController : MonoBehaviour
     private int currentEnemyHP;    //今の敵の体力を入れる。
 
 
+    //-------------------------------------------鳴き声------------------------------------------------------//
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip attackVoice;
+
+    [SerializeField]
+    private AudioClip dieVoice;
+
+
 
     void Start()
     {
@@ -116,6 +128,8 @@ public class EnemyController : MonoBehaviour
     {
         anim.SetTrigger("Attack");
 
+        audioSource.PlayOneShot(attackVoice);
+
         attackDirection = (player.transform.position - enemyBulletTran.transform.position).normalized;
 
         EnemyBulletController bullet = Instantiate(enemyBulletControllerPrefab,enemyBulletTran.position,Quaternion.identity);
@@ -130,6 +144,8 @@ public class EnemyController : MonoBehaviour
             Debug.Log("Hit");
 
             anim.SetTrigger("Hit");
+
+            audioSource.PlayOneShot(attackVoice);
 
             foreach(var point in col.contacts)
             {
@@ -151,9 +167,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 死ぬときのアニメーションや声を再生する
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator DieAnimation()
     {
         anim.SetTrigger("Die");
+
+        audioSource.PlayOneShot(dieVoice);
+
+        Debug.Log("sadousiteiru");
 
         yield return null;
     }
