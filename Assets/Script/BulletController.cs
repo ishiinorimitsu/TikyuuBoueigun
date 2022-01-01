@@ -23,5 +23,9 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
         {
             Destroy(gameObject);
         }
+        if(col.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
     }
 }

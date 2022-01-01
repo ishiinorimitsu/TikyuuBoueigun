@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -71}
+  m_AnchoredPosition: {x: 0, y: -36}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &74384968
@@ -941,6 +941,36 @@ RectTransform:
   m_AnchoredPosition: {x: 124, y: 0}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &496108146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496108147}
+  m_Layer: 0
+  m_Name: FlyEffectGenerateTran
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496108147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496108146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.088, z: -0.295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4244232883888246476}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &497879056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1653,7 @@ Transform:
   m_GameObject: {fileID: 685917881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1500, y: 62, z: 900}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4244232883888246476}
   m_Father: {fileID: 0}
@@ -1640,9 +1670,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.0576935
+  m_Height: 2.213745
   m_Direction: 1
-  m_Center: {x: 0, y: 0.06663513, z: 0}
+  m_Center: {x: 0, y: -0.011390686, z: 0}
 --- !u!54 &685917884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1673,8 +1703,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 599758041}
   anim: {fileID: 4244232884589277513}
-  jumpForce: 1000
-  moveSpeed: 10
+  jumpForce: 1500
+  isGround: 0
+  moveSpeed: 20
   bulletPrefab: {fileID: 498758988360352184, guid: becd2418a4cdf4e42b936aa85450d108, type: 3}
   bulletStartPosition: {fileID: 1345783821}
   bulletPower: 10
@@ -1682,7 +1713,7 @@ MonoBehaviour:
   maxEnergy: 100
   minEnergy: 0
   currentEnergy: 0
-  jumpEnergy: 5
+  jumpEnergy: 0.07
   attackEnergy: 10
   cureEnergy: 0.3
   UIManager: {fileID: 536839401}
@@ -2454,7 +2485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 1500, y: 65, z: 892}
+  m_LocalPosition: {x: 1500, y: 67, z: 892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1345783821}
@@ -4066,7 +4097,6 @@ MonoBehaviour:
   maxEnemyHP: 0
   currentEnemyHP: 0
   audioSource: {fileID: 0}
-  normalVoice: {fileID: 0}
   attackVoice: {fileID: 0}
   dieVoice: {fileID: 0}
 --- !u!54 &1917335762
@@ -4904,7 +4934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4244232883888673470}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -138.49533, z: 34.48629}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4244232883888246476}
@@ -5253,6 +5283,7 @@ Transform:
   - {fileID: 4244232883888246446}
   - {fileID: 4244232883888246440}
   - {fileID: 4244232883888246458}
+  - {fileID: 496108147}
   m_Father: {fileID: 685917882}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

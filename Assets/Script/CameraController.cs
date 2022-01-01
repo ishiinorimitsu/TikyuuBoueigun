@@ -49,9 +49,7 @@ public class CameraController : MonoBehaviour
 
             //Debug.Log("OK3");
 
-            //transform.RotateAround(targetPos, transform.right, z * Time.deltaTime * cameraRotateSpeed);
-
-            //Debug.Log("OK4");
+            transform.RotateAround(targetPos, transform.right, z * Time.deltaTime * cameraRotateSpeed);
 
             //x²‚ÌˆÚ“®”ÍˆÍ‚Ìİ’è
             float maxLimit = limit;

@@ -3646,7 +3646,6 @@ MonoBehaviour:
   maxEnemyHP: 1000
   currentEnemyHP: 0
   audioSource: {fileID: 3301834051623020121}
-  normalVoice: {fileID: 8300000, guid: d41523efaa508b342af922034d162ec0, type: 3}
   attackVoice: {fileID: 8300000, guid: b038a89fc2e931d43aebb207117fe6c0, type: 3}
   dieVoice: {fileID: 8300000, guid: e21bab7f24a1a9f4595d72bcb1ce21e8, type: 3}
 --- !u!195 &8330051667832452129
@@ -3682,8 +3681,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.72351074, y: 1.2998062, z: 1.3010378}
-  m_Center: {x: -0.000012207031, y: 0.5743637, z: -0.013738918}
+  m_Size: {x: 0.9578369, y: 1.2998062, z: 1.3010378}
+  m_Center: {x: -0.0152954105, y: 0.5743637, z: -0.013738918}
 --- !u!95 &8330051667832452143
 Animator:
   serializedVersion: 3
@@ -3759,7 +3758,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.627
+      value: 0.678
       inSlope: 0
       outSlope: 0
       tangentMode: 0

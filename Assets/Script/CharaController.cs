@@ -21,6 +21,9 @@ public class CharaController : MonoBehaviour
     private float jumpForce;  //ジャンプ力
 
     [SerializeField]
+    private bool isGround;     //今地面と接しているか
+
+    [SerializeField]
     private float moveSpeed;  //水平方向への移動力
 
     private float x;  //x軸方向への移動力
@@ -28,6 +31,12 @@ public class CharaController : MonoBehaviour
     private float z;  //z軸方向への移動力
 
     private Rigidbody rb;  //Rigidbodyに力を加えるので、それを入れる。
+
+    //[SerializeField]
+    //private GameObject flyFire;    //飛ぶときにロケットのお尻から出る炎
+
+    //[SerializeField]
+    //private Transform fireGenerateTran;     //炎を出す場所
 
     //-------------------------銃の発射関係---------------------------------------//
 
@@ -134,11 +143,16 @@ public class CharaController : MonoBehaviour
 
                 z = Input.GetAxis("Vertical");  //垂直方向の移動がある場合、１が代入される
 
-                if (Input.GetButtonDown("Jump") & currentEnergy >= jumpEnergy)  //スペースキーを押したときにメソッドが発動される。
-                {
-                    anim.SetTrigger("Jump");
+                Debug.Log(isGround);
 
-                    Jump();
+                if (isGround)
+                {
+                    if (Input.GetButtonDown("Jump") & currentEnergy >= jumpEnergy)  //スペースキーを押したときにメソッドが発動される。
+                    {
+                        anim.SetTrigger("Jump");
+
+                        Jump();
+                    }
                 }
 
 
@@ -209,8 +223,11 @@ public class CharaController : MonoBehaviour
     {
         if (gameManager.currentGameState == GameManager.GameState.play)
         {
-            //移動する
-            Move();
+            
+            
+             //移動する
+             Move();
+            
 
             //カメラの向きからキャラの向きを変える。
             LookRotation();
@@ -223,7 +240,7 @@ public class CharaController : MonoBehaviour
     {
         //rb.velocity = new Vector3(x * moveSpeed,rb.velocity.y, z * moveSpeed);
 
-        if(x!=0 || z != 0)
+        if (x != 0 || z != 0)
         {
             anim.SetBool("Idle", false);
             anim.SetFloat("Run", 0.5f);
@@ -245,6 +262,15 @@ public class CharaController : MonoBehaviour
         UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
     }
 
+
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            isGround = false;
+        }
+    }
+
     private void LookRotation()
     {
         // カメラの方向から、X-Z平面の単位ベクトルを取得
@@ -257,10 +283,12 @@ public class CharaController : MonoBehaviour
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
 
         // キャラクターの向きを進行方向に
-        if (moveForward != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveForward);
-        }
+        //if (moveForward != Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.LookRotation(moveForward);
+        //}
+
+        transform.rotation = Quaternion.Euler(0, Camera.main.transform.localEulerAngles.y, 0);
     }
 
     //----------------------------------エネルギーに関する処理----------------------------------------------------------//
@@ -279,6 +307,8 @@ public class CharaController : MonoBehaviour
             currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);
 
             UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+
+            isGround = true;
         }
     }
 
