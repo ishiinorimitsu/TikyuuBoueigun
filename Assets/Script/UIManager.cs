@@ -61,7 +61,11 @@ public class UIManager : MonoBehaviour
 
     public CanvasGroup gameEndBackGround;    //ゲームが終わったときの背景をぼかすもの
 
-    public CanvasGroup gameOverWindow;   //ゲームオーバー時の退却火災挑戦化を選ぶウィンドウを入れる。
+    public CanvasGroup gameOverWindow;   //ゲームオーバー時の退却か再挑戦かを選ぶウィンドウを入れる。
+
+    public Button taikyaku;    //退却のボタン（のちにここを押したときにChooseSceneを読み込む）
+
+    public Button saityousen;    //再挑戦のボタン（のちにここを押したときにGameSceneを読み込む）
 
 
     //-------------------------------------効果音の設定-------------------------------------//

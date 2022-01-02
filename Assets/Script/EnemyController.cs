@@ -158,7 +158,7 @@ public class EnemyController : MonoBehaviour
 
             if (currentEnemyHP <= 0)  //“G‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç
             {
-               StartCoroutine(DieAnimation());
+                StartCoroutine(DieAnimation());
 
                 enemyGenerator.SendCountUpKnockOutEnemyCount();@@@@//“|‚µ‚½“G‚Ì”‚ðˆê‘Ì‚¸‚Â‘‚â‚µ‚Ä‚¢‚­
 

@@ -1285,6 +1285,8 @@ MonoBehaviour:
   gameOverSet: {fileID: 763337017}
   gameEndBackGround: {fileID: 151043550}
   gameOverWindow: {fileID: 944992860}
+  taikyaku: {fileID: 414034829}
+  saityousen: {fileID: 1588802323}
   audioSource: {fileID: 536839403}
   fanfare: {fileID: 8300000, guid: 11f28a9e9bd856542a574df945c4fc13, type: 3}
   clearBGM: {fileID: 8300000, guid: f161513944f8f9547b4263b6ba9e75ac, type: 3}
@@ -1717,7 +1719,7 @@ MonoBehaviour:
   attackEnergy: 10
   cureEnergy: 0.3
   UIManager: {fileID: 536839401}
-  maxHp: 200
+  maxHp: 20
   currentHp: 0
   enemyGenerator: {fileID: 1937439765}
   audioSource: {fileID: 685917886}

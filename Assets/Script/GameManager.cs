@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚¯StartƒNƒ‰ƒX‚ğì‚éƒCƒ[ƒW
 {
@@ -57,6 +58,10 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
         uiManager.gameEndBackGround.alpha = 0;   //ƒQ[ƒ€‚ªI‚í‚Á‚½‚Æ‚«‚É”wŒi‚ğ‚Ú‚©‚·‚à‚ÌB
 
         uiManager.gameOverWindow.alpha = 0;
+
+        uiManager.saityousen.onClick.AddListener(ClickSaityousenButton);    //Ä’§íƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ğİ’è‚µ‚Ä‚¨‚­
+
+        uiManager.taikyaku.onClick.AddListener(ClickTaikyakuButton);    //‘Ş‹pƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ğİ’è‚µ‚Ä‚¨‚­
 
         SetGameState(GameState.play);     //ƒvƒŒƒC‚Å‚«‚éó‘Ô‚É‚·‚éB
 
@@ -120,5 +125,17 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
     public void SetGameState(GameState nextGameState)
     {
         currentGameState = nextGameState;    
+    }
+
+    private void ClickSaityousenButton()
+    {
+        //GameScene‚ğ“Ç‚İ‚Ş
+        SceneManager.LoadScene("GameScene");
+    }
+
+    private void ClickTaikyakuButton()
+    {
+        //ChooseScene‚ğ“Ç‚İ‚Ş
+        SceneManager.LoadScene("ChooseWeapon");
     }
 }

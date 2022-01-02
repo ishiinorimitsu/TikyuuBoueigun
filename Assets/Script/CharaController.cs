@@ -143,8 +143,6 @@ public class CharaController : MonoBehaviour
 
                 z = Input.GetAxis("Vertical");  //垂直方向の移動がある場合、１が代入される
 
-                Debug.Log(isGround);
-
                 if (isGround)
                 {
                     if (Input.GetButtonDown("Jump") & currentEnergy >= jumpEnergy)  //スペースキーを押したときにメソッドが発動される。
@@ -211,11 +209,6 @@ public class CharaController : MonoBehaviour
                 //    UIManager.GameClear();
                 //}
             }
-        }else if(currentHp <= 0)
-        {
-            anim.SetTrigger("Die");    //死ぬアニメーションを流す
-
-            UIManager.GameOver();     //GameOverの処理を実装する。
         }
     }   
 
@@ -362,7 +355,27 @@ public class CharaController : MonoBehaviour
             currentHp = Mathf.Clamp(currentHp,minHp,maxHp);    //HPがマイナスになったりを防ぐ
 
             UIManager.UpdateDisplayHp(currentHp);    //HPのゲージを更新する
+
+            if (currentHp <= 0)    //その攻撃でHPが0になったら死ぬアニメーションを流す。
+            {
+                anim.SetTrigger("Die");    //死ぬアニメーションを流す
+
+                UIManager.GameOver();     //GameOverの処理を実装する。
+            }
+
+            StartCoroutine(KillPlayer());　　　//キャラのスイッチを切らないと死んだ後も恐竜の攻撃で何回も死んでしまうから
         }
+    }
+
+    /// <summary>
+    /// コルーチンにしないと最初の一回の死ぬアニメーションも再生されないから。
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator KillPlayer()
+    {
+        yield return new WaitForSeconds(1.0f);    //１秒待つ
+
+        gameObject.SetActive(false);　　//キャラのスイッチを切る。
     }
 }
 
