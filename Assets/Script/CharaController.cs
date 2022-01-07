@@ -165,7 +165,7 @@ public class CharaController : MonoBehaviour
 
                         createBullet.Shot(this);
 
-                        anim.SetTrigger("Shot");
+                        anim.SetTrigger("Attack");
 
                         audioSource.PlayOneShot(shotGunSE);　　　//銃を撃つ音を鳴らす。
 

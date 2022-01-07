@@ -107,8 +107,8 @@ public class EnemyGenerator : MonoBehaviour
         }
 
 
-        //ロボットの生成
-        for (int j = 0;j < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].RobotCount; j++)
+        //虫の生成
+        for (int j = 0;j < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].InsectCount; j++)
         {
             //------------------------------------位置の指定------------------------------------------------------//
 
@@ -126,9 +126,9 @@ public class EnemyGenerator : MonoBehaviour
 
             //------------------------------------生成する------------------------------------------------------//
 
-            GameObject robotEnemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[1].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
+            GameObject insectEnemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[1].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
 
-            robotEnemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
+            insectEnemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
 
             generatedEnemyCount++;     //生成した敵の数を数える
         }

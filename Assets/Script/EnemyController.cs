@@ -141,28 +141,37 @@ public class EnemyController : MonoBehaviour
     {
         if(col.gameObject.tag == "Bullet")
         {
-            Debug.Log("Hit");
+            currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //’e‚ª“–‚½‚Á‚½‚Æ‚«‚»‚Ì•Ší‚ÌUŒ‚—Í•ª“G‚ÌHP‚ðŒ¸‚ç‚·B
 
-            anim.SetTrigger("Hit");
-
-            audioSource.PlayOneShot(attackVoice);
-
-            foreach(var point in col.contacts)
+            foreach (var point in col.contacts)     //ŒŒ‚ð¶¬‚·‚éˆ—
             {
-                var enemyBloodEffect = Instantiate(blood,point.point,Quaternion.identity);
+                var enemyBloodEffect = Instantiate(blood, point.point, Quaternion.identity);
 
-                Destroy(enemyBloodEffect,1.0f);
+                Destroy(enemyBloodEffect, 1.0f);
             }
 
-            currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //’e‚ª“–‚½‚Á‚½‚Æ‚«‚»‚Ì•Ší‚ÌUŒ‚—Í•ª“G‚ÌHP‚ðŒ¸‚ç‚·B
+            if (currentEnemyHP > 0)
+            {
+                Debug.Log("Hit");
+
+                anim.SetTrigger("Hit");
+
+                Debug.Log("ƒqƒbƒg");
+
+                audioSource.PlayOneShot(attackVoice);   
+            }
 
             if (currentEnemyHP <= 0)  //“G‚ÌHP‚ª‚È‚­‚È‚Á‚½‚ç
             {
-                StartCoroutine(DieAnimation());
+                //StartCoroutine(DieAnimation());
+
+                anim.SetTrigger("Die");
+
+                audioSource.PlayOneShot(dieVoice);
 
                 enemyGenerator.SendCountUpKnockOutEnemyCount();@@@@//“|‚µ‚½“G‚Ì”‚ðˆê‘Ì‚¸‚Â‘‚â‚µ‚Ä‚¢‚­
 
-                Destroy(gameObject, 1.4f);    //1.4•bŒã‚ÉÁ–Å
+                Destroy(gameObject, 1.0f);    //1.4•bŒã‚ÉÁ–Å
             }
         }
     }

@@ -22,21 +22,12 @@ MonoBehaviour:
     enemyBulletPrefab: {fileID: -3329901481104781890, guid: f7048cb47ca83d74c8160c970e1da06a, type: 3}
     bulletSpeed: 0
     discription: 
-  - enemyName: 
+  - enemyName: Insect
     enemyNo: 1
-    enemyPrefab: {fileID: 7673487251499248760, guid: c98043d57e0190845b790d7b92990bee, type: 3}
+    enemyPrefab: {fileID: 2361032468688353398, guid: 0d67fa76f0610864fad759a7ce34f184, type: 3}
     enemyAttackPower: 0
-    bloodPrefab: {fileID: 0}
+    bloodPrefab: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
     attackRange: 0
-    enemyBulletPrefab: {fileID: 0}
-    bulletSpeed: 0
-    discription: 
-  - enemyName: 
-    enemyNo: 2
-    enemyPrefab: {fileID: 0}
-    enemyAttackPower: 0
-    bloodPrefab: {fileID: 0}
-    attackRange: 0
-    enemyBulletPrefab: {fileID: 0}
+    enemyBulletPrefab: {fileID: -3329901481104781890, guid: f7048cb47ca83d74c8160c970e1da06a, type: 3}
     bulletSpeed: 0
     discription: 

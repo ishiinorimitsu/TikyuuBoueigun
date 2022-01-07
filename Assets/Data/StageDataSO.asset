@@ -15,10 +15,13 @@ MonoBehaviour:
   stageDataList:
   - GenerateEnemyTranIndex: 0
     DinosaurCount: 1
-    RobotCount: 0
+    InsectCount: 2
+    EnemyRobotCount: 3
   - GenerateEnemyTranIndex: 0
-    DinosaurCount: 1
-    RobotCount: 0
+    DinosaurCount: 2
+    InsectCount: 2
+    EnemyRobotCount: 2
   - GenerateEnemyTranIndex: 0
-    DinosaurCount: 1
-    RobotCount: 0
+    DinosaurCount: 3
+    InsectCount: 2
+    EnemyRobotCount: 0

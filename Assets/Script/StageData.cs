@@ -31,5 +31,5 @@ public class StageData
 
     public int DinosaurCount;     //‹°—³‚ğ‰½‘Ìì‚é‚©
 
-    public int RobotCount;     //ƒƒ{ƒbƒg‚ğ‰½‘Ìì‚é‚©
+    public int InsectCount;     //’‚ğ‰½‘Ìì‚é‚©
 }
