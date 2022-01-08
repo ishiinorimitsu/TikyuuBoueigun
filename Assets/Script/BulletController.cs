@@ -17,15 +17,41 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
 
         Destroy(gameObject, 2.0f);
     }
+
+    private void OnParticleCollision(GameObject col)
+    {
+        if (col.tag == "Enemy")       //敵に当たったとき敵を壊し、自分も消滅する。
+        {
+            Destroy(gameObject);
+
+            Debug.Log("敵と衝突");
+        }
+        if (col.tag == "Ground")
+        {
+            Destroy(gameObject);
+
+            Debug.Log("地面と衝突");
+        }
+    }
+
+
+    /// <summary>
+    /// 実体のある球を発射するときのためにこっちも用意しておく
+    /// </summary>
+    /// <param name="col"></param>
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Enemy")       //敵に当たったとき敵を壊し、自分も消滅する。
+        if (col.gameObject.tag == "Enemy")       //敵に当たったとき敵を壊し、自分も消滅する。
         {
             Destroy(gameObject);
+
+            Debug.Log("敵と衝突");
         }
-        if(col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
             Destroy(gameObject);
+
+            Debug.Log("地面と衝突");
         }
     }
 }

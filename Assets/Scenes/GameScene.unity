@@ -1708,7 +1708,7 @@ MonoBehaviour:
   jumpForce: 1500
   isGround: 0
   moveSpeed: 20
-  bulletPrefab: {fileID: 498758988360352184, guid: becd2418a4cdf4e42b936aa85450d108, type: 3}
+  bulletPrefab: {fileID: 586022640190705861, guid: fd49fac4b31502444a689d83be656358, type: 3}
   bulletStartPosition: {fileID: 1345783821}
   bulletPower: 10
   currentBulletList: 
@@ -2897,7 +2897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345783820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -1.18, z: 9.31}
+  m_LocalPosition: {x: -0.09, y: -2.9, z: 10.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
@@ -3805,7 +3805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740301047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11823, y: 9950, z: 5864.4}
+  m_LocalPosition: {x: 11790, y: 9950, z: 5955}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4244232883888246402}
@@ -4090,6 +4090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   blood: {fileID: 0}
+  enemyBloodPosition: {fileID: 0}
   enemyGenerator: {fileID: 0}
   attackRange: 10
   enemyBulletControllerPrefab: {fileID: 7850669470655254781, guid: c51d44789eac02349addeb139413cf9b, type: 3}

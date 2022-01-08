@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: WeaponDataSO
   m_EditorClassIdentifier: 
   weaponDataList:
-  - weaponName: "\u30B5\u30F3\u30C0\u30FC\u30B9\u30CA\u30A4\u30D1\u30FC"
+  - weaponName: "\u30D5\u30EC\u30A4\u30E0\u30B7\u30E7\u30C3\u30C8"
     weaponNo: 1
     weaponSprite: {fileID: 21300000, guid: b470ab7c97b83a74e975b5a05c262293, type: 3}
     weaponAttackPower: 100
     attackRange: 100
     maxBullet: 10
-    bulletPrefab: {fileID: 0}
+    bulletPrefab: {fileID: 7082902867995960198, guid: 37aa47c79f61b03479dbdab958a84e42, type: 3}
     reloadEnergy: 30
     reloadTime: 5
-    bulletSpeed: 10000
+    bulletSpeed: 2000
     discription: "\u4E00\u756A\u30D9\u30FC\u30B7\u30C3\u30AF\u306A\u72D9\u6483\u6B66\u5668"
-  - weaponName: "\u30B5\u30F3\u30C0\u30FC\u30DC\u30A6"
+  - weaponName: "\u30AC\u30D0\u30CA\u30FC"
     weaponNo: 2
     weaponSprite: {fileID: 21300000, guid: 4dc30af1cdf3b3846b7d4fa81a904d6d, type: 3}
     weaponAttackPower: 10
     attackRange: 20
     maxBullet: 100
-    bulletPrefab: {fileID: 0}
+    bulletPrefab: {fileID: 6384231143774194572, guid: 5d7b3e2cbb8da68489d5e4c2375d8864, type: 3}
     reloadEnergy: 40
     reloadTime: 5
     bulletSpeed: 1000
@@ -52,10 +52,10 @@ MonoBehaviour:
     weaponAttackPower: 500
     attackRange: 30
     maxBullet: 10
-    bulletPrefab: {fileID: 0}
+    bulletPrefab: {fileID: 498758988360352184, guid: becd2418a4cdf4e42b936aa85450d108, type: 3}
     reloadEnergy: 60
     reloadTime: 3
-    bulletSpeed: 20000
+    bulletSpeed: 5000
     discription: "\u6700\u5F37\u30AF\u30E9\u30B9\u306E\u6B66\u5668\n\u5C04\u7A0B\u306F\u77ED\u3044\u304C\u653B\u6483\u529B\u3001\u6D88\u8CBB\u30A8\u30CD\u30EB\u30AE\u30FC\u3092\u8003\u3048\u308B\u3068\u7533\u3057\u5206\u306A\u3044"
   - weaponName: "\u30B0\u30F3\u30B0\u30CB\u30EB"
     weaponNo: 5

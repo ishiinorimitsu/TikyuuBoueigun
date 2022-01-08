@@ -12,7 +12,10 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    private GameObject blood;
+    private GameObject blood;  //敵が流す血
+
+    [SerializeField]
+    private Transform enemyBloodPosition;    //血が出る場所を入れる。
 
     [SerializeField]
     private EnemyGenerator enemyGenerator;
@@ -137,18 +140,30 @@ public class EnemyController : MonoBehaviour
         bullet.EnemyShot(attackDirection,shotSpeed,attackPower);
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnParticleCollision(GameObject col)      //弾をparticleeffectで作っているときはOnCollisionEnterでは反応しなかったので、OnParticleCollisionにする
     {
         if(col.gameObject.tag == "Bullet")
         {
+            Debug.Log("弾と認識");
+
             currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //弾が当たったときその武器の攻撃力分敵のHPを減らす。
 
-            foreach (var point in col.contacts)     //血を生成する処理
-            {
-                var enemyBloodEffect = Instantiate(blood, point.point, Quaternion.identity);
 
-                Destroy(enemyBloodEffect, 1.0f);
-            }
+
+            //上記の理由でOnParticleCollisionを使い、引数がGameObjectになったので、foreachの中のcontactが使えない。したがって、「当たった場所に血のエフェクトを発生させる」という処理の実装はあきらめ、あらかじめ血を発生させる場所を指定しておく
+            //foreach (var point in col.contacts)     //血を生成する処理
+            //{
+            //    var enemyBloodEffect = Instantiate(blood, point.point, Quaternion.identity);
+
+            //    Destroy(enemyBloodEffect, 1.0f);
+            //}
+
+
+            //こっちを実際に使う
+            var enemyBloodEffect = Instantiate(blood, enemyBloodPosition.position, Quaternion.identity);
+
+            Destroy(enemyBloodEffect, 1.0f);
+
 
             if (currentEnemyHP > 0)
             {
@@ -159,6 +174,61 @@ public class EnemyController : MonoBehaviour
                 Debug.Log("ヒット");
 
                 audioSource.PlayOneShot(attackVoice);   
+            }
+
+            if (currentEnemyHP <= 0)  //敵のHPがなくなったら
+            {
+                //StartCoroutine(DieAnimation());
+
+                anim.SetTrigger("Die");
+
+                audioSource.PlayOneShot(dieVoice);
+
+                enemyGenerator.SendCountUpKnockOutEnemyCount();　　　　//倒した敵の数を一体ずつ増やしていく
+
+                Destroy(gameObject, 1.0f);    //1.4秒後に消滅
+            }
+        }
+    }
+
+    /// <summary>
+    /// 弾が実体の時のため
+    /// </summary>
+    /// <param name="col"></param>
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Bullet")
+        {
+            Debug.Log("弾と認識");
+
+            currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //弾が当たったときその武器の攻撃力分敵のHPを減らす。
+
+
+
+            //上記の理由でOnParticleCollisionを使い、引数がGameObjectになったので、foreachの中のcontactが使えない。したがって、「当たった場所に血のエフェクトを発生させる」という処理の実装はあきらめ、あらかじめ血を発生させる場所を指定しておく
+            //foreach (var point in col.contacts)     //血を生成する処理
+            //{
+            //    var enemyBloodEffect = Instantiate(blood, point.point, Quaternion.identity);
+
+            //    Destroy(enemyBloodEffect, 1.0f);
+            //}
+
+
+            //こっちを実際に使う
+            var enemyBloodEffect = Instantiate(blood, enemyBloodPosition.position, Quaternion.identity);
+
+            Destroy(enemyBloodEffect, 1.0f);
+
+
+            if (currentEnemyHP > 0)
+            {
+                Debug.Log("Hit");
+
+                anim.SetTrigger("Hit");
+
+                Debug.Log("ヒット");
+
+                audioSource.PlayOneShot(attackVoice);
             }
 
             if (currentEnemyHP <= 0)  //敵のHPがなくなったら

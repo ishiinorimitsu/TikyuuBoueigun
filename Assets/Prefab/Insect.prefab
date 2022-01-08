@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 3835771964166198805}
   m_Layer: 0
   m_Name: Insect
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,6 +296,7 @@ Transform:
   - {fileID: 2363665971472921306}
   - {fileID: 4661193130046993290}
   - {fileID: 6838376642068962733}
+  - {fileID: 2035982748660579749}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -348,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   blood: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
+  enemyBloodPosition: {fileID: 2035982748660579749}
   enemyGenerator: {fileID: 0}
   attackRange: 30
   enemyBulletControllerPrefab: {fileID: -3329901481104781890, guid: f7048cb47ca83d74c8160c970e1da06a, type: 3}
@@ -1794,6 +1796,36 @@ Transform:
   - {fileID: 2365463220052080992}
   m_Father: {fileID: 2365076242904277598}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5956561363368957334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2035982748660579749}
+  m_Layer: 0
+  m_Name: EnemyBloodTran
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2035982748660579749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5956561363368957334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2363473488373036732}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9089601094279244495
 GameObject:

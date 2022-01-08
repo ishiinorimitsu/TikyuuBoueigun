@@ -161,7 +161,7 @@ public class CharaController : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Fire1"))
                     {
-                        BulletController createBullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //èeíeÇê∂ê¨Ç∑ÇÈ
+                        BulletController createBullet = Instantiate(GameData.instance.equipWeaponData.bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //èeíeÇê∂ê¨Ç∑ÇÈ
 
                         createBullet.Shot(this);
 
