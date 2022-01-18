@@ -1074,6 +1074,8 @@ MonoBehaviour:
     reloadEnergy: 0
     reloadTime: 0
     bulletSpeed: 0
+    rapidFire: 0
+    rapidFireTimer: 0
     discription: 
   weaponData2:
     weaponName: 
@@ -1086,6 +1088,8 @@ MonoBehaviour:
     reloadEnergy: 0
     reloadTime: 0
     bulletSpeed: 0
+    rapidFire: 0
+    rapidFireTimer: 0
     discription: 
   weaponInfo: {fileID: 0}
   chooseWeaponWindowPrefab: {fileID: 6727675316830149286, guid: 80738847b5ce8a145968956f2c9c75af, type: 3}

@@ -61,6 +61,9 @@ public class CharaController : MonoBehaviour
 
     private bool isReload;  //リロード中か
 
+
+    private int bulletTimer;     //連射できる武器のタイマー
+
     //---------------------------エネルギー関係------------------------------------//
 
     public float maxEnergy;     //最大エネルギー量
@@ -154,26 +157,60 @@ public class CharaController : MonoBehaviour
                 }
 
 
-                //-----------------------------------------銃を発射する----------------------------------------------------//
+                //-----------------------------------------銃を発射する----------------------------------------------------/
 
                 //今選んでいる武器の現在の弾数が０より大きかったら（まだ弾が入っていたら）
                 if (currentBulletList[GameData.instance.currentEquipWeaponNo] > 0)
                 {
-                    if (Input.GetButtonDown("Fire1"))
+                    //連射できる武器の場合
+                    if (GameData.instance.equipWeaponData.rapidFire == true)
                     {
-                        BulletController createBullet = Instantiate(GameData.instance.equipWeaponData.bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
+                        if (Input.GetButton("Fire1"))
+                        {
+                            bulletTimer++;
 
-                        createBullet.Shot(this);
+                            if (bulletTimer > GameData.instance.equipWeaponData.rapidFireTimer)
+                            {
+                                bulletTimer = 0;
 
-                        anim.SetTrigger("Attack");
+                                BulletController createBullet = Instantiate(GameData.instance.equipWeaponData.bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);   //銃弾を生成する
 
-                        audioSource.PlayOneShot(shotGunSE);　　　//銃を撃つ音を鳴らす。
+                                createBullet.Shot(this);
 
-                        currentBulletList[GameData.instance.currentEquipWeaponNo]--;    //今の球数を撃つたびに1ずつ減らしていく
+                                anim.SetTrigger("Attack");
 
-                        currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
+                                audioSource.PlayOneShot(shotGunSE);   //銃を撃つ音を鳴らす。
 
-                        UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                                currentBulletList[GameData.instance.currentEquipWeaponNo]--;    //今の球数を撃つたびに1ずつ減らしていく
+
+                                currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
+
+                                UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                            }
+                        }
+                    }
+
+                    //連射できない武器の場合
+                    else if(GameData.instance.equipWeaponData.rapidFire == false)
+                    {
+                        if (Input.GetButtonDown("Fire1"))
+                        {
+                            //銃弾を生成する
+                            BulletController createBullet = Instantiate(GameData.instance.equipWeaponData.bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation); 
+
+                            //実際弾がどう移動するかはここにある。
+                            createBullet.Shot(this);
+
+                            anim.SetTrigger("Attack");
+
+                            audioSource.PlayOneShot(shotGunSE);   //銃を撃つ音を鳴らす。
+
+                            currentBulletList[GameData.instance.currentEquipWeaponNo]--;    //今の球数を撃つたびに1ずつ減らしていく
+
+                            currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
+
+                            UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                        }
                     }
                 }
 
@@ -329,6 +366,8 @@ public class CharaController : MonoBehaviour
 
         UIManager.UpdateDisplayEnergy(currentEnergy);
 
+        UIManager.ReloadWeaponSlider();
+
         yield return new WaitForSeconds(GameData.instance.equipWeaponData.reloadTime);
 
         //装備している武器の「currentBullet」を最大にする
@@ -337,6 +376,8 @@ public class CharaController : MonoBehaviour
         UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);
 
         audioSource.PlayOneShot(reloadGunSE);
+
+        Debug.Log("正常にsどうしています");
 
         isReload = false;
     }
@@ -361,9 +402,9 @@ public class CharaController : MonoBehaviour
                 anim.SetTrigger("Die");    //死ぬアニメーションを流す
 
                 UIManager.GameOver();     //GameOverの処理を実装する。
-            }
 
-            StartCoroutine(KillPlayer());　　　//キャラのスイッチを切らないと死んだ後も恐竜の攻撃で何回も死んでしまうから
+                StartCoroutine(KillPlayer());　　　//キャラのスイッチを切らないと死んだ後も恐竜の攻撃で何回も死んでしまうから
+            }
         }
     }
 

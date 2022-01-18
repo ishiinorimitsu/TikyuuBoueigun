@@ -29,6 +29,23 @@ public class UIManager : MonoBehaviour
 
     private float maxBulletCount;   //最大弾数を入れる(float)
 
+    [SerializeField]
+    public int reloadLastBullet;   //弾数をカウントアップするとき用の弾
+
+    public int ReloadLastBullet
+    {
+        set
+        {
+            reloadLastBullet = value;
+
+            lastBullet.text = reloadLastBullet.ToString();
+        }
+        get
+        {
+            return reloadLastBullet;
+        }
+    }
+
     //------------------------------------------武器関係--------------------------------------------------//
 
     [SerializeField]
@@ -42,6 +59,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Image HPSlider;    //HPゲージを入れる
 
+    [SerializeField]
+    private Image reloadSlider;     //リロード中のゲージを入れる
 
     [SerializeField]
     private Text lastHP;    //残っているHPを入れる。
@@ -66,6 +85,14 @@ public class UIManager : MonoBehaviour
     public Button taikyaku;    //退却のボタン（のちにここを押したときにChooseSceneを読み込む）
 
     public Button saityousen;    //再挑戦のボタン（のちにここを押したときにGameSceneを読み込む）
+
+    public Text defeatDinosaurCount;    //倒した恐竜の数   
+
+    public Text defeatInsectCount;   //倒した虫の数
+
+    private int dinosaurCounter = 0;   //敵の数をカウント
+
+    private int insectCount = 0;　　//虫の数をカウント
 
 
     //-------------------------------------効果音の設定-------------------------------------//
@@ -122,6 +149,8 @@ public class UIManager : MonoBehaviour
         UpdateDisplayBullet(currentBullet);    //まず最初はvalueの値はmaxEnergyと同じでいい。
 
         this.maxBullet.text = maxBullet.ToString();    //UIの最大弾数を装備している武器の最大弾数にする。
+
+       reloadSlider.fillAmount = 0;    //リロードするとき（0から100を担当するので、リロードの最大は０にする）
     }
 
     /// <summary>
@@ -135,6 +164,35 @@ public class UIManager : MonoBehaviour
         lastBullet.text = currentBulletCount.ToString();   //今の球数を反映させる。数字の更新
     }
 
+    /// <summary>
+    /// 武器をリロードするときのスライダーの処理
+    /// </summary>
+    public void ReloadWeaponSlider ()
+    {
+        //今までの武器ゲージを見えなくする。
+        bulletSlider.gameObject.SetActive(false);
+
+        //ゲージを徐々に回復する
+        reloadSlider.DOFillAmount(maxBulletCount/maxBulletCount,GameData.instance.equipWeaponData.reloadTime);
+
+        //武器の残り球数を徐々に変化させる。（まだテキストに反映させていない）
+        DOTween.To(()=>ReloadLastBullet,num=>ReloadLastBullet=num,GameData.instance.equipWeaponData.maxBullet,GameData.instance.equipWeaponData.reloadTime);
+
+        //武器ゲージを再び見えるようにする
+        bulletSlider.gameObject.SetActive(true);
+
+        //リロードゲージのFillAmountを、リロード残弾数を０に戻す
+        StartCoroutine(waitReloadTime());
+    }
+
+    private IEnumerator waitReloadTime()
+    {
+        yield return new WaitForSeconds(GameData.instance.equipWeaponData.reloadTime);
+
+        reloadSlider.fillAmount = 0;
+
+        reloadLastBullet = 0;
+    }
     //------------------------------------------今の武器の名前と画像に関する処理-------------------------------------------------//
     public void SetSelectedWeapon()
     {
@@ -164,6 +222,7 @@ public class UIManager : MonoBehaviour
 
     //-----------------------------------------------------ゲームが終わったときの処理---------------------------------------------//
 
+    
     /// <summary>
     /// ゲームクリアの条件を満たしたときにGameClearの画像をファンファーレとともに出す。
     /// </summary>
@@ -181,7 +240,7 @@ public class UIManager : MonoBehaviour
         audioSource.PlayOneShot(fanfare);
 
         //GameClearのリボンを出す
-        gameClearSet.DOFade(endValue:1.0f, duration:2.0f);     //2秒間かけてリボンを見えるようにする
+        gameClearSet.DOFade(endValue: 1.0f, duration: 2.0f);     //2秒間かけてリボンを見えるようにする
 
         //５秒くらい待つ
         StartCoroutine(WaitClearTime());
@@ -197,6 +256,9 @@ public class UIManager : MonoBehaviour
 
     private void ShowClearResult()
     {
+        //倒した敵の数を数える
+        CountDefeatEnemy();
+        
         //ClearResultを出す
         clearWindow.DOFade(1.0f,1.0f);
 
@@ -235,5 +297,20 @@ public class UIManager : MonoBehaviour
     public void ShowGameOverWindow()
     {
         gameOverWindow.DOFade(1.0f, 1.0f);
+    }
+
+    private void CountDefeatEnemy()
+    {
+        for(int i = 0; i < DataBaseManager.instance.stageDataSO.stageDataList.Count; i++)
+        {
+            dinosaurCounter += DataBaseManager.instance.stageDataSO.stageDataList[i].DinosaurCount;
+
+            insectCount += DataBaseManager.instance.stageDataSO.stageDataList[i].InsectCount;
+        }
+
+        //今計算したものをテキストに入れる。
+        defeatDinosaurCount.text = dinosaurCounter.ToString();
+
+        defeatInsectCount.text = insectCount.ToString();
     }
 }

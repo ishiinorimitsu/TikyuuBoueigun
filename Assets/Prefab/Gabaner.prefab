@@ -42,13 +42,13 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7166070678079669193}
   serializedVersion: 7
-  lengthInSec: 100
+  lengthInSec: 10
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 500
+      scalar: 1000
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -603,7 +603,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1000
-    size3D: 0
+    size3D: 1
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -4818,6 +4818,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bf46cd48f884942a903e0b2ed4308f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThunderOrbTran: []
+  thunderOrbChild: {fileID: 0}
+  isThunder: 0
+  searchEnemy: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!54 &4140034519834176354
 Rigidbody:
   m_ObjectHideFlags: 0

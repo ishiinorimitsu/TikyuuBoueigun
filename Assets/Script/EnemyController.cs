@@ -12,6 +12,9 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
+    private Collider dieCollider;    //死んだときコライダをTriggerにして、死んだら弾が当たらないようにする
+
+    [SerializeField]
     private GameObject blood;  //敵が流す血
 
     [SerializeField]
@@ -178,6 +181,9 @@ public class EnemyController : MonoBehaviour
 
             if (currentEnemyHP <= 0)  //敵のHPがなくなったら
             {
+                //HPが0になったときコライダのトリガーをオンにすることで弾を当たらなくする。
+                dieCollider.isTrigger = true;
+
                 //StartCoroutine(DieAnimation());
 
                 anim.SetTrigger("Die");
@@ -233,6 +239,9 @@ public class EnemyController : MonoBehaviour
 
             if (currentEnemyHP <= 0)  //敵のHPがなくなったら
             {
+                //HPが0になったときコライダのトリガーをオンにすることで弾を当たらなくする。
+                dieCollider.isTrigger = true;
+
                 //StartCoroutine(DieAnimation());
 
                 anim.SetTrigger("Die");
