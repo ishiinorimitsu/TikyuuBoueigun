@@ -16,6 +16,7 @@ public class WeaponData
     public float bulletSpeed;  //弾の速度
     public bool rapidFire;    //連射できるか否か
     public int rapidFireTimer;   //連射できる武器だった場合、どれくらいの間隔で連射できるようにするか
+    public GameObject explosionEffect;   //敵や地面に当たったときの爆発のエフェクト
 
     [Multiline]
     public string discription;   //武器の説明

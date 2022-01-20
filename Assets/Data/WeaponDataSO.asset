@@ -25,6 +25,7 @@ MonoBehaviour:
     bulletSpeed: 2000
     rapidFire: 0
     rapidFireTimer: 0
+    explosionEffect: {fileID: 1830178773730210729, guid: f6520ecc20cd6234586eba1c7e03a44d, type: 3}
     discription: "\u4E00\u756A\u30D9\u30FC\u30B7\u30C3\u30AF\u306A\u72D9\u6483\u6B66\u5668"
   - weaponName: "\u30AC\u30D0\u30CA\u30FC"
     weaponNo: 2
@@ -38,6 +39,7 @@ MonoBehaviour:
     bulletSpeed: 1000
     rapidFire: 1
     rapidFireTimer: 6
+    explosionEffect: {fileID: 5158012971604236165, guid: c5fdb47ee87462048b24b49a87a8bb92, type: 3}
     discription: "\u77ED\u8DDD\u96E2\u306E\u6B66\u5668\n\u5206\u6563\u3057\u3066\u3057\u307E\u3046\u306E\u3067\u3001\u8FD1\u304F\u306A\u3044\u3068\u5F53\u305F\u3089\u306A\u3044"
   - weaponName: "\u30B5\u30F3\u30C0\u30FC\u30AA\u30FC\u30D6"
     weaponNo: 3
@@ -45,12 +47,13 @@ MonoBehaviour:
     weaponAttackPower: 500
     attackRange: 50
     maxBullet: 10
-    bulletPrefab: {fileID: 2916960612343261344, guid: c9140b9053572224f870767aaf7d65b5, type: 3}
+    bulletPrefab: {fileID: 7877729539901980039, guid: ab255ab8db89ded4b98d33ff0c2bcedf, type: 3}
     reloadEnergy: 20
     reloadTime: 20
     bulletSpeed: 5000
     rapidFire: 0
     rapidFireTimer: 0
+    explosionEffect: {fileID: 1085114191392891901, guid: 2c93f6cfe5d455844a553d8f6b592f04, type: 3}
     discription: "\u8A2D\u7F6E\u578B\u306E\u6B66\u5668\u3002\n\u7BC4\u56F2\u5185\u306B\u3044\u308B\u6575\u3092\u30DB\u30FC\u30DF\u30F3\u30B0\u3059\u308B\u3002"
   - weaponName: "\u30D5\u30EC\u30A4\u30C9\u30DE\u30EB"
     weaponNo: 4
@@ -64,6 +67,7 @@ MonoBehaviour:
     bulletSpeed: 10000
     rapidFire: 1
     rapidFireTimer: 10
+    explosionEffect: {fileID: 6215337742349168859, guid: c5417c24c3eafa24caf54c176c027c23, type: 3}
     discription: "\u6700\u5F37\u30AF\u30E9\u30B9\u306E\u6B66\u5668\n\u5C04\u7A0B\u306F\u77ED\u3044\u304C\u653B\u6483\u529B\u3001\u6D88\u8CBB\u30A8\u30CD\u30EB\u30AE\u30FC\u3092\u8003\u3048\u308B\u3068\u7533\u3057\u5206\u306A\u3044"
   - weaponName: "\u30B0\u30F3\u30B0\u30CB\u30EB"
     weaponNo: 5
@@ -77,4 +81,5 @@ MonoBehaviour:
     bulletSpeed: 10000
     rapidFire: 0
     rapidFireTimer: 0
+    explosionEffect: {fileID: 3700043668106052382, guid: 1872044f21d5de14199bfed53ddb7d84, type: 3}
     discription: "\u6700\u5F37\u6B66\u5668\n\u5927\u4F53\u306E\u6575\u3092\u4E00\u6483\u3067\u5012\u305B\u308B\u304C\u3001\u305D\u306E\u5206\u30A8\u30CD\u30EB\u30AE\u30FC\u306E\u6D88\u8CBB\u306F\u534A\u7AEF\u3067\u306F\u306A\u3044\u3002"

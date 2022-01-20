@@ -468,6 +468,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &889909090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3885370327478026039, guid: ec2878d2e31c0504eb61a137b32c5e41, type: 3}
+  m_PrefabInstance: {fileID: 1217384302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &889909092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889909090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1554d88e80fa9d478e19630eeccdf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDataSO: {fileID: 11400000, guid: f8e91bb645cd9264ba545aec4a8d4f50, type: 2}
+  enemyDataSO: {fileID: 11400000, guid: 124ace08fbd993840b9b869319aec423, type: 2}
+  stageDataSO: {fileID: 11400000, guid: f365c323a284b6146b287f175c2b84c5, type: 2}
 --- !u!1 &959109922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1096,7 @@ MonoBehaviour:
     bulletSpeed: 0
     rapidFire: 0
     rapidFireTimer: 0
+    explosionEffect: {fileID: 0}
     discription: 
   weaponData2:
     weaponName: 
@@ -1090,6 +1111,7 @@ MonoBehaviour:
     bulletSpeed: 0
     rapidFire: 0
     rapidFireTimer: 0
+    explosionEffect: {fileID: 0}
     discription: 
   weaponInfo: {fileID: 0}
   chooseWeaponWindowPrefab: {fileID: 6727675316830149286, guid: 80738847b5ce8a145968956f2c9c75af, type: 3}
@@ -1535,8 +1557,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8488153f26a218b4cb7cae85a4a74ef0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

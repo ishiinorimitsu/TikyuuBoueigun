@@ -5,20 +5,20 @@ using UnityEngine;
 public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
                                                     //弾の動きや攻撃力などは銃のほうのスクリプトに書く
 {
-    [SerializeField]
-    private Transform[] ThunderOrbTran;        //サンダーオーブの子供を生成する場所
+    //[SerializeField]
+    //private Transform[] ThunderOrbTran;        //サンダーオーブの子供を生成する場所
 
-    [SerializeField]
-    private GameObject thunderOrbChild;     //サンダーオーブの子供
+    //[SerializeField]
+    //private GameObject thunderOrbChild;     //サンダーオーブの子供
 
-    [SerializeField]
-    private bool isThunder;       //サンダーオーブが存在しているか
+    //[SerializeField]
+    //private bool isThunder;       //サンダーオーブが存在しているか
 
-    [SerializeField]
-    private SearchEnemy searchEnemy;
+    //[SerializeField]
+    //private SearchEnemy searchEnemy;
 
-    [SerializeField]
-    private EnemyController enemy;       //サンダーオーブによってゲットした敵の情報を入れる
+    //[SerializeField]
+    //private EnemyController enemy;       //サンダーオーブによってゲットした敵の情報を入れる
 
     private float bulletPowerSpeed;  //弾の速度
     
@@ -119,12 +119,22 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
     {
         if (col.tag == "Enemy")       //敵に当たったとき敵を壊し、自分も消滅する。
         {
+            //エフェクトを発生させる
+            GameObject effect = Instantiate(GameData.instance.equipWeaponData.explosionEffect, transform.position, Quaternion.identity);
+
+            Destroy(effect, 0.5f);
+
             Destroy(gameObject);
 
             Debug.Log("敵と衝突");
         }
         if (col.tag == "Ground")
         {
+            //エフェクトを発生させる
+            GameObject effect = Instantiate(GameData.instance.equipWeaponData.explosionEffect, transform.position, Quaternion.identity);
+
+            Destroy(effect, 0.5f);
+
             Destroy(gameObject);
 
             Debug.Log("地面と衝突");
@@ -140,12 +150,24 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
     {
         if (col.gameObject.tag == "Enemy")       //敵に当たったとき敵を壊し、自分も消滅する。
         {
+            //エフェクトを発生させる
+            GameObject effect = Instantiate(GameData.instance.equipWeaponData.explosionEffect, transform.position, Quaternion.identity);
+
+            Destroy(effect, 0.5f);
+
+            Debug.Log("OK");
+
             Destroy(gameObject);
 
             Debug.Log("敵と衝突");
         }
         if (col.gameObject.tag == "Ground")
         {
+            //エフェクトを発生させる
+            GameObject effect = Instantiate(GameData.instance.equipWeaponData.explosionEffect,transform.position,Quaternion.identity);
+                
+            Destroy(effect, 0.5f);
+
             Destroy(gameObject);
 
             Debug.Log("地面と衝突");

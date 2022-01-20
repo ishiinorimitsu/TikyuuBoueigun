@@ -20,16 +20,20 @@ public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚Ìƒ
 
     public void SetUpSelectWeaponDetail(ChooseWeaponWindow chooseWeaponWindow,WeaponData weaponData)
     {
+        Debug.Log("SetUpSelectWeaponDetail“ü‚è‚Ü‚·B");
+
         this.chooseWeaponWindow = chooseWeaponWindow;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
 
+        Debug.Log("‚P");
+
         this.weaponData = weaponData;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
-
+        Debug.Log("‚P");
         ChangeActiveButton(false);      //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚é‚Ü‚Åƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚È‚­‚·‚é
-
+        Debug.Log("‚P");
         weaponImage.sprite = this.weaponData.weaponSprite;   //Image‚É‚ ‚é‰æ‘œ‚ğƒ{ƒ^ƒ“‚É•\¦‚·‚éB
-
+        Debug.Log("‚P");
         btnSelectWeaponDetail.onClick.AddListener(OnClickSelectCharaDetail);   //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—
-
+        Debug.Log("‚P");
         ChangeActiveButton(true);       //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚½‚çƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚é‚æ‚¤‚É‚·‚é
     }
 

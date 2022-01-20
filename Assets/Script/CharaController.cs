@@ -226,25 +226,23 @@ public class CharaController : MonoBehaviour
                 }
 
                 //---------------------------------------武器を変える-------------------------------------------------------------//
-                if (Input.GetButtonDown("ChangeWeapon"))
+
+                //「リロード中に武器を変えたとき、裏でもリロードを継続して行う」という処理がうまく実装できなかったため、リロード中の時は武器を変えられないようにする
+                if(isReload == false)
                 {
-                    GameData.instance.ChangeWeapon();  //持っている武器を変える処理
+                    if (Input.GetButtonDown("ChangeWeapon"))
+                    {
+                        GameData.instance.ChangeWeapon();  //持っている武器を変える処理
 
-                    audioSource.PlayOneShot(reloadGunSE);
+                        audioSource.PlayOneShot(reloadGunSE);
 
-                    //currentBullet = currentBulletList[GameData.instance.currentEquipWeaponNo];
+                        Debug.Log(GameData.instance.equipWeaponData.weaponName);
 
-                    Debug.Log(GameData.instance.equipWeaponData.weaponName);
+                        UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);  //
 
-                    UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);  //
-
-                    UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
+                        UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
+                    }
                 }
-
-                //if (Input.GetButtonDown("EnemyGenerate"))
-                //{
-                //    UIManager.GameClear();
-                //}
             }
         }
     }   
@@ -376,8 +374,6 @@ public class CharaController : MonoBehaviour
         UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);
 
         audioSource.PlayOneShot(reloadGunSE);
-
-        Debug.Log("正常にsどうしています");
 
         isReload = false;
     }

@@ -6,13 +6,10 @@ public class DataBaseManager : MonoBehaviour  //二つ以上のシーンに存在したときは
 {
     public static DataBaseManager instance;　　  //このスクリプト内の情報をどこからでも使えるようにする　　
 
-    [SerializeField]
     public WeaponDataSO weaponDataSO;   //ここにWeaponDataSOの情報を入れる。
 
-    [SerializeField]
     public EnemyDataSO enemyDataSO;     //ここにEnemyDataSOの情報を入れる。
 
-    [SerializeField]
     public StageDataSO stageDataSO;     //ここにStageDataSOの情報を入れる。
 
     private void Awake()

@@ -48,18 +48,34 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
 
     public void SetUpChooseWeaponWindow(ChooseWeaponManager chooseWeaponManager)   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
     {
+        Debug.Log("SetUpChooseWeaponWindown‚Ü‚è‚Ü‚µ‚½B");
+
         this.chooseWeaponManager = chooseWeaponManager;
 
-        for(int i = 0; i < 5; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
+        Debug.Log("–³–ChooseWeaponManager“ü‚è‚Ü‚µ‚½B");
+
+        for (int i = 0; i < 5; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
         {
+            Debug.Log("botanntukuroutosimasu");
+
             //ƒ{ƒ^ƒ“‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é
             SelectWeaponDetail selectWeaponDetail = Instantiate(selectWeaponDetailPrefab, selectCharaDetailTran, false);
 
+            Debug.Log(selectWeaponDetail);
+
+            Debug.Log(this);
+            Debug.Log("1");
+            Debug.Log(DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
+            Debug.Log("2");
             //ƒ{ƒ^ƒ“‚Éˆ—‚ğ’Ç‰Á‚·‚é
             selectWeaponDetail.SetUpSelectWeaponDetail(this,DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
+
+            Debug.Log("ƒ{ƒ^ƒ“ì‚èI‚í‚è‚Ü‚µ‚½");
         }
 
         btnSubmit.onClick.AddListener(() => chooseWeaponManager.SubmitWeapon(chooseWeaponData));   //AddListener‚Íˆø”‚ª‚ ‚é‚Æ‚«‚Í‚±‚ÌŒ`‚É‚·‚éB
+
+        Debug.Log("SetUpChooseWeaponWindowŠ®—¹‚µ‚Ü‚µ‚½B");
     }
 
     public void SetSelectWeaponDetail(WeaponData weaponData)

@@ -147,6 +147,11 @@ public class EnemyController : MonoBehaviour
     {
         if(col.gameObject.tag == "Bullet")
         {
+            if (player == null)
+            {
+                player = GameObject.Find("Player");
+            }
+
             Debug.Log("’e‚Æ”F¯");
 
             currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //’e‚ª“–‚½‚Á‚½‚Æ‚«‚»‚Ì•Ší‚ÌUŒ‚—Í•ª“G‚ÌHP‚ğŒ¸‚ç‚·B
@@ -205,6 +210,11 @@ public class EnemyController : MonoBehaviour
     {
         if (col.gameObject.tag == "Bullet")
         {
+            if(player == null)
+            {
+                player = GameObject.Find("Player");
+            }
+
             Debug.Log("’e‚Æ”F¯");
 
             currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //’e‚ª“–‚½‚Á‚½‚Æ‚«‚»‚Ì•Ší‚ÌUŒ‚—Í•ª“G‚ÌHP‚ğŒ¸‚ç‚·B

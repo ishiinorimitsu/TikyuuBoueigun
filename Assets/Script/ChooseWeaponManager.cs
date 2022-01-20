@@ -75,10 +75,14 @@ public class ChooseWeaponManager : MonoBehaviour
         gameStartButton.onClick.AddListener(OnClickGameStart);
 
         selectWeaponDetail.sendChooseWeaponManager(this);      //SelectWeaponDetailにこの情報を送る
+
+        Debug.Log("Startメソッドはすべて完了");
     }
 
     private void ChooseWeapon(WeaponSlotType chooseSlotType)
     {
+        Debug.Log("ChooseWeapon始まりました。");
+
         //メニューを開くときの音を鳴らす
         audioSource.PlayOneShot(openWeaponMenu);
 
@@ -87,6 +91,8 @@ public class ChooseWeaponManager : MonoBehaviour
         {
             //初回だけ。２回目からはスイッチを入れたり消したりで処理する。
             weaponInfo = Instantiate(chooseWeaponWindowPrefab,canvasTran,false);   //第三引数は何かの子オブジェクトの場合、特に今回はCanvasの子オブジェクトなので、falseにしないとworldspaceの座標で生成されてしまう。
+
+            Debug.Log("SetUpChooseWeaponWindow試みます");
 
             weaponInfo.SetUpChooseWeaponWindow(this);
         }
