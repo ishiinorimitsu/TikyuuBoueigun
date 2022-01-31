@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7166070678079669192}
   - component: {fileID: 6384231143774194572}
   - component: {fileID: 4140034519834176354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponGabaner
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -4818,11 +4818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bf46cd48f884942a903e0b2ed4308f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThunderOrbTran: []
-  thunderOrbChild: {fileID: 0}
-  isThunder: 0
-  searchEnemy: {fileID: 0}
-  enemy: {fileID: 0}
 --- !u!54 &4140034519834176354
 Rigidbody:
   m_ObjectHideFlags: 0

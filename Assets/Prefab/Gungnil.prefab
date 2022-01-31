@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4142599193393376814}
   - component: {fileID: 586022640190705861}
   - component: {fileID: 2784492503729437300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gungnil
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

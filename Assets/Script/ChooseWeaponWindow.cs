@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ìì¬A‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“‚Ì“Á’¥‚ğ•\¦‚·‚éƒƒ\ƒbƒh‚È‚Ç‚ğ‘‚­B
 {
-    [SerializeField]
     public Button btnSubmit;@@//Œˆ’èƒ{ƒ^ƒ“‚ğ“ü‚ê‚éB
 
     [SerializeField]
@@ -33,51 +32,50 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
     private SelectWeaponDetail selectWeaponDetailPrefab;    //•Ší‚ğ‘I‘ğ‚·‚éƒ{ƒ^ƒ“—p‚ÌPrefab‚ğƒAƒTƒCƒ“‚·‚éB
 
     [SerializeField]
-    private Transform selectCharaDetailTran;   //ƒLƒƒƒ‰‚Ìƒ{ƒ^ƒ“‚ğ¶¬‚·‚éˆÊ’u‚ğƒAƒTƒCƒ“‚·‚éB
-
-    //[SerializeField]
-    //private List<SelectCharaDetail> selectCharaDetailslList = new List<SelectCharaDetail>();  //¶¬‚·‚éƒLƒƒƒ‰‚Ìƒ{ƒ^ƒ“‚ğŠÇ—‚·‚é
+    private Transform selectWeaponDetailTran;   //ƒLƒƒƒ‰‚Ìƒ{ƒ^ƒ“‚ğ¶¬‚·‚éˆÊ’u‚ğƒAƒTƒCƒ“‚·‚éB
 
     [SerializeField]
     private WeaponData chooseWeaponData;   //Œ»İ‘I‘ğ‚µ‚Ä‚¢‚éƒLƒƒƒ‰‚Ìî•ñ‚ğŠÇ—‚·‚é
 
-    //private CharaGenerator charaGenerator;
-
     [SerializeField]
-    private ChooseWeaponManager chooseWeaponManager;    //ChooseWeaponManager‚ğ“ü‚ê‚é
+    private ChooseSceneManager chooseWeaponManager;    //ChooseWeaponManager‚ğ“ü‚ê‚é
 
-    public void SetUpChooseWeaponWindow(ChooseWeaponManager chooseWeaponManager)   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
+    public void SetUpChooseWeaponWindow(ChooseSceneManager chooseSceneManager)   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
     {
         Debug.Log("SetUpChooseWeaponWindown‚Ü‚è‚Ü‚µ‚½B");
 
-        this.chooseWeaponManager = chooseWeaponManager;
+        this.chooseWeaponManager = chooseSceneManager;
 
         Debug.Log("–³–ChooseWeaponManager“ü‚è‚Ü‚µ‚½B");
 
-        for (int i = 0; i < 5; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
+        for (int i = 0; i < DataBaseManager.instance.weaponDataSO.weaponDataList.Count; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
         {
             Debug.Log("botanntukuroutosimasu");
 
             //ƒ{ƒ^ƒ“‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é
-            SelectWeaponDetail selectWeaponDetail = Instantiate(selectWeaponDetailPrefab, selectCharaDetailTran, false);
+            SelectWeaponDetail selectWeaponDetail = Instantiate(selectWeaponDetailPrefab, selectWeaponDetailTran, false);
 
             Debug.Log(selectWeaponDetail);
 
             Debug.Log(this);
-            Debug.Log("1");
+            
             Debug.Log(DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
-            Debug.Log("2");
+            
             //ƒ{ƒ^ƒ“‚Éˆ—‚ğ’Ç‰Á‚·‚é
             selectWeaponDetail.SetUpSelectWeaponDetail(this,DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
 
             Debug.Log("ƒ{ƒ^ƒ“ì‚èI‚í‚è‚Ü‚µ‚½");
         }
 
-        btnSubmit.onClick.AddListener(() => chooseWeaponManager.SubmitWeapon(chooseWeaponData));   //AddListener‚Íˆø”‚ª‚ ‚é‚Æ‚«‚Í‚±‚ÌŒ`‚É‚·‚éB
+        btnSubmit.onClick.AddListener(() => chooseSceneManager.SubmitWeapon(chooseWeaponData));   //AddListener‚Íˆø”‚ª‚ ‚é‚Æ‚«‚Í‚±‚ÌŒ`‚É‚·‚éB
 
         Debug.Log("SetUpChooseWeaponWindowŠ®—¹‚µ‚Ü‚µ‚½B");
     }
 
+    /// <summary>
+    /// ‘I‚ñ‚¾•Ší‚Ìî•ñ‚ğ‚à‚Æ‚Éà–¾—“‚ğ•Ï‚¦‚éƒƒ\ƒbƒh
+    /// </summary>
+    /// <param name="weaponData"></param>
     public void SetSelectWeaponDetail(WeaponData weaponData)
     {
         chooseWeaponData = weaponData;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ª“ü—Í‚³‚ê‚éB

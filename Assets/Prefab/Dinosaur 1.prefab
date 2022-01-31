@@ -3676,7 +3676,7 @@ MonoBehaviour:
   enemyBulletTran: {fileID: 4885906204287658275}
   shotSpeed: 1000
   attackInterval: 2
-  maxEnemyHP: 1000
+  maxEnemyHP: 8000
   currentEnemyHP: 0
   audioSource: {fileID: 3301834051623020121}
   attackVoice: {fileID: 8300000, guid: b038a89fc2e931d43aebb207117fe6c0, type: 3}

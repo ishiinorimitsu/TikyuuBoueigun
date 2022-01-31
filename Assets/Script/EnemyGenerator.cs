@@ -17,7 +17,13 @@ public class EnemyGenerator : MonoBehaviour
 
     public int generatedEnemyCount;    //生成した敵の数
 
-    public int knockDownEnemyCount;    //倒した敵の数
+    public int knockDownEnemyCount;    //倒した敵の数（各waveごとにリセットする）
+
+    private int currentWaveDinosaurCount;　　//今のウェーブで作る恐竜の数
+
+    private int currentWaveInsectCount;     //今のウェーブで生成する昆虫の数
+
+    private int currentWaveGenerateTran;     //今のウェーブで生成する場所
 
     /// <summary>
     /// 敵を生成する処理の準備をする
@@ -54,21 +60,30 @@ public class EnemyGenerator : MonoBehaviour
         {
             case (GameManager.Wave.wave1):　　//Wave1なら
 
-                currentWaveIndex = 0;    //この処理によってStageData内のインデックス番号と第何Waveかを一致させている
+                //現在のウェーブのそれぞれの敵の数、生成する場所をcurrentWaveDinosaurCountなどに対応させる。
+                currentWaveDinosaurCount = GameData.instance.currentStageData.wave1DinosaurCount;
+                currentWaveInsectCount = GameData.instance.currentStageData.wave1InsectCount;
+                currentWaveGenerateTran = GameData.instance.currentStageData.wave1GenerateEnemyTranIndex;
 
                 Debug.Log("Wave1です");
                 break;
 
             case (GameManager.Wave.wave2):　　//Wave2なら
 
-                currentWaveIndex = 1;    //この処理によってStageData内のインデックス番号と第何Waveかを一致させている
+                //現在のウェーブのそれぞれの敵の数、生成する場所をcurrentWaveDinosaurCountなどに対応させる。
+                currentWaveDinosaurCount = GameData.instance.currentStageData.wave2DinosaurCount;
+                currentWaveInsectCount = GameData.instance.currentStageData.wave2InsectCount;
+                currentWaveGenerateTran = GameData.instance.currentStageData.wave2GenerateEnemyTranIndex;
 
                 Debug.Log("Wave2です");
                 break;
 
             case (GameManager.Wave.wave3):　　//Wave3なら
 
-                currentWaveIndex = 2;    //この処理によってStageData内のインデックス番号と第何Waveかを一致させている
+                //現在のウェーブのそれぞれの敵の数、生成する場所をcurrentWaveDinosaurCountなどに対応させる。
+                currentWaveDinosaurCount = GameData.instance.currentStageData.wave3DinosaurCount;
+                currentWaveInsectCount = GameData.instance.currentStageData.wave3InsectCount;
+                currentWaveGenerateTran = GameData.instance.currentStageData.wave3GenerateEnemyTranIndex;
 
                 Debug.Log("Wave3です");
                 break;
@@ -81,7 +96,7 @@ public class EnemyGenerator : MonoBehaviour
     public void EnemyGenerate()
     {     
         //恐竜の生成
-        for (int i = 0; i < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].DinosaurCount; i++)     
+        for (int i = 0; i < currentWaveDinosaurCount; i++)     
         {
             //------------------------------------位置の指定------------------------------------------------------//
 
@@ -89,11 +104,11 @@ public class EnemyGenerator : MonoBehaviour
 
             Vector3 trueEnemyGenerateTran = new Vector3(
 
-                    enemyGenerateTran.x + enemyTran[DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].GenerateEnemyTranIndex].position.x,      //DataBaseManagerの中のStageDataSOで指定した場所のそれぞれの座標にenemyGenerateTranのものを加える。
+                    enemyGenerateTran.x + enemyTran[currentWaveGenerateTran].position.x,      //DataBaseManagerの中のStageDataSOで指定した場所のそれぞれの座標にenemyGenerateTranのものを加える。
 
-                    enemyTran[DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].GenerateEnemyTranIndex].position.y,
+                    enemyTran[currentWaveGenerateTran].position.y,
 
-                    enemyGenerateTran.y + enemyTran[DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].GenerateEnemyTranIndex].position.z
+                    enemyGenerateTran.y + enemyTran[currentWaveGenerateTran].position.z
 
                     );
 
@@ -108,7 +123,7 @@ public class EnemyGenerator : MonoBehaviour
 
 
         //虫の生成
-        for (int j = 0;j < DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].InsectCount; j++)
+        for (int j = 0;j < currentWaveInsectCount; j++)
         {
             //------------------------------------位置の指定------------------------------------------------------//
 
@@ -116,11 +131,11 @@ public class EnemyGenerator : MonoBehaviour
 
             Vector3 trueEnemyGenerateTran = new Vector3(
 
-                    enemyGenerateTran.x + enemyTran[DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].GenerateEnemyTranIndex].position.x,      //DataBaseManagerの中のStageDataSOで指定した場所のそれぞれの座標にenemyGenerateTranのものを加える。
+                    enemyGenerateTran.x + enemyTran[currentWaveGenerateTran].position.x,      //DataBaseManagerの中のStageDataSOで指定した場所のそれぞれの座標にenemyGenerateTranのものを加える。
 
-                    enemyTran[DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].GenerateEnemyTranIndex].position.y,
+                    enemyTran[currentWaveGenerateTran].position.y,
 
-                    enemyGenerateTran.y + enemyTran[DataBaseManager.instance.stageDataSO.stageDataList[currentWaveIndex].GenerateEnemyTranIndex].position.z
+                    enemyGenerateTran.y + enemyTran[currentWaveGenerateTran].position.z
 
                     );
 

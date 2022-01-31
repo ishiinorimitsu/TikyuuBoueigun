@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍAGameScene‚É‚Á‚Ä‚¢‚­‚à‚Ìi‘•”õ‚µ‚½•ŠíA‘I‚ñ‚¾ƒXƒe[ƒW‚È‚Çj
 public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚ê‚È‚¢‚æ‚¤‚È‚à‚ÌA—á‚¦‚Îƒoƒgƒ‹ƒXƒe[ƒW‚É“ü‚é‘O‚É•Ší‚ğ‘I‚ñ‚Å‚Á‚Ä‚¢‚­ˆ—A‚ ‚é‚¢‚Íƒoƒgƒ‹‚ªI‚í‚Á‚ÄV‚µ‚¢•Ší‚ğè‚É“ü‚ê‚éˆ—‚È‚Ç‚ğ‘‚­B
 {
     public static GameData instance;   //‚±‚±‚ÌƒXƒNƒŠƒvƒg‚ğ‚Ç‚±‚©‚ç‚Å‚àg‚¦‚é‚æ‚¤‚É‚·‚éB
+
+    public StageData currentStageData;    //‘I‘ğ‚³‚ê‚½ƒXƒe[ƒW‚ª“ü‚éB
 
     public List<WeaponData> chooseWeaponData = new List<WeaponData>();    //‘I‚ñ‚¾•Ší‚ğ“ü‚ê‚é
 
@@ -14,7 +17,7 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
 
     private List<float> currentBulletList = new List<float>();
 
-    private float currentBullet;    //¡‚Ì’e”‚ğ“ü‚ê‚é
+    //private float currentBullet;    //¡‚Ì’e”‚ğ“ü‚ê‚é
 
     private void Awake()
     {
@@ -45,6 +48,15 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
         chooseWeaponData.Add(weaponData);
 
         equipWeaponData = chooseWeaponData[0];
+    }
+
+    /// <summary>
+    /// ƒXƒe[ƒW‚Ìƒf[ƒ^‚à‚±‚ÌƒXƒNƒŠƒvƒg‚É‚Á‚Ä‚­‚é
+    /// </summary>
+    /// <param name="stageData"></param>
+    public void AddStageData(StageData stageData)
+    {
+        this.currentStageData = stageData;
     }
 
     public void ChangeWeapon()

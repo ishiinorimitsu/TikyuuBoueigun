@@ -12,16 +12,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287989a094139394e95c80d217e71019, type: 3}
   m_Name: StageDataSO
   m_EditorClassIdentifier: 
-  stageDataList:
-  - GenerateEnemyTranIndex: 0
-    DinosaurCount: 1
-    InsectCount: 2
-    EnemyRobotCount: 3
-  - GenerateEnemyTranIndex: 0
-    DinosaurCount: 2
-    InsectCount: 2
-    EnemyRobotCount: 2
-  - GenerateEnemyTranIndex: 0
-    DinosaurCount: 3
-    InsectCount: 2
-    EnemyRobotCount: 0
+  StageDataList:
+  - stageNo: 1
+    subTitle: "1.\u306F\u3058\u307E\u308A\u306E\u5927\u5730"
+    wave1GenerateEnemyTranIndex: 0
+    wave1DinosaurCount: 2
+    wave1InsectCount: 0
+    wave2GenerateEnemyTranIndex: 1
+    wave2DinosaurCount: 3
+    wave2InsectCount: 0
+    wave3GenerateEnemyTranIndex: 0
+    wave3DinosaurCount: 4
+    wave3InsectCount: 0
+    totalDinosaurCount: 9
+    totalInsectCount: 0
+  - stageNo: 2
+    subTitle: "2.\u65B0\u305F\u306A\u6575"
+    wave1GenerateEnemyTranIndex: 0
+    wave1DinosaurCount: 0
+    wave1InsectCount: 2
+    wave2GenerateEnemyTranIndex: 0
+    wave2DinosaurCount: 0
+    wave2InsectCount: 3
+    wave3GenerateEnemyTranIndex: 0
+    wave3DinosaurCount: 0
+    wave3InsectCount: 4
+    totalDinosaurCount: 0
+    totalInsectCount: 9
+  - stageNo: 3
+    subTitle: "3.\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+    wave1GenerateEnemyTranIndex: 0
+    wave1DinosaurCount: 2
+    wave1InsectCount: 2
+    wave2GenerateEnemyTranIndex: 0
+    wave2DinosaurCount: 3
+    wave2InsectCount: 4
+    wave3GenerateEnemyTranIndex: 0
+    wave3DinosaurCount: 4
+    wave3InsectCount: 5
+    totalDinosaurCount: 9
+    totalInsectCount: 11
+  - stageNo: 4
+    subTitle: "4.\u30DC\u30B9\u306E\u767B\u5834"
+    wave1GenerateEnemyTranIndex: 0
+    wave1DinosaurCount: 0
+    wave1InsectCount: 0
+    wave2GenerateEnemyTranIndex: 0
+    wave2DinosaurCount: 0
+    wave2InsectCount: 0
+    wave3GenerateEnemyTranIndex: 0
+    wave3DinosaurCount: 0
+    wave3InsectCount: 0
+    totalDinosaurCount: 0
+    totalInsectCount: 0

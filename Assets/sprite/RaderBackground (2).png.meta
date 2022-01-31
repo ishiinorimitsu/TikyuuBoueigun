@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: b7e89993908ff884ba4e87bff8a4ad0a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6405801920328136554
+    second: RaderBackground (2)_0
+  - first:
+      213: -1780807977457217636
+    second: RaderBackground (2)_1
+  - first:
+      213: -2003034737419097717
+    second: RaderBackground (2)_2
+  - first:
+      213: 1909919895036926435
+    second: RaderBackground (2)_3
+  - first:
+      213: -8652414113059391150
+    second: RaderBackground (2)_4
+  - first:
+      213: -2958211681316494072
+    second: RaderBackground (2)_5
+  - first:
+      213: 6382961320425358073
+    second: RaderBackground (2)_6
+  - first:
+      213: 4590095247768382627
+    second: RaderBackground (2)_7
+  - first:
+      213: -7996091517702066356
+    second: RaderBackground (2)_8
+  - first:
+      213: -3920565470110003345
+    second: RaderBackground (2)_9
+  - first:
+      213: 2274835279940073674
+    second: RaderBackground (2)_10
+  - first:
+      213: -1248647247554260108
+    second: RaderBackground (2)_11
+  - first:
+      213: 8962975462171619747
+    second: RaderBackground (2)_12
+  - first:
+      213: 2689508279173700405
+    second: RaderBackground (2)_13
+  - first:
+      213: 1891539233154699014
+    second: RaderBackground (2)_14
+  - first:
+      213: -5468251897641383693
+    second: RaderBackground (2)_15
+  - first:
+      213: -4303371043597487643
+    second: RaderBackground (2)_16
+  - first:
+      213: -5988210658020148507
+    second: RaderBackground (2)_17
+  - first:
+      213: -6270827520263915508
+    second: RaderBackground (2)_18
+  - first:
+      213: -3106303529118889445
+    second: RaderBackground (2)_19
+  - first:
+      213: 3434637547933072325
+    second: RaderBackground (2)_20
+  - first:
+      213: -2897117380486043788
+    second: RaderBackground (2)_21
+  - first:
+      213: -3888339573480599193
+    second: RaderBackground (2)_22
+  - first:
+      213: -580775357356972559
+    second: RaderBackground (2)_23
+  - first:
+      213: 5714947156880633522
+    second: RaderBackground (2)_24
+  - first:
+      213: -3835416474697316905
+    second: RaderBackground (2)_25
+  - first:
+      213: -8610064164029352187
+    second: RaderBackground (2)_26
+  - first:
+      213: -6701569099093689589
+    second: RaderBackground (2)_27
+  - first:
+      213: 2650241412785174426
+    second: RaderBackground (2)_28
+  - first:
+      213: -7915587508365703907
+    second: RaderBackground (2)_29
+  - first:
+      213: 2886523124111367801
+    second: RaderBackground (2)_30
+  - first:
+      213: -4082071155811737665
+    second: RaderBackground (2)_31
+  - first:
+      213: -598537257963378930
+    second: RaderBackground (2)_32
+  - first:
+      213: -6753288914895506835
+    second: RaderBackground (2)_33
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RaderBackground (2)_0
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 1115
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a677caa38eaf5e850800000000000000
+      internalID: 6405801920328136554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_1
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 1151
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f0b72649c4947e0800000000000000
+      internalID: -1780807977457217636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_2
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 1143
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b89ed53d48ac334e0800000000000000
+      internalID: -2003034737419097717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_3
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 1115
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9902d7606618a10800000000000000
+      internalID: 1909919895036926435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_4
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 1150
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259b485e4337ce780800000000000000
+      internalID: -8652414113059391150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_5
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 1116
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80528bc262252f6d0800000000000000
+      internalID: -2958211681316494072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_6
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 1115
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f20307a085d49850800000000000000
+      internalID: 6382961320425358073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_7
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1115
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ac6178fe4b43bf30800000000000000
+      internalID: 4590095247768382627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_8
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 1116
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4faad7312d280190800000000000000
+      internalID: -7996091517702066356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_9
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1119
+        width: 33
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f4e6b1a7a5799c0800000000000000
+      internalID: -3920565470110003345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_10
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 1133
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac8ba5f62a6d19f10800000000000000
+      internalID: 2274835279940073674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_11
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 1116
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47352c7a1f9ebaee0800000000000000
+      internalID: -1248647247554260108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_12
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 1135
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a13849e1b2e26c70800000000000000
+      internalID: 8962975462171619747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 592
+        width: 367
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53bde90c78d035520800000000000000
+      internalID: 2689508279173700405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_14
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 592
+        width: 368
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f86e629e8104a10800000000000000
+      internalID: 1891539233154699014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_15
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 592
+        width: 368
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f8cab20fdddc14b0800000000000000
+      internalID: -5468251897641383693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_16
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 592
+        width: 368
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e17ba906da5744c0800000000000000
+      internalID: -4303371043597487643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 367
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea3088222a95eca0800000000000000
+      internalID: -5988210658020148507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 72
+        width: 368
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08fce6389b89f8a0800000000000000
+      internalID: -6270827520263915508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_19
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 72
+        width: 368
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a835ee56134e4d0800000000000000
+      internalID: -3106303529118889445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_20
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 72
+        width: 368
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cbf4c007a84aaf20800000000000000
+      internalID: 3434637547933072325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_21
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 15
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477e48f871f5bc7d0800000000000000
+      internalID: -2897117380486043788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_22
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 46
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761589c52c7d90ac0800000000000000
+      internalID: -3888339573480599193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_23
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 16
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f5ef6ab3eba0f7f0800000000000000
+      internalID: -580775357356972559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_24
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 15
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2beaffbf8229f4f40800000000000000
+      internalID: 5714947156880633522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_25
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 16
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d54cf3890dd5cac0800000000000000
+      internalID: -3835416474697316905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_26
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 16
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507b5b9c248e28880800000000000000
+      internalID: -8610064164029352187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_27
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 16
+        width: 4
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b39ca296e3ff2a0800000000000000
+      internalID: -6701569099093689589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_28
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 16
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97f61af58c87c420800000000000000
+      internalID: 2650241412785174426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_29
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 4
+        width: 24
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15c757891f262290800000000000000
+      internalID: -7915587508365703907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_30
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 15
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97edb98ec7dfe0820800000000000000
+      internalID: 2886523124111367801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_31
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 16
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf19f959e19957c0800000000000000
+      internalID: -4082071155811737665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_32
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 15
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07a14af88191b7f0800000000000000
+      internalID: -598537257963378930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RaderBackground (2)_33
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 15
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d62f11a238f7742a0800000000000000
+      internalID: -6753288914895506835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 74ba96981aaf7f249996b78b9a3a7db6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -14,7 +14,7 @@ public class EnemyBulletController : MonoBehaviour
 
         this.attackPower = attackPower;
 
-        Destroy(gameObject,2.0f);
+        Destroy(gameObject,4.0f);
     }
 
     private void OnCollisionEnter(Collision col)@@@//‰½‚©‚É“–‚½‚Á‚½‚Æ‚«‚Ìˆ—

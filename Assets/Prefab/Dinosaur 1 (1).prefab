@@ -3129,7 +3129,6 @@ GameObject:
   - component: {fileID: 7905073249716198188}
   - component: {fileID: 4432755117730729213}
   - component: {fileID: 8568406444710081033}
-  - component: {fileID: 251437238961105184}
   m_Layer: 6
   m_Name: EnemyRader
   m_TagString: Untagged
@@ -3145,8 +3144,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7530357584140238705}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5299988}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 40, z: -1.5299988}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 5336395267110879702}
   m_RootOrder: 8
@@ -3200,19 +3199,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &251437238961105184
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7530357584140238705}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7550051795899302462
 GameObject:
   m_ObjectHideFlags: 0
@@ -4177,7 +4163,7 @@ GameObject:
   - component: {fileID: 8959338476641104840}
   - component: {fileID: 8959338476641104839}
   - component: {fileID: 2458340497008386481}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dinosaur 1 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4241,7 +4227,7 @@ MonoBehaviour:
   enemyBloodPosition: {fileID: 4960207396117425525}
   enemyGenerator: {fileID: 0}
   attackRange: 100
-  enemyBulletControllerPrefab: {fileID: -3329901481104781890, guid: f7048cb47ca83d74c8160c970e1da06a, type: 3}
+  enemyBulletControllerPrefab: {fileID: -3329901481104781890, guid: 070b4c63afd666842b3e2a2a53fdca5f, type: 3}
   enemyBulletTran: {fileID: 5476807009339862731}
   shotSpeed: 1000
   attackInterval: 2

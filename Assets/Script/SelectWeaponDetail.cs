@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚ÌƒXƒNƒŠƒvƒg‚É‚ÍAˆê‚Âˆê‚Â‚Ìƒ{ƒ^ƒ“‚Ìİ’èi‰Ÿ‚µ‚½‚Æ‚«‚Ì‘€ì‚È‚Çj‚ğ‘‚­BÀÛ‚Éì‚é‚Ì‚ÍChooseWeaponWindowƒXƒNƒŠƒvƒg‚Ì’†B
 {
-    [SerializeField]
-    private ChooseWeaponManager chooseWeaponManager;
+    [SerializeField]    //‚±‚ÌserializeField‚ª‚È‚¢‚ÆƒGƒ‰[‚É‚È‚é
+    private ChooseSceneManager chooseSceneManager;
 
     private WeaponData weaponData;   //ì¬‚·‚éƒ{ƒ^ƒ“‚Ìƒf[ƒ^‚ª“ü‚éB
 
@@ -18,35 +18,38 @@ public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚Ìƒ
     [SerializeField]
     private Button btnSelectWeaponDetail;  //‚Ì‚¿‚Éu‚±‚Ìƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒƒ\ƒbƒhv‚ğ’Ç‰Á‚·‚é‚½‚ßA©g‚ÌButtonƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘ã“ü‚·‚éB
 
+    /// <summary>
+    /// Še•Šíƒ{ƒ^ƒ“‚É•Ší‚Ìî•ñ‚ğ˜AŒg‚³‚¹‚éifor•¶‚Ì’†‚Åˆê‚Â‚¸‚ÂŒÄ‚Ño‚µ‚Ä‚¢‚éj
+    /// </summary>
+    /// <param name="chooseWeaponWindow"></param>
+    /// <param name="weaponData"></param>
     public void SetUpSelectWeaponDetail(ChooseWeaponWindow chooseWeaponWindow,WeaponData weaponData)
     {
-        Debug.Log("SetUpSelectWeaponDetail“ü‚è‚Ü‚·B");
-
         this.chooseWeaponWindow = chooseWeaponWindow;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
 
-        Debug.Log("‚P");
-
         this.weaponData = weaponData;   //ˆø”‚Å‚Á‚Ä‚«‚½‚à‚Ì‚ğ‘ã“ü‚·‚é
-        Debug.Log("‚P");
+        
         ChangeActiveButton(false);      //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚é‚Ü‚Åƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚È‚­‚·‚é
-        Debug.Log("‚P");
+        
         weaponImage.sprite = this.weaponData.weaponSprite;   //Image‚É‚ ‚é‰æ‘œ‚ğƒ{ƒ^ƒ“‚É•\¦‚·‚éB
-        Debug.Log("‚P");
+        
         btnSelectWeaponDetail.onClick.AddListener(OnClickSelectCharaDetail);   //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—
-        Debug.Log("‚P");
+        
         ChangeActiveButton(true);       //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚½‚çƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚é‚æ‚¤‚É‚·‚é
     }
 
     private void OnClickSelectCharaDetail()
     {
-        chooseWeaponManager.audioSource.PlayOneShot(chooseWeaponManager.buttonSelectSE);
+        //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÌŒø‰Ê‰¹‚ğ–Â‚ç‚·
+        chooseSceneManager.audioSource.PlayOneShot(chooseSceneManager.buttonSelectSE);
 
-        chooseWeaponWindow.SetSelectWeaponDetail(weaponData);    //chooseWeaponWindow“à‚Ìˆ—‚ğ”­“®B‰Ÿ‚µ‚½ƒ{ƒ^ƒ“‚Ìî•ñ‚ğƒZƒbƒg‚·‚éB
+        //chooseWeaponWindow“à‚Ìˆ—‚ğ”­“®B‰Ÿ‚µ‚½ƒ{ƒ^ƒ“‚Ìî•ñ‚ğƒZƒbƒg‚·‚éB
+        chooseWeaponWindow.SetSelectWeaponDetail(weaponData);
     }
 
-    public void sendChooseWeaponManager(ChooseWeaponManager chooseWeaponManager)
+    public void sendChooseWeaponManager(ChooseSceneManager chooseSceneManager)
     {
-        this.chooseWeaponManager = chooseWeaponManager;
+        this.chooseSceneManager = chooseSceneManager;
     }
 
     private void ChangeActiveButton(bool isSwitch)

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 120177403183594801}
   - component: {fileID: 4778607543939617862}
   - component: {fileID: 34236689456919615}
-  - component: {fileID: 4285154000846137360}
-  m_Layer: 3
-  m_Name: WeaponFrame
+  - component: {fileID: -3329901481104781890}
+  m_Layer: 10
+  m_Name: EnemyFire
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 120177403202330097}
   m_LocalRotation: {x: -0.49243817, y: -0.50744915, z: 0.50744915, w: 0.49243817}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 120177403201896915}
   m_Father: {fileID: 0}
@@ -4848,7 +4848,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4285154000846137360
+--- !u!114 &-3329901481104781890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4857,9 +4857,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 120177403202330097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9bf46cd48f884942a903e0b2ed4308f, type: 3}
+  m_Script: {fileID: 11500000, guid: 60d41741db3f3eb4eb61a225024df8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPower: 0
 --- !u!1 &120177403202330099
 GameObject:
   m_ObjectHideFlags: 0
@@ -4871,7 +4872,7 @@ GameObject:
   - component: {fileID: 120177403201896915}
   - component: {fileID: 120177403183547539}
   - component: {fileID: 120177403183594803}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

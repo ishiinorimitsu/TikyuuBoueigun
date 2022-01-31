@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 8549103977386091545}
   - component: {fileID: 3620410495265887427}
   - component: {fileID: 3835771964166198805}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Insect
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -354,15 +354,15 @@ MonoBehaviour:
   enemyBloodPosition: {fileID: 2035982748660579749}
   enemyGenerator: {fileID: 0}
   attackRange: 100
-  enemyBulletControllerPrefab: {fileID: -3329901481104781890, guid: f7048cb47ca83d74c8160c970e1da06a, type: 3}
+  enemyBulletControllerPrefab: {fileID: 7850669470655254781, guid: c51d44789eac02349addeb139413cf9b, type: 3}
   enemyBulletTran: {fileID: 6838376642068962733}
   shotSpeed: 1000
   attackInterval: 2
-  maxEnemyHP: 1000
+  maxEnemyHP: 5000
   currentEnemyHP: 0
   audioSource: {fileID: 3835771964166198805}
-  attackVoice: {fileID: 8300000, guid: b038a89fc2e931d43aebb207117fe6c0, type: 3}
-  dieVoice: {fileID: 8300000, guid: e21bab7f24a1a9f4595d72bcb1ce21e8, type: 3}
+  attackVoice: {fileID: 8300000, guid: 187424ef29bda364495c1a12f44c5fec, type: 3}
+  dieVoice: {fileID: 8300000, guid: e43406497076ef24ab25f60f87a8959e, type: 3}
 --- !u!195 &8549103977386091545
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1810,7 +1810,6 @@ GameObject:
   - component: {fileID: 3503369939887983522}
   - component: {fileID: 5786721786801124542}
   - component: {fileID: 528444089406447946}
-  - component: {fileID: 6653442222868178883}
   m_Layer: 6
   m_Name: EnemyRader (1)
   m_TagString: Untagged
@@ -1826,8 +1825,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5904718085657317254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.45, z: 0.19}
-  m_LocalScale: {x: 5, y: 5, z: -5}
+  m_LocalPosition: {x: 0, y: 40, z: 0.19}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 2363473488373036732}
   m_RootOrder: 21
@@ -1881,19 +1880,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6653442222868178883
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5904718085657317254}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5956561363368957334
 GameObject:
   m_ObjectHideFlags: 0

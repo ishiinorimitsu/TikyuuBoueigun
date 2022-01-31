@@ -63,6 +63,20 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
 
         uiManager.taikyaku.onClick.AddListener(ClickTaikyakuButton);    //‘Ş‹pƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ğİ’è‚µ‚Ä‚¨‚­
 
+        //ƒg[ƒ^ƒ‹‚Ì‹°—³‚Ì”‚ğƒJƒEƒ“ƒg‚·‚é
+        DataBaseManager.instance.stageDataSO.StageDataList[0].totalDinosaurCount = DataBaseManager.instance.stageDataSO.StageDataList[0].wave1DinosaurCount
+
+                                                                                 + DataBaseManager.instance.stageDataSO.StageDataList[0].wave2DinosaurCount
+
+                                                                                 + DataBaseManager.instance.stageDataSO.StageDataList[0].wave3DinosaurCount;
+
+        //ƒg[ƒ^ƒ‹‚Ì©’‚Ì”‚ğƒJƒEƒ“ƒg‚·‚é
+        DataBaseManager.instance.stageDataSO.StageDataList[0].totalInsectCount = DataBaseManager.instance.stageDataSO.StageDataList[0].wave1InsectCount
+
+                                                                                + DataBaseManager.instance.stageDataSO.StageDataList[0].wave2InsectCount
+
+                                                                                + DataBaseManager.instance.stageDataSO.StageDataList[0].wave3InsectCount;
+
         SetGameState(GameState.play);     //ƒvƒŒƒC‚Å‚«‚éó‘Ô‚É‚·‚éB
 
         if(currentGameState == GameState.play)

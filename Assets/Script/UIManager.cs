@@ -90,10 +90,6 @@ public class UIManager : MonoBehaviour
 
     public Text defeatInsectCount;   //倒した虫の数
 
-    private int dinosaurCounter = 0;   //敵の数をカウント
-
-    private int insectCount = 0;　　//虫の数をカウント
-
 
     //-------------------------------------効果音の設定-------------------------------------//
 
@@ -301,16 +297,9 @@ public class UIManager : MonoBehaviour
 
     private void CountDefeatEnemy()
     {
-        for(int i = 0; i < DataBaseManager.instance.stageDataSO.stageDataList.Count; i++)
-        {
-            dinosaurCounter += DataBaseManager.instance.stageDataSO.stageDataList[i].DinosaurCount;
-
-            insectCount += DataBaseManager.instance.stageDataSO.stageDataList[i].InsectCount;
-        }
-
         //今計算したものをテキストに入れる。
-        defeatDinosaurCount.text = dinosaurCounter.ToString();
+        defeatDinosaurCount.text = GameData.instance.currentStageData.totalDinosaurCount.ToString();
 
-        defeatInsectCount.text = insectCount.ToString();
+        defeatInsectCount.text = GameData.instance.currentStageData.totalInsectCount.ToString();
     }
 }
