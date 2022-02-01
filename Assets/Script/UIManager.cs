@@ -86,6 +86,8 @@ public class UIManager : MonoBehaviour
 
     public Button saityousen;    //再挑戦のボタン（のちにここを押したときにGameSceneを読み込む）
 
+    public Button returnHome;    //クリアした後の「ホームに戻る」ボタン
+
     public Text defeatDinosaurCount;    //倒した恐竜の数   
 
     public Text defeatInsectCount;   //倒した虫の数
@@ -254,6 +256,9 @@ public class UIManager : MonoBehaviour
     {
         //倒した敵の数を数える
         CountDefeatEnemy();
+
+        //returnHomeのスイッチを入れる。
+        returnHome.gameObject.SetActive(true);
         
         //ClearResultを出す
         clearWindow.DOFade(1.0f,1.0f);
@@ -273,6 +278,10 @@ public class UIManager : MonoBehaviour
 
         //失敗のBGMを流す
         audioSource.PlayOneShot(failBGM);
+
+        //切っていた退却、再挑戦のスイッチを入れる
+        taikyaku.gameObject.SetActive(true);
+        saityousen.gameObject.SetActive(true);
 
         gameOverSet.DOFade(endValue: 1.0f, duration: 2.0f);     //2秒間かけてGameOverを見えるようにする
 

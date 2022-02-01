@@ -32,6 +32,10 @@ public class ChooseStageWindow : MonoBehaviour
     {
         this.chooseSceneManager = chooseSceneManager;
 
+        chooseStageData = null;
+
+        btnSubmit.interactable = false;
+
         for (int i = 0; i < DataBaseManager.instance.stageDataSO.StageDataList.Count; i++)   
         {
             //ボタンのゲームオブジェクトを生成する
@@ -57,5 +61,7 @@ public class ChooseStageWindow : MonoBehaviour
         dinosaurCount.text = stageData.totalDinosaurCount.ToString();
 
         insectCount.text = stageData.totalInsectCount.ToString();
+
+        btnSubmit.interactable = true;
     }
 }

@@ -1536,7 +1536,7 @@ MonoBehaviour:
   totalInsectCount: {fileID: 2050940995}
   audioSource: {fileID: 1634329175}
   buttonSelectSE: {fileID: 8300000, guid: e729755d89dfcbe4ea7382a0a31315c8, type: 3}
-  openMenu: {fileID: 0}
+  openMenu: {fileID: 8300000, guid: 85281902ccc2f69468d7894ca9cc78c9, type: 3}
   syutugekiButtonSE: {fileID: 8300000, guid: 5084ad4df110f95488c3eb8d90a3df9f, type: 3}
 --- !u!4 &1634329174
 Transform:

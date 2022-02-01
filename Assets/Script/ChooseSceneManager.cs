@@ -107,7 +107,9 @@ public class ChooseSceneManager : MonoBehaviour
 
         stageButton.onClick.AddListener(ChooseStage);
 
-        gameStartButton.interactable = false;
+        stageData = null;    //この2行がないと[SerializedField]があると、nullにならない
+
+        gameStartButton.interactable = false;   //武器2つとステージが選択されていないと「出撃」ボタンは押せない
 
         gameStartButton.onClick.AddListener(OnClickGameStart);
 
@@ -125,8 +127,6 @@ public class ChooseSceneManager : MonoBehaviour
     /// <param name="chooseSlotType"></param>
     private void ChooseWeapon(WeaponSlotType chooseSlotType)
     {
-        Debug.Log("ChooseWeapon始まりました。");
-
         //メニューを開くときの音を鳴らす
         audioSource.PlayOneShot(openMenu);
 
@@ -136,8 +136,6 @@ public class ChooseSceneManager : MonoBehaviour
             //初回だけ。２回目からはスイッチを入れたり消したりで処理する。
             //第三引数は何かの子オブジェクトの場合、特に今回はCanvasの子オブジェクトなので、falseにしないとworldspaceの座標で生成されてしまう。
             weaponInfo = Instantiate(chooseWeaponWindowPrefab,canvasTran,false);
-
-            Debug.Log("SetUpChooseWeaponWindow試みます");
 
             weaponInfo.SetUpChooseWeaponWindow(this);
         }
@@ -177,7 +175,7 @@ public class ChooseSceneManager : MonoBehaviour
                 break;
         }
 
-        if (weaponData1 != null && weaponData2 != null)     //どちらも何か入っていないと出撃できないようにする
+        if (weaponData1 != null && weaponData2 != null && stageData != null)     //いずれも何か入っていないと出撃できないようにする
         {
             gameStartButton.interactable = true;
         }
@@ -197,8 +195,6 @@ public class ChooseSceneManager : MonoBehaviour
     /// </summary>
     private void ChooseStage()
     {
-        Debug.Log("ChooseStage始まりました。");
-
         //メニューを開くときの音を鳴らす
         audioSource.PlayOneShot(openMenu);
 
@@ -207,8 +203,6 @@ public class ChooseSceneManager : MonoBehaviour
         {
             //初回だけ。２回目からはスイッチを入れたり消したりで処理する。
             stageInfo = Instantiate(chooseStageWindowPrefab, canvasTran, false);   //第三引数は何かの子オブジェクトの場合、特に今回はCanvasの子オブジェクトなので、falseにしないとworldspaceの座標で生成されてしまう。
-
-            Debug.Log("SetUpChooseWeaponWindow試みます");
 
             stageInfo.SetUpChooseStageWindow(this);
         }
@@ -232,11 +226,21 @@ public class ChooseSceneManager : MonoBehaviour
         //「ステージを選択してください」を、今選んだステージのサブタイトルに変更する
         stageButtonText.text = stageData.subTitle.ToString();
 
-        //ステージの下の説明欄の出てくる数を更新する
+        //ステージの下の説明欄の出てくる数を更新する（恐竜）
         totalDinosaurCount.text = stageData.totalDinosaurCount.ToString();
 
-        //ステージの下の説明欄の出てくる数を更新する
+        //ステージの下の説明欄の出てくる数を更新する（昆虫）
         totalInsectCount.text = stageData.totalInsectCount.ToString();
+
+        //出撃ボタンの条件確認
+        if (weaponData1 != null && weaponData2 != null && stageData != null)     //いずれも何か入っていないと出撃できないようにする
+        {
+            gameStartButton.interactable = true;
+        }
+        else
+        {
+            gameStartButton.interactable = false;
+        }
 
         //今の選択画面を見えなくする
         stageInfo.gameObject.SetActive(false);

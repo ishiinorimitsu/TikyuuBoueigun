@@ -49,15 +49,22 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
 
         enemyGenerator.EnemyGenerate();     //Wave1‚ÍStartƒƒ\ƒbƒh‚É‘‚¢‚Ä‚¨‚­B
 
+        uiManager.returnHome.gameObject.SetActive(false);    //‚±‚ê‚ğØ‚ç‚È‚¢‚ÆAuƒz[ƒ€‚É–ß‚évƒ{ƒ^ƒ“‚Í‰Ÿ‚¹‚Ä‚µ‚Ü‚¤B
         uiManager.gameClearSet.alpha = 0;    //ƒQ[ƒ€ƒNƒŠƒA‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­B
 
         uiManager.clearWindow.alpha = 0;    //ƒQ[ƒ€ƒNƒŠƒA‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­B
 
-        uiManager.gameOverSet.alpha = 0;    //ƒQ[ƒ€ƒI[ƒo[‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­B
+        uiManager.taikyaku.gameObject.SetActive(false);    //‚±‚ê‚ğØ‚ç‚È‚¢‚ÆA‘Ş‹p‚âÄ’§í‚Ìƒ{ƒ^ƒ“‚Í‰Ÿ‚¹‚Ä‚µ‚Ü‚¤B
+
+        uiManager.saityousen.gameObject.SetActive(false);    //‚±‚ê‚ğØ‚ç‚È‚¢‚ÆA‘Ş‹p‚âÄ’§í‚Ìƒ{ƒ^ƒ“‚Í‰Ÿ‚¹‚Ä‚µ‚Ü‚¤B
+
+        uiManager.gameOverSet.alpha = 0;    //ƒQ[ƒ€ƒI[ƒo[‚ÌUI‚ğ‰B‚µ‚Ä‚¨‚­Bi™X‚Éo‚·‚Æ‚¢‚¤‰‰o‚Ì‚½‚ßA‚±‚ê‚à‚â‚Á‚Ä‚¨‚­j
 
         uiManager.gameEndBackGround.alpha = 0;   //ƒQ[ƒ€‚ªI‚í‚Á‚½‚Æ‚«‚É”wŒi‚ğ‚Ú‚©‚·‚à‚ÌB
 
         uiManager.gameOverWindow.alpha = 0;
+
+        uiManager.returnHome.onClick.AddListener(ClickReturnHomeButton);    //ƒz[ƒ€‚É–ß‚éƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ğİ’è‚µ‚Ä‚¨‚­
 
         uiManager.saityousen.onClick.AddListener(ClickSaityousenButton);    //Ä’§íƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìˆ—‚ğİ’è‚µ‚Ä‚¨‚­
 
@@ -130,7 +137,10 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
         enemyGenerator.EnemyGenerate();
     }
 
-
+    private void ClickReturnHomeButton()
+    {
+        SceneManager.LoadScene("ChooseWeapon");
+    }
 
     /// <summary>
     /// GameState‚ğˆø”‚Ì’†‚Ì‚à‚Ì‚É•ÏX‚·‚é

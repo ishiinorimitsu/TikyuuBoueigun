@@ -125,8 +125,6 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
             Destroy(effect, 0.5f);
 
             Destroy(gameObject);
-
-            Debug.Log("敵と衝突");
         }
         if (col.tag == "Ground")
         {
@@ -136,8 +134,6 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
             Destroy(effect, 0.5f);
 
             Destroy(gameObject);
-
-            Debug.Log("地面と衝突");
         }
     }
 
@@ -155,11 +151,7 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
 
             Destroy(effect, 0.5f);
 
-            Debug.Log("OK");
-
             Destroy(gameObject);
-
-            Debug.Log("敵と衝突");
         }
         if (col.gameObject.tag == "Ground")
         {
@@ -169,8 +161,6 @@ public class BulletController : MonoBehaviour       //弾の処理のスクリプト。
             Destroy(effect, 0.5f);
 
             Destroy(gameObject);
-
-            Debug.Log("地面と衝突");
         }
     }
 }

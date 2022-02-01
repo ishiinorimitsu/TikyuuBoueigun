@@ -38,6 +38,9 @@ public class SelectWeaponDetail : MonoBehaviour    //ì¬‚·‚é•Ší‚Ìƒ{ƒ^ƒ“B‚±‚Ìƒ
         ChangeActiveButton(true);       //ƒ{ƒ^ƒ“‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒƒ\ƒbƒh‚Ì€”õ‚ª‚Å‚«‚½‚çƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚é‚æ‚¤‚É‚·‚é
     }
 
+    /// <summary>
+    /// ‘I‘ğ‚µ‚½î•ñ‚ğchooseWeaponWindow‚É‘—‚é
+    /// </summary>
     private void OnClickSelectCharaDetail()
     {
         //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«‚ÌŒø‰Ê‰¹‚ğ–Â‚ç‚·

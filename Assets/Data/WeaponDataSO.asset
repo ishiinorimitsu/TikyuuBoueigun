@@ -49,7 +49,7 @@ MonoBehaviour:
     maxBullet: 30
     bulletPrefab: {fileID: 7877729539901980039, guid: ab255ab8db89ded4b98d33ff0c2bcedf, type: 3}
     reloadEnergy: 20
-    reloadTime: 20
+    reloadTime: 1
     bulletSpeed: 5000
     rapidFire: 1
     rapidFireTimer: 10

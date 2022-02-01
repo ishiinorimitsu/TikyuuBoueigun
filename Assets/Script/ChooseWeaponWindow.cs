@@ -40,36 +40,29 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
     [SerializeField]
     private ChooseSceneManager chooseWeaponManager;    //ChooseWeaponManager‚ğ“ü‚ê‚é
 
+    /// <summary>
+    /// ‚±‚ÌƒXƒNƒŠƒvƒg‚ÌStartƒƒ\ƒbƒh‘Ö‚í‚è
+    /// </summary>
+    /// <param name="chooseSceneManager"></param>
     public void SetUpChooseWeaponWindow(ChooseSceneManager chooseSceneManager)   //•Ší‚Ìƒ{ƒ^ƒ“‚Ì¶¬
     {
-        Debug.Log("SetUpChooseWeaponWindown‚Ü‚è‚Ü‚µ‚½B");
-
         this.chooseWeaponManager = chooseSceneManager;
 
-        Debug.Log("–³–ChooseWeaponManager“ü‚è‚Ü‚µ‚½B");
+        chooseWeaponData = null;     //Å‰‚ÍuŒ»İ‘I‚ñ‚Å‚¢‚é•Šív‚ğ‹ó‚É‚·‚é
 
-        for (int i = 0; i < DataBaseManager.instance.weaponDataSO.weaponDataList.Count; i++)   //‚Ü‚¸5ŒÂƒ{ƒ^ƒ“‚ğì‚Á‚Ä‚İ‚éB
+        btnSubmit.interactable = false;    //‰½‚à•Ší‚ğ‘I‚ñ‚Å‚¢‚È‚¢ó‘Ô‚Å‚ÍuŒˆ’èvƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚È‚¢
+
+        //weapoList‚ÌŒÂ”‚ğ‚à‚Æ‚Éƒ{ƒ^ƒ“‚ğì‚éB
+        for (int i = 0; i < DataBaseManager.instance.weaponDataSO.weaponDataList.Count; i++)
         {
-            Debug.Log("botanntukuroutosimasu");
-
             //ƒ{ƒ^ƒ“‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚·‚é
             SelectWeaponDetail selectWeaponDetail = Instantiate(selectWeaponDetailPrefab, selectWeaponDetailTran, false);
-
-            Debug.Log(selectWeaponDetail);
-
-            Debug.Log(this);
-            
-            Debug.Log(DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
             
             //ƒ{ƒ^ƒ“‚Éˆ—‚ğ’Ç‰Á‚·‚é
             selectWeaponDetail.SetUpSelectWeaponDetail(this,DataBaseManager.instance.weaponDataSO.weaponDataList[i]);
-
-            Debug.Log("ƒ{ƒ^ƒ“ì‚èI‚í‚è‚Ü‚µ‚½");
         }
 
         btnSubmit.onClick.AddListener(() => chooseSceneManager.SubmitWeapon(chooseWeaponData));   //AddListener‚Íˆø”‚ª‚ ‚é‚Æ‚«‚Í‚±‚ÌŒ`‚É‚·‚éB
-
-        Debug.Log("SetUpChooseWeaponWindowŠ®—¹‚µ‚Ü‚µ‚½B");
     }
 
     /// <summary>
@@ -91,5 +84,7 @@ public class ChooseWeaponWindow : MonoBehaviour@@//‚±‚ÌƒXƒNƒŠƒvƒg‚Å‚Íƒ{ƒ^ƒ“‚Ì
         txtPickupWeaponMaxShot.text = weaponData.maxBullet.ToString();     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚ÌÅ‘å’e”‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚ÌÅ‘å’e”‚ª“ü—Í‚³‚ê‚éB
 
         txtWeaponDescription.text = weaponData.discription;     //¡‘I‘ğ‚µ‚Ä‚¢‚é•Ší‚Ìà–¾‚ÉAƒNƒŠƒbƒN‚³‚ê‚½ƒ{ƒ^ƒ“‚Ìà–¾‚ª“ü—Í‚³‚ê‚éB
+
+        btnSubmit.interactable = true;    //‰½‚©‚µ‚ç‚ª‰Ÿ‚³‚ê‚½‚Æ‚¢‚¤‚±‚Æ‚È‚Ì‚ÅAuŒˆ’èvƒ{ƒ^ƒ“‚ğ‰Ÿ‚¹‚é‚æ‚¤‚É‚·‚é
     }
 }
