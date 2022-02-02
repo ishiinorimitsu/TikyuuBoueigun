@@ -3676,6 +3676,7 @@ MonoBehaviour:
   enemyBulletTran: {fileID: 4885906204287658275}
   shotSpeed: 1000
   attackInterval: 2
+  attackPower: 0
   maxEnemyHP: 8000
   currentEnemyHP: 0
   audioSource: {fileID: 3301834051623020121}
@@ -3691,7 +3692,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 20
+  m_Speed: 40
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

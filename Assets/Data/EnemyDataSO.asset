@@ -25,3 +25,15 @@ MonoBehaviour:
     bloodPrefab: {fileID: 6529438783881082186, guid: a4a9f3da2edd4ef488e52365d549c87d, type: 3}
     enemyBulletPrefab: {fileID: -3329901481104781890, guid: 070b4c63afd666842b3e2a2a53fdca5f, type: 3}
     discription: 
+  - enemyName: BossDinosaur
+    enemyNo: 2
+    enemyPrefab: {fileID: 1108716025514147084, guid: 780e27aa2902b08438840b31d49ed918, type: 3}
+    bloodPrefab: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
+    enemyBulletPrefab: {fileID: -3329901481104781890, guid: 070b4c63afd666842b3e2a2a53fdca5f, type: 3}
+    discription: 
+  - enemyName: BossInsect
+    enemyNo: 3
+    enemyPrefab: {fileID: 3174984315008328190, guid: 249c80d8cd1991140b00d675d50e8f74, type: 3}
+    bloodPrefab: {fileID: 6529438783881082186, guid: a4a9f3da2edd4ef488e52365d549c87d, type: 3}
+    enemyBulletPrefab: {fileID: -3329901481104781890, guid: 070b4c63afd666842b3e2a2a53fdca5f, type: 3}
+    discription: 

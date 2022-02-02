@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBulletController : MonoBehaviour
 {
+    //キャラクターに当たったときにここのattackPowerを参考にダメージ計算をするので、これも作っておく。
     public int attackPower;
 
     public void EnemyShot(Vector3 direction,float shotSpeed,int attackPower)
@@ -12,6 +13,7 @@ public class EnemyBulletController : MonoBehaviour
 
         rb.AddForce(direction*shotSpeed);
 
+        //キャラに当たったときのためにここに持ってくる。
         this.attackPower = attackPower;
 
         Destroy(gameObject,4.0f);

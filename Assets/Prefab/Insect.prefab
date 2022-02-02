@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4661193130046993290
 Transform:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 2361032468688353398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1500, y: 64.54, z: 917.19}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 2365284715373652614}
   - {fileID: 2363444532538275556}
@@ -350,15 +350,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   dieCollider: {fileID: 3620410495265887427}
-  blood: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
+  blood: {fileID: 6529438783881082186, guid: a4a9f3da2edd4ef488e52365d549c87d, type: 3}
   enemyBloodPosition: {fileID: 2035982748660579749}
   enemyGenerator: {fileID: 0}
-  attackRange: 100
+  attackRange: 300
   enemyBulletControllerPrefab: {fileID: 7850669470655254781, guid: c51d44789eac02349addeb139413cf9b, type: 3}
   enemyBulletTran: {fileID: 6838376642068962733}
-  shotSpeed: 1000
-  attackInterval: 2
-  maxEnemyHP: 5000
+  shotSpeed: 10000
+  attackInterval: 3
+  attackPower: 20
+  maxEnemyHP: 2500
   currentEnemyHP: 0
   audioSource: {fileID: 3835771964166198805}
   attackVoice: {fileID: 8300000, guid: 187424ef29bda364495c1a12f44c5fec, type: 3}
@@ -373,7 +374,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.7
-  m_Speed: 20
+  m_Speed: 30
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1826,7 +1827,7 @@ Transform:
   m_GameObject: {fileID: 5904718085657317254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 40, z: 0.19}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2363473488373036732}
   m_RootOrder: 21

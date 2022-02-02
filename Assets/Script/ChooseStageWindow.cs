@@ -26,7 +26,10 @@ public class ChooseStageWindow : MonoBehaviour
     private Text dinosaurCount;    //出てくる恐竜の数を入れる
 
     [SerializeField]
-    private Text insectCount;　　//出てくる昆虫の数を入れる
+    private Text insectCount;  //出てくる昆虫の数を入れる
+
+    [SerializeField]
+    private Text bossCount;　　//出てくるボスの数を入れる
 
     public void SetUpChooseStageWindow(ChooseSceneManager chooseSceneManager)   //武器のボタンの生成
     {
@@ -61,6 +64,8 @@ public class ChooseStageWindow : MonoBehaviour
         dinosaurCount.text = stageData.totalDinosaurCount.ToString();
 
         insectCount.text = stageData.totalInsectCount.ToString();
+
+        bossCount.text = stageData.totalBossCount.ToString();
 
         btnSubmit.interactable = true;
     }

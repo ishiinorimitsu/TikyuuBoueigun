@@ -23,6 +23,10 @@ public class EnemyGenerator : MonoBehaviour
 
     private int currentWaveInsectCount;     //今のウェーブで生成する昆虫の数
 
+    private int currentWaveBossDinosaurCount;　　//今のウェーブで作る恐竜の数
+
+    private int currentWaveBossInsectCount;     //今のウェーブで生成する昆虫の数
+
     private int currentWaveGenerateTran;     //今のウェーブで生成する場所
 
     /// <summary>
@@ -63,6 +67,8 @@ public class EnemyGenerator : MonoBehaviour
                 //現在のウェーブのそれぞれの敵の数、生成する場所をcurrentWaveDinosaurCountなどに対応させる。
                 currentWaveDinosaurCount = GameData.instance.currentStageData.wave1DinosaurCount;
                 currentWaveInsectCount = GameData.instance.currentStageData.wave1InsectCount;
+                currentWaveBossDinosaurCount = GameData.instance.currentStageData.wave1BossDinosaur;
+                currentWaveBossInsectCount = GameData.instance.currentStageData.wave1BossInsect;
                 currentWaveGenerateTran = GameData.instance.currentStageData.wave1GenerateEnemyTranIndex;
 
                 Debug.Log("Wave1です");
@@ -73,6 +79,8 @@ public class EnemyGenerator : MonoBehaviour
                 //現在のウェーブのそれぞれの敵の数、生成する場所をcurrentWaveDinosaurCountなどに対応させる。
                 currentWaveDinosaurCount = GameData.instance.currentStageData.wave2DinosaurCount;
                 currentWaveInsectCount = GameData.instance.currentStageData.wave2InsectCount;
+                currentWaveBossDinosaurCount = GameData.instance.currentStageData.wave2BossDinosaur;
+                currentWaveBossInsectCount = GameData.instance.currentStageData.wave2BossInsect;
                 currentWaveGenerateTran = GameData.instance.currentStageData.wave2GenerateEnemyTranIndex;
 
                 Debug.Log("Wave2です");
@@ -83,6 +91,8 @@ public class EnemyGenerator : MonoBehaviour
                 //現在のウェーブのそれぞれの敵の数、生成する場所をcurrentWaveDinosaurCountなどに対応させる。
                 currentWaveDinosaurCount = GameData.instance.currentStageData.wave3DinosaurCount;
                 currentWaveInsectCount = GameData.instance.currentStageData.wave3InsectCount;
+                currentWaveBossDinosaurCount = GameData.instance.currentStageData.wave3BossDinosaur;
+                currentWaveBossInsectCount = GameData.instance.currentStageData.wave3BossInsect;
                 currentWaveGenerateTran = GameData.instance.currentStageData.wave3GenerateEnemyTranIndex;
 
                 Debug.Log("Wave3です");
@@ -144,6 +154,60 @@ public class EnemyGenerator : MonoBehaviour
             GameObject insectEnemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[1].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
 
             insectEnemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
+
+            generatedEnemyCount++;     //生成した敵の数を数える
+        }
+
+
+        //ボス恐竜の生成
+        for (int j = 0; j < currentWaveBossDinosaurCount; j++)
+        {
+            //------------------------------------位置の指定------------------------------------------------------//
+
+            Vector2 enemyGenerateTran = radius * Random.insideUnitCircle;      //半径[radius]の円の中からランダムで取得できた。(x,y)のx座標はVector3でもx座標に、y座標はVector3のz座標に加える
+
+            Vector3 trueEnemyGenerateTran = new Vector3(
+
+                    enemyGenerateTran.x + enemyTran[currentWaveGenerateTran].position.x,      //DataBaseManagerの中のStageDataSOで指定した場所のそれぞれの座標にenemyGenerateTranのものを加える。
+
+                    enemyTran[currentWaveGenerateTran].position.y,
+
+                    enemyGenerateTran.y + enemyTran[currentWaveGenerateTran].position.z
+
+                    );
+
+            //------------------------------------生成する------------------------------------------------------//
+
+            GameObject bossDinosaurEnemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[2].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
+
+            bossDinosaurEnemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
+
+            generatedEnemyCount++;     //生成した敵の数を数える
+        }
+
+
+        //ボス虫の生成
+        for (int j = 0; j < currentWaveBossInsectCount; j++)
+        {
+            //------------------------------------位置の指定------------------------------------------------------//
+
+            Vector2 enemyGenerateTran = radius * Random.insideUnitCircle;      //半径[radius]の円の中からランダムで取得できた。(x,y)のx座標はVector3でもx座標に、y座標はVector3のz座標に加える
+
+            Vector3 trueEnemyGenerateTran = new Vector3(
+
+                    enemyGenerateTran.x + enemyTran[currentWaveGenerateTran].position.x,      //DataBaseManagerの中のStageDataSOで指定した場所のそれぞれの座標にenemyGenerateTranのものを加える。
+
+                    enemyTran[currentWaveGenerateTran].position.y,
+
+                    enemyGenerateTran.y + enemyTran[currentWaveGenerateTran].position.z
+
+                    );
+
+            //------------------------------------生成する------------------------------------------------------//
+
+            GameObject bossInsectEnemy = Instantiate(DataBaseManager.instance.enemyDataSO.enemyDataList[3].enemyPrefab, trueEnemyGenerateTran, Quaternion.identity);
+
+            bossInsectEnemy.GetComponent<EnemyController>().GetEnemyGenerator(this);    //この処理で作ったEnemyController内にEnemyGeneratorを入れる。
 
             generatedEnemyCount++;     //生成した敵の数を数える
         }

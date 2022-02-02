@@ -43,7 +43,8 @@ public class EnemyController : MonoBehaviour
 
     private float timer;    //このタイマーがインターバルの時間を超えたら攻撃する
 
-    private int attackPower = 20;    //攻撃力
+    [SerializeField]
+    private int attackPower;    //攻撃力
 
     //-----------------------------------------体力関係----------------------------------------------------//
 
@@ -74,6 +75,8 @@ public class EnemyController : MonoBehaviour
         anim = GetComponent<Animator>();  //Animatorを入れる
 
         currentEnemyHP = maxEnemyHP;   //敵の体力をマックスにする
+
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -175,11 +178,7 @@ public class EnemyController : MonoBehaviour
 
             if (currentEnemyHP > 0)
             {
-                Debug.Log("Hit");
-
                 anim.SetTrigger("Hit");
-
-                Debug.Log("ヒット");
 
                 audioSource.PlayOneShot(attackVoice);   
             }
@@ -208,76 +207,62 @@ public class EnemyController : MonoBehaviour
     /// <param name="col"></param>
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Bullet")
+        //この時点では弾が当たる前までのHP
+        if (currentEnemyHP > 0)
         {
-            if(player == null)
+            anim.SetTrigger("Hit");
+
+            audioSource.PlayOneShot(attackVoice);
+
+            if (col.gameObject.tag == "Bullet")
             {
-                player = GameObject.Find("Player");
-            }
+                //if(player == null)
+                //{
+                //    player = GameObject.Find("Player");
+                //}
 
-            Debug.Log("弾と認識");
-
-            currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //弾が当たったときその武器の攻撃力分敵のHPを減らす。
-
-
-
-            //上記の理由でOnParticleCollisionを使い、引数がGameObjectになったので、foreachの中のcontactが使えない。したがって、「当たった場所に血のエフェクトを発生させる」という処理の実装はあきらめ、あらかじめ血を発生させる場所を指定しておく
-            //foreach (var point in col.contacts)     //血を生成する処理
-            //{
-            //    var enemyBloodEffect = Instantiate(blood, point.point, Quaternion.identity);
-
-            //    Destroy(enemyBloodEffect, 1.0f);
-            //}
+                currentEnemyHP -= GameData.instance.equipWeaponData.weaponAttackPower;    //弾が当たったときその武器の攻撃力分敵のHPを減らす。
 
 
-            //こっちを実際に使う
-            var enemyBloodEffect = Instantiate(blood, enemyBloodPosition.position, Quaternion.identity);
 
-            Destroy(enemyBloodEffect, 1.0f);
+                //上記の理由でOnParticleCollisionを使い、引数がGameObjectになったので、foreachの中のcontactが使えない。したがって、「当たった場所に血のエフェクトを発生させる」という処理の実装はあきらめ、あらかじめ血を発生させる場所を指定しておく
+                //foreach (var point in col.contacts)     //血を生成する処理
+                //{
+                //    var enemyBloodEffect = Instantiate(blood, point.point, Quaternion.identity);
+
+                //    Destroy(enemyBloodEffect, 1.0f);
+                //}
+
+                //今の攻撃でHPが０になったら
+                if (currentEnemyHP <= 0)  
+                {
+                    ////HPが0になったときコライダのトリガーをオンにすることで弾を当たらなくする。
+                    //dieCollider.isTrigger = true;
+
+                    //StartCoroutine(DieAnimation());
+
+                    anim.SetTrigger("Die");
+
+                    audioSource.PlayOneShot(dieVoice);
+
+                    enemyGenerator.SendCountUpKnockOutEnemyCount();    //倒した敵の数を一体ずつ増やしていく
+
+                    Destroy(gameObject, 1.0f);    //1.4秒後に消滅
+                }
 
 
-            if (currentEnemyHP > 0)
-            {
-                Debug.Log("Hit");
+                //こっちを実際に使う
+                var enemyBloodEffect = Instantiate(blood, enemyBloodPosition.position, Quaternion.identity);
 
-                anim.SetTrigger("Hit");
-
-                Debug.Log("ヒット");
-
-                audioSource.PlayOneShot(attackVoice);
-            }
-
-            if (currentEnemyHP <= 0)  //敵のHPがなくなったら
-            {
-                //HPが0になったときコライダのトリガーをオンにすることで弾を当たらなくする。
-                dieCollider.isTrigger = true;
-
-                //StartCoroutine(DieAnimation());
-
-                anim.SetTrigger("Die");
-
-                audioSource.PlayOneShot(dieVoice);
-
-                enemyGenerator.SendCountUpKnockOutEnemyCount();　　　　//倒した敵の数を一体ずつ増やしていく
-
-                Destroy(gameObject, 1.0f);    //1.4秒後に消滅
+                Destroy(enemyBloodEffect, 1.0f);
             }
         }
-    }
 
-    /// <summary>
-    /// 死ぬときのアニメーションや声を再生する
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator DieAnimation()
-    {
-        anim.SetTrigger("Die");
-
-        audioSource.PlayOneShot(dieVoice);
-
-        Debug.Log("sadousiteiru");
-
-        yield return null;
+        //既にHPが0だった場合何もしない。
+        if(currentEnemyHP <= 0)
+        {
+            return;
+        }       
     }
 }
 

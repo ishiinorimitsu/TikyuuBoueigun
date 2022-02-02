@@ -76,6 +76,9 @@ public class ChooseSceneManager : MonoBehaviour
     [SerializeField]
     private Text totalInsectCount;    //出現する昆虫の数(ステージの下の説明欄)
 
+    [SerializeField]
+    private Text totalBossCount;    //出現するボスの数(ステージの下の説明欄)
+
 
 
     //------------------------------------------効果音に関する処理-----------------------------------------------//
@@ -231,6 +234,9 @@ public class ChooseSceneManager : MonoBehaviour
 
         //ステージの下の説明欄の出てくる数を更新する（昆虫）
         totalInsectCount.text = stageData.totalInsectCount.ToString();
+
+        //ステージの下の説明欄の出てくる数を更新する（昆虫）
+        totalBossCount.text = stageData.totalBossCount.ToString();
 
         //出撃ボタンの条件確認
         if (weaponData1 != null && weaponData2 != null && stageData != null)     //いずれも何か入っていないと出撃できないようにする

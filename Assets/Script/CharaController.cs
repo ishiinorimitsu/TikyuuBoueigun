@@ -251,12 +251,9 @@ public class CharaController : MonoBehaviour
     {
         if (gameManager.currentGameState == GameManager.GameState.play)
         {
-            
-            
              //移動する
              Move();
             
-
             //カメラの向きからキャラの向きを変える。
             LookRotation();
         }
@@ -267,7 +264,6 @@ public class CharaController : MonoBehaviour
     public void Move()
     {
         //rb.velocity = new Vector3(x * moveSpeed,rb.velocity.y, z * moveSpeed);
-
         if (x != 0 || z != 0)
         {
             anim.SetBool("Idle", false);
@@ -309,6 +305,7 @@ public class CharaController : MonoBehaviour
 
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
+       
 
         // キャラクターの向きを進行方向に
         //if (moveForward != Vector3.zero)

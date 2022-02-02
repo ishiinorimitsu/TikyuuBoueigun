@@ -1963,7 +1963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5476807010091729109
 Transform:
   m_ObjectHideFlags: 0
@@ -3145,7 +3145,7 @@ Transform:
   m_GameObject: {fileID: 7530357584140238705}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 40, z: -1.5299988}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5336395267110879702}
   m_RootOrder: 8
@@ -4179,7 +4179,7 @@ Transform:
   m_GameObject: {fileID: 8959338476641104837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1500, y: 54.4, z: 930}
-  m_LocalScale: {x: 10, y: 10, z: -10}
+  m_LocalScale: {x: 20, y: 20, z: -20}
   m_Children:
   - {fileID: 734600453662324188}
   - {fileID: 3112687203451486025}
@@ -4226,11 +4226,12 @@ MonoBehaviour:
   blood: {fileID: 1675886140082734088, guid: 3125f8ae800e7ad4c8105b95d72329e9, type: 3}
   enemyBloodPosition: {fileID: 4960207396117425525}
   enemyGenerator: {fileID: 0}
-  attackRange: 100
-  enemyBulletControllerPrefab: {fileID: -3329901481104781890, guid: 070b4c63afd666842b3e2a2a53fdca5f, type: 3}
+  attackRange: 300
+  enemyBulletControllerPrefab: {fileID: 8133620663894644809, guid: 30461c31b1028ff4da778c1473545a4a, type: 3}
   enemyBulletTran: {fileID: 5476807009339862731}
-  shotSpeed: 1000
+  shotSpeed: 10000
   attackInterval: 2
+  attackPower: 40
   maxEnemyHP: 1000
   currentEnemyHP: 0
   audioSource: {fileID: 2458340497008386481}
@@ -4246,7 +4247,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 20
+  m_Speed: 40
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
