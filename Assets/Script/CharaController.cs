@@ -13,8 +13,6 @@ public class CharaController : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
-    //public WeaponData GameData.instance.equipWeaponData;
-
     //-------------------------移動関係---------------------------------------//
 
     [SerializeField]
@@ -78,7 +76,7 @@ public class CharaController : MonoBehaviour
 
     public float cureEnergy;    //地面にいる間に回復するエネルギー
 
-    public UIManager UIManager;   //UIManagerにデータを送れるようにする。
+    public UIManager UiManager;   //UIManagerにデータを送れるようにする。
 
 
     //-------------------------------HP関係-----------------------------------------//
@@ -118,7 +116,7 @@ public class CharaController : MonoBehaviour
 
         currentHp = maxHp;   //ゲームが開始したときに最大体力にしておく。
 
-        UIManager.SetEnergySliderValue(maxEnergy);   //エネルギーに関するもののセット
+        //UiManager.SetEnergySliderValue(maxEnergy);   //エネルギーに関するもののセット
 
         for (int i = 0; i < GameData.instance.chooseWeaponData.Count; i++)
         {
@@ -126,11 +124,11 @@ public class CharaController : MonoBehaviour
             currentBulletList.Add(GameData.instance.chooseWeaponData[i].maxBullet);
         }
 
-        UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);   //最大弾数をセット（引数は、今選ばれている武器の最大弾数）
+        UiManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);   //最大弾数をセット（引数は、今選ばれている武器の最大弾数）
 
-        UIManager.SetSelectedWeapon();　　//今選ばれている武器の名前と画像をセット
+        UiManager.SetSelectedWeapon();　　//今選ばれている武器の名前と画像をセット
 
-        UIManager.SetHpSliderValue(maxHp);    //最大HPをセットする
+        UiManager.SetHpSliderValue(maxHp);    //最大HPをセットする
 
         bulletPower = GameData.instance.equipWeaponData.bulletSpeed;　　//弾の速度は装備している武器の速度
     }
@@ -185,7 +183,7 @@ public class CharaController : MonoBehaviour
 
                                 currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
 
-                                UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                                UiManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
                             }
                         }
                     }
@@ -209,7 +207,7 @@ public class CharaController : MonoBehaviour
 
                             currentBulletList[GameData.instance.currentEquipWeaponNo] = Mathf.Clamp(currentBulletList[GameData.instance.currentEquipWeaponNo], minBullet, GameData.instance.equipWeaponData.maxBullet);   //今の球数の範囲を指定する
 
-                            UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
+                            UiManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);   //弾数の処理を反映させる
                         }
                     }
                 }
@@ -238,9 +236,9 @@ public class CharaController : MonoBehaviour
 
                         Debug.Log(GameData.instance.equipWeaponData.weaponName);
 
-                        UIManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);  //
+                        UiManager.SetWeaponSliderValue(GameData.instance.equipWeaponData.maxBullet, currentBulletList[GameData.instance.currentEquipWeaponNo]);  //
 
-                        UIManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
+                        UiManager.SetSelectedWeapon();   //現在選ばれている武器の名前、イラストを変える
                     }
                 }
             }
@@ -283,17 +281,17 @@ public class CharaController : MonoBehaviour
 
         JumpEnergyDecrease();   //ジャンプするごとにエネルギーを減らす。
 
-        UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+        //UiManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
     }
 
 
-    private void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag == "Ground")
-        {
-            isGround = false;
-        }
-    }
+    //private void OnCollisionExit(Collision col)
+    //{
+    //    if (col.gameObject.tag == "Ground")
+    //    {
+    //        isGround = false;
+    //    }
+    //}
 
     private void LookRotation()
     {
@@ -331,7 +329,7 @@ public class CharaController : MonoBehaviour
 
             currentEnergy = Mathf.Clamp(currentEnergy, minEnergy, maxEnergy);
 
-            UIManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
+            //UiManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
 
             isGround = true;
         }
@@ -359,16 +357,16 @@ public class CharaController : MonoBehaviour
         //装備している武器の「リロードエネルギー」分だけエネルギーを減らす
         currentEnergy -= GameData.instance.equipWeaponData.reloadEnergy;
 
-        UIManager.UpdateDisplayEnergy(currentEnergy);
+        //UiManager.UpdateDisplayEnergy(currentEnergy);
 
-        UIManager.ReloadWeaponSlider();
+        UiManager.ReloadWeaponSlider();
 
         yield return new WaitForSeconds(GameData.instance.equipWeaponData.reloadTime);
 
         //装備している武器の「currentBullet」を最大にする
         currentBulletList[GameData.instance.currentEquipWeaponNo] = GameData.instance.equipWeaponData.maxBullet;
 
-        UIManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);
+        UiManager.UpdateDisplayBullet(currentBulletList[GameData.instance.currentEquipWeaponNo]);
 
         audioSource.PlayOneShot(reloadGunSE);
 
@@ -388,16 +386,27 @@ public class CharaController : MonoBehaviour
 
             currentHp = Mathf.Clamp(currentHp,minHp,maxHp);    //HPがマイナスになったりを防ぐ
 
-            UIManager.UpdateDisplayHp(currentHp);    //HPのゲージを更新する
+            UiManager.UpdateDisplayHp(currentHp);    //HPのゲージを更新する
 
             if (currentHp <= 0)    //その攻撃でHPが0になったら死ぬアニメーションを流す。
             {
                 anim.SetTrigger("Die");    //死ぬアニメーションを流す
 
-                UIManager.GameOver();     //GameOverの処理を実装する。
+                UiManager.GameOver();     //GameOverの処理を実装する。
 
                 StartCoroutine(KillPlayer());　　　//キャラのスイッチを切らないと死んだ後も恐竜の攻撃で何回も死んでしまうから
             }
+        }
+
+        if(col.gameObject.tag == "Heal")
+        {
+            col.gameObject.TryGetComponent(out HealItemScript healItem);     //接触した回復アイテムを取得する。
+
+            currentHp += healItem.healCount;
+
+            currentHp = Mathf.Clamp(currentHp,minHp,maxHp);
+
+            UiManager.UpdateDisplayHp(currentHp);     //HPゲージの更新をする
         }
     }
 

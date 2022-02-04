@@ -35,7 +35,7 @@ MonoBehaviour:
     totalBossCount: 0
   - stageNo: 2
     subTitle: "2.\u65B0\u305F\u306A\u6575"
-    wave1GenerateEnemyTranIndex: 0
+    wave1GenerateEnemyTranIndex: 1
     wave1DinosaurCount: 0
     wave1InsectCount: 2
     wave1BossDinosaur: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
     wave2InsectCount: 3
     wave2BossDinosaur: 0
     wave2BossInsect: 0
-    wave3GenerateEnemyTranIndex: 0
+    wave3GenerateEnemyTranIndex: 3
     wave3DinosaurCount: 0
     wave3InsectCount: 4
     wave3BossDinosaur: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     wave1InsectCount: 2
     wave1BossDinosaur: 0
     wave1BossInsect: 0
-    wave2GenerateEnemyTranIndex: 0
+    wave2GenerateEnemyTranIndex: 3
     wave2DinosaurCount: 3
     wave2InsectCount: 4
     wave2BossDinosaur: 0
@@ -76,20 +76,60 @@ MonoBehaviour:
   - stageNo: 4
     subTitle: "4.\u30DC\u30B9\u306E\u767B\u5834"
     wave1GenerateEnemyTranIndex: 0
-    wave1DinosaurCount: 0
+    wave1DinosaurCount: 3
+    wave1InsectCount: 2
+    wave1BossDinosaur: 0
+    wave1BossInsect: 0
+    wave2GenerateEnemyTranIndex: 2
+    wave2DinosaurCount: 5
+    wave2InsectCount: 2
+    wave2BossDinosaur: 0
+    wave2BossInsect: 0
+    wave3GenerateEnemyTranIndex: 1
+    wave3DinosaurCount: 3
+    wave3InsectCount: 0
+    wave3BossDinosaur: 1
+    wave3BossInsect: 0
+    totalDinosaurCount: 11
+    totalInsectCount: 4
+    totalBossCount: 1
+  - stageNo: 5
+    subTitle: "5.\u56DB\u65B9\u516B\u65B9"
+    wave1GenerateEnemyTranIndex: 3
+    wave1DinosaurCount: 4
+    wave1InsectCount: 4
+    wave1BossDinosaur: 0
+    wave1BossInsect: 0
+    wave2GenerateEnemyTranIndex: 0
+    wave2DinosaurCount: 5
+    wave2InsectCount: 3
+    wave2BossDinosaur: 0
+    wave2BossInsect: 1
+    wave3GenerateEnemyTranIndex: 2
+    wave3DinosaurCount: 0
+    wave3InsectCount: 8
+    wave3BossDinosaur: 0
+    wave3BossInsect: 1
+    totalDinosaurCount: 9
+    totalInsectCount: 15
+    totalBossCount: 2
+  - stageNo: 6
+    subTitle: "6.\u602A\u7363\u5927\u6C7A\u6226"
+    wave1GenerateEnemyTranIndex: 0
+    wave1DinosaurCount: 5
     wave1InsectCount: 0
     wave1BossDinosaur: 1
     wave1BossInsect: 0
-    wave2GenerateEnemyTranIndex: 0
+    wave2GenerateEnemyTranIndex: 1
     wave2DinosaurCount: 0
-    wave2InsectCount: 0
+    wave2InsectCount: 6
     wave2BossDinosaur: 0
     wave2BossInsect: 1
     wave3GenerateEnemyTranIndex: 0
-    wave3DinosaurCount: 0
-    wave3InsectCount: 0
+    wave3DinosaurCount: 4
+    wave3InsectCount: 4
     wave3BossDinosaur: 1
     wave3BossInsect: 1
-    totalDinosaurCount: 0
-    totalInsectCount: 0
+    totalDinosaurCount: 9
+    totalInsectCount: 10
     totalBossCount: 4

@@ -16,21 +16,21 @@ MonoBehaviour:
   - weaponName: "\u30D5\u30EC\u30A4\u30E0\u30B7\u30E7\u30C3\u30C8"
     weaponNo: 1
     weaponSprite: {fileID: 21300000, guid: b470ab7c97b83a74e975b5a05c262293, type: 3}
-    weaponAttackPower: 1000
+    weaponAttackPower: 500
     attackRange: 60
     maxBullet: 10
     bulletPrefab: {fileID: 7082902867995960198, guid: 37aa47c79f61b03479dbdab958a84e42, type: 3}
     reloadEnergy: 30
-    reloadTime: 5
+    reloadTime: 1
     bulletSpeed: 2000
     rapidFire: 0
     rapidFireTimer: 0
     explosionEffect: {fileID: 1830178773730210729, guid: f6520ecc20cd6234586eba1c7e03a44d, type: 3}
-    discription: "\u4E00\u756A\u30D9\u30FC\u30B7\u30C3\u30AF\u306A\u72D9\u6483\u6B66\u5668"
+    discription: "\u708E\u306E\u5F3E\u3092\u98DB\u3070\u3057\u3066\u653B\u6483\u3059\u308B\u3002\n\u5F3E\u306E\u901F\u5EA6\u304C\u9045\u304F\u8FEB\u529B\u306B\u6B20\u3051\u308B\u304C\u4E00\u767A\u306E\u5A01\u529B\u306F\u9AD8\u3044\u3002"
   - weaponName: "\u30AC\u30D0\u30CA\u30FC"
     weaponNo: 2
     weaponSprite: {fileID: 21300000, guid: 4dc30af1cdf3b3846b7d4fa81a904d6d, type: 3}
-    weaponAttackPower: 100
+    weaponAttackPower: 200
     attackRange: 20
     maxBullet: 100
     bulletPrefab: {fileID: 6384231143774194572, guid: 5d7b3e2cbb8da68489d5e4c2375d8864, type: 3}
@@ -40,39 +40,39 @@ MonoBehaviour:
     rapidFire: 1
     rapidFireTimer: 6
     explosionEffect: {fileID: 5158012971604236165, guid: c5fdb47ee87462048b24b49a87a8bb92, type: 3}
-    discription: "\u77ED\u8DDD\u96E2\u306E\u6B66\u5668\n\u5206\u6563\u3057\u3066\u3057\u307E\u3046\u306E\u3067\u3001\u8FD1\u304F\u306A\u3044\u3068\u5F53\u305F\u3089\u306A\u3044"
+    discription: "\u77ED\u8DDD\u96E2\u306E\u6B66\u5668\n\u5206\u6563\u3057\u3066\u3057\u307E\u3046\u306E\u3067\u3001\u8FD1\u304F\u306A\u3044\u3068\u5F53\u305F\u3089\u306A\u3044\u304C\u3001\u305D\u306E\u5206\u6BB2\u6EC5\u529B\u306F\u9AD8\u3044\u3002"
   - weaponName: "\u30B5\u30F3\u30C0\u30FC\u30AA\u30FC\u30D6"
     weaponNo: 3
     weaponSprite: {fileID: 21300000, guid: ceb2bd1062e4ced4f973baaf119361c2, type: 3}
-    weaponAttackPower: 500
+    weaponAttackPower: 100
     attackRange: 150
     maxBullet: 30
     bulletPrefab: {fileID: 7877729539901980039, guid: ab255ab8db89ded4b98d33ff0c2bcedf, type: 3}
     reloadEnergy: 20
-    reloadTime: 1
+    reloadTime: 5
     bulletSpeed: 5000
     rapidFire: 1
-    rapidFireTimer: 10
+    rapidFireTimer: 20
     explosionEffect: {fileID: 1085114191392891901, guid: 2c93f6cfe5d455844a553d8f6b592f04, type: 3}
-    discription: "\u8A2D\u7F6E\u578B\u306E\u6B66\u5668\u3002\n\u7BC4\u56F2\u5185\u306B\u3044\u308B\u6575\u3092\u30DB\u30FC\u30DF\u30F3\u30B0\u3059\u308B\u3002"
+    discription: "\u9023\u5C04\u578B\u306E\u6B66\u5668\u3002\n\u96F7\u306E\u5F3E\u3092\u98DB\u3070\u3057\u653B\u6483\u3059\u308B\u3002\n\u4E00\u767A\u305A\u3064\u306E\u5A01\u529B\u306F\u9AD8\u304F\u306A\u3044\u304C30\u767A\u307E\u3067\u4FDD\u6709\u3067\u304D\u308B\u3002"
   - weaponName: "\u30D5\u30EC\u30A4\u30C9\u30DE\u30EB"
     weaponNo: 4
     weaponSprite: {fileID: 21300000, guid: 17e68478b19249d4cba22653135c4cdc, type: 3}
-    weaponAttackPower: 800
+    weaponAttackPower: 300
     attackRange: 300
     maxBullet: 10
     bulletPrefab: {fileID: 498758988360352184, guid: becd2418a4cdf4e42b936aa85450d108, type: 3}
-    reloadEnergy: 60
+    reloadEnergy: 30
     reloadTime: 3
     bulletSpeed: 10000
     rapidFire: 0
     rapidFireTimer: 10
     explosionEffect: {fileID: 6215337742349168859, guid: c5417c24c3eafa24caf54c176c027c23, type: 3}
-    discription: "\u6700\u5F37\u30AF\u30E9\u30B9\u306E\u6B66\u5668\n\u5C04\u7A0B\u306F\u77ED\u3044\u304C\u653B\u6483\u529B\u3001\u6D88\u8CBB\u30A8\u30CD\u30EB\u30AE\u30FC\u3092\u8003\u3048\u308B\u3068\u7533\u3057\u5206\u306A\u3044"
+    discription: "\u4E00\u822C\u7684\u306A\u30A2\u30B5\u30EB\u30C8\u30E9\u30A4\u30D5\u30EB\u3002\n\u5A01\u529B\u3001\u30EA\u30ED\u30FC\u30C9\u901F\u5EA6\u306F\u666E\u901A\u3067\u3001\u4E00\u756A\u4F7F\u3044\u52DD\u624B\u304C\u3044\u3044\u3002"
   - weaponName: "\u30B0\u30F3\u30B0\u30CB\u30EB"
     weaponNo: 5
     weaponSprite: {fileID: 21300000, guid: b46b27b5c4b434143829c16974c68609, type: 3}
-    weaponAttackPower: 10000
+    weaponAttackPower: 8000
     attackRange: 300
     maxBullet: 1
     bulletPrefab: {fileID: 586022640190705861, guid: fd49fac4b31502444a689d83be656358, type: 3}
@@ -82,4 +82,4 @@ MonoBehaviour:
     rapidFire: 0
     rapidFireTimer: 0
     explosionEffect: {fileID: 3700043668106052382, guid: 1872044f21d5de14199bfed53ddb7d84, type: 3}
-    discription: "\u6700\u5F37\u6B66\u5668\n\u5927\u4F53\u306E\u6575\u3092\u4E00\u6483\u3067\u5012\u305B\u308B\u304C\u3001\u305D\u306E\u5206\u30A8\u30CD\u30EB\u30AE\u30FC\u306E\u6D88\u8CBB\u306F\u534A\u7AEF\u3067\u306F\u306A\u3044\u3002"
+    discription: "\u6700\u5F37\u6B66\u5668\n\u5927\u4F53\u306E\u6575\u3092\u4E00\u6483\u3067\u5012\u305B\u308B\u304C\u3001\u305D\u306E\u5206\u30EA\u30ED\u30FC\u30C9\u6642\u9593\u306F\u9577\u3044\u3002"

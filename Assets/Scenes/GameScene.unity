@@ -919,7 +919,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 1700495067048141879, guid: ed16c800f3be36640b7c11807643d78e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1815,7 +1815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 599758041}
-  energySlider: {fileID: 1817264247}
   bulletSlider: {fileID: 499566194}
   lastBullet: {fileID: 425991023}
   maxBullet: {fileID: 497879059}
@@ -2297,15 +2296,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685917881}
-  m_LocalRotation: {x: 0, y: 0.17364816, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 1600, y: 54.37, z: 972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1600, y: 51, z: 961}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4244232883888246476}
   - {fileID: 1771178863}
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &685917883
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2352,7 +2351,7 @@ MonoBehaviour:
   anim: {fileID: 4244232884589277513}
   jumpForce: 1500
   isGround: 0
-  moveSpeed: 40
+  moveSpeed: 20
   bulletPrefab: {fileID: 586022640190705861, guid: fd49fac4b31502444a689d83be656358, type: 3}
   bulletStartPosition: {fileID: 1345783821}
   bulletPower: 10
@@ -2363,7 +2362,7 @@ MonoBehaviour:
   jumpEnergy: 0.07
   attackEnergy: 10
   cureEnergy: 0.3
-  UIManager: {fileID: 536839401}
+  UiManager: {fileID: 536839401}
   maxHp: 200
   currentHp: 0
   enemyGenerator: {fileID: 1937439765}
@@ -3112,7 +3111,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1983
+    m_Bits: 4031
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3131,14 +3130,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.085831694, y: 0.17298737, z: -0.015134441, w: 0.98106027}
-  m_LocalPosition: {x: 1596.1, y: 59.94, z: 961}
+  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 1599.9, y: 55.5, z: 953.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1345783821}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 10, y: 20, z: 0}
+  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3523,7 +3522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283828453
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4054,7 +4053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1511353398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4806,7 +4805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771178862}
   m_LocalRotation: {x: -0, y: -0.17364816, z: -0, w: 0.9848078}
-  m_LocalPosition: {x: 2.8, y: 40, z: 0.1}
+  m_LocalPosition: {x: 2.8, y: 908, z: 0.1}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 685917882}
@@ -4943,7 +4942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778596509}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1500, y: 1100, z: 1000}
+  m_LocalPosition: {x: 1600, y: 1940, z: 961}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5321,6 +5320,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   attackVoice: {fileID: 0}
   dieVoice: {fileID: 0}
+  heal: {fileID: 0}
+  dropHealPercent: 0
 --- !u!54 &1917335762
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5448,6 +5449,8 @@ MonoBehaviour:
   enemyTran:
   - {fileID: 6634459131449801326, guid: c7cb4bc28782a464ebe4f825762f7a44, type: 3}
   - {fileID: 1357724063728763550, guid: 473e30e2f60cab5489fef74ba0d8a93a, type: 3}
+  - {fileID: 7255407033990240564, guid: 4db2afabc08563040bfcfc43edb9534a, type: 3}
+  - {fileID: 8514853084808465003, guid: 55b4e88d287fed543875ddd8823c29f1, type: 3}
   radius: 100
   gameManager: {fileID: 599758041}
   generatedEnemyCount: 0

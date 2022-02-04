@@ -1598,16 +1598,19 @@ MonoBehaviour:
   blood: {fileID: 6529438783881082186, guid: a4a9f3da2edd4ef488e52365d549c87d, type: 3}
   enemyBloodPosition: {fileID: 1191939225980478509}
   enemyGenerator: {fileID: 0}
-  attackRange: 100
-  enemyBulletControllerPrefab: {fileID: 7850669470655254781, guid: c51d44789eac02349addeb139413cf9b, type: 3}
+  attackRange: 500
+  enemyBulletControllerPrefab: {fileID: 3432195554586588579, guid: 7c0127a3bebc10541ad90f6743e0f0f2, type: 3}
   enemyBulletTran: {fileID: 5921414098516329509}
-  shotSpeed: 1000
-  attackInterval: 2
-  maxEnemyHP: 30000
+  shotSpeed: 10000
+  attackInterval: 0.5
+  attackPower: 50
+  maxEnemyHP: 15000
   currentEnemyHP: 0
   audioSource: {fileID: 4175043200560418717}
   attackVoice: {fileID: 8300000, guid: 187424ef29bda364495c1a12f44c5fec, type: 3}
   dieVoice: {fileID: 8300000, guid: e43406497076ef24ab25f60f87a8959e, type: 3}
+  heal: {fileID: 6532448495928613864, guid: a309a9ead7298bc459221fccdc008a2a, type: 3}
+  dropHealPercent: 100
 --- !u!195 &8822368228998987153
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1622,7 +1625,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 90
+  m_StoppingDistance: 180
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1826,7 +1829,7 @@ Transform:
   m_GameObject: {fileID: 6717708442346903054}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: 1.1}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 3172613801473224500}
   m_RootOrder: 21

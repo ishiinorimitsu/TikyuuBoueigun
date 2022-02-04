@@ -11,10 +11,10 @@ public class UIManager : MonoBehaviour
 
     //----------------------------------------エネルギー関係----------------------------------------------------//
 
-    [SerializeField]
-    private Image energySlider;     //エネルギーゲージを入れる
+    //[SerializeField]
+    //private Image energySlider;     //エネルギーゲージを入れる
 
-    private float maxEnergyCount;    //最大エネルギー量を入れる
+    //private float maxEnergyCount;    //最大エネルギー量を入れる
 
     //-----------------------------------------弾数関係---------------------------------------------------//
 
@@ -113,23 +113,23 @@ public class UIManager : MonoBehaviour
     /// エネルギーゲージの処理
     /// </summary>
     /// <param name="maxEnergy"></param>
-    public void SetEnergySliderValue(float maxEnergy)
-    {
-        this.maxEnergyCount = maxEnergy;
+    //public void SetEnergySliderValue(float maxEnergy)
+    //{
+    //    this.maxEnergyCount = maxEnergy;
 
-        energySlider.fillAmount = maxEnergy;     //スライダーの中のmaxValueをmaxEnergyと一緒にする。
+    //    energySlider.fillAmount = maxEnergy;     //スライダーの中のmaxValueをmaxEnergyと一緒にする。
 
-        UpdateDisplayEnergy(maxEnergy);    //まず最初はvalueの値はmaxEnergyと同じでいい。
-    }
+    //    UpdateDisplayEnergy(maxEnergy);    //まず最初はvalueの値はmaxEnergyと同じでいい。
+    //}
 
-    public void UpdateDisplayEnergy(float currentEnergy)
-    {
-        //Debug.Log(currentEnergy);
+    //public void UpdateDisplayEnergy(float currentEnergy)
+    //{
+    //    //Debug.Log(currentEnergy);
 
-        energySlider.fillAmount = currentEnergy/maxEnergyCount;  //currentEnergyまで1.0秒かけて動かす（最初の引数の値はmaxEnergyでいい。）
+    //    energySlider.fillAmount = currentEnergy/maxEnergyCount;  //currentEnergyまで1.0秒かけて動かす（最初の引数の値はmaxEnergyでいい。）
 
-        energySlider.DOFillAmount(currentEnergy / maxEnergyCount, 1.0f);
-    }
+    //    energySlider.DOFillAmount(currentEnergy / maxEnergyCount, 1.0f);
+    //}
 
 
     //------------------------------------------武器の弾数等の処理---------------------------------------------------------//

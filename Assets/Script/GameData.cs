@@ -15,7 +15,7 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
 
     public int currentEquipWeaponNo;   //Œ»İ‘•”õ‚µ‚Ä‚¢‚é•Ší‚ÌNo,Ø‚è‘Ö‚¦‚é‚Æ‚«‚Ég‚¤B
 
-    private List<float> currentBulletList = new List<float>();
+    //private List<float> currentBulletList = new List<float>();
 
     //private float currentBullet;    //¡‚Ì’e”‚ğ“ü‚ê‚é
 
@@ -51,12 +51,31 @@ public class GameData : MonoBehaviour@@@//‚±‚ÌƒXƒNƒŠƒvƒg‚ÍƒV[ƒ“‚ğ’´‚¦‚Ä‚à‰ó‚
     }
 
     /// <summary>
+    /// ‚±‚ê‚ğ‚â‚ç‚È‚¢‚Æ‘Ş‹p‚µ‚½‚Æ‚«‚É•Ší‚ª‚Ç‚ñ‚Ç‚ñ’Ç‰Á‚³‚ê‘±‚¯‚Ä‚µ‚Ü‚¤B
+    /// </summary>
+    public void RemoveWeaponData()
+    {
+        for(int i = chooseWeaponData.Count-1; i > -1; i--)
+        {
+            Debug.Log(i);
+            chooseWeaponData.Remove(chooseWeaponData[i]);
+        }
+
+        equipWeaponData = null;
+    }
+
+    /// <summary>
     /// ƒXƒe[ƒW‚Ìƒf[ƒ^‚à‚±‚ÌƒXƒNƒŠƒvƒg‚É‚Á‚Ä‚­‚é
     /// </summary>
     /// <param name="stageData"></param>
     public void AddStageData(StageData stageData)
     {
         this.currentStageData = stageData;
+    }
+
+    public void RemoveStageData()
+    {
+        currentStageData = null;
     }
 
     public void ChangeWeapon()

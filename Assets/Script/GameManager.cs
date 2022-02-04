@@ -139,6 +139,11 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
 
     private void ClickReturnHomeButton()
     {
+        //•Ší‚ÆƒXƒe[ƒW‚Ìƒf[ƒ^‚ğíœ‚·‚éB
+        GameData.instance.RemoveWeaponData();
+
+        GameData.instance.RemoveStageData();
+
         SceneManager.LoadScene("ChooseWeapon");
     }
 
@@ -159,6 +164,11 @@ public class GameManager : MonoBehaviour   //ÀÛ‚ÌŠJ”­Œ»ê‚Å‚ÍAGamaManagr‚É‚¾‚
 
     private void ClickTaikyakuButton()
     {
+        //•Ší‚ÆƒXƒe[ƒW‚Ìƒf[ƒ^‚ğíœ‚·‚éB
+        GameData.instance.RemoveWeaponData();
+
+        GameData.instance.RemoveStageData();
+
         //ChooseScene‚ğ“Ç‚İ‚Ş
         SceneManager.LoadScene("ChooseWeapon");
     }

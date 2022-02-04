@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
     private float z;       //横方向へのカメラの回転方向
 
-    private float cameraRotateSpeed = 200f;  //どれくらいのスピードでカメラが回転するか
+    private float cameraRotateSpeed = 400f;  //どれくらいのスピードでカメラが回転するか
 
     private float limit = 300.0f;
 
