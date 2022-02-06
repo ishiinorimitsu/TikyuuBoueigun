@@ -100,10 +100,22 @@ public class CharaController : MonoBehaviour
     private AudioSource audioSource;    //オーディオソースを入れる。
 
     [SerializeField]
+    private AudioSource walkAudio;    //歩く音を入れるオーディオソースを入れる
+
+    [SerializeField]
     private AudioClip reloadGunSE;    //銃をリロードする音
 
     [SerializeField]
     private AudioClip shotGunSE;     //銃を撃つ音
+
+    [SerializeField]
+    private AudioClip healSE;    //回復アイテムをとったときの音
+
+    [SerializeField]
+    private AudioClip walkSE;    //キャラの歩く音
+
+    [SerializeField]
+    private AudioClip jumpSE;    //ジャンプの音
 
 
 
@@ -259,6 +271,9 @@ public class CharaController : MonoBehaviour
 
     //---------------------------------移動に関する処理----------------------------------------------------------//
     //水平方向への移動
+
+    //歩く効果音を鳴らすためのタイマー
+    float walkTimer;
     public void Move()
     {
         //rb.velocity = new Vector3(x * moveSpeed,rb.velocity.y, z * moveSpeed);
@@ -266,6 +281,17 @@ public class CharaController : MonoBehaviour
         {
             anim.SetBool("Idle", false);
             anim.SetFloat("Run", 0.5f);
+            
+            walkTimer+=Time.deltaTime;
+            if (isGround)
+            {
+                if (walkTimer > 0.3f)
+                {
+                    walkTimer = 0;
+                    walkAudio.PlayOneShot(walkSE, 0.3f);
+                    StartCoroutine(walkSoundWait());
+                }
+            } 
         }
         else
         {
@@ -274,12 +300,23 @@ public class CharaController : MonoBehaviour
         }
     }
 
+    private IEnumerator walkSoundWait()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        walkAudio.Stop();
+    }
+
     //ジャンプの移動
     public void Jump()
     {
         rb.AddForce(transform.up*jumpForce);   //ジャンプする処理
 
         JumpEnergyDecrease();   //ジャンプするごとにエネルギーを減らす。
+
+        audioSource.PlayOneShot(jumpSE);
+
+        walkAudio.Stop();   //歩く音を止める
 
         //UiManager.UpdateDisplayEnergy(currentEnergy);   //エネルギー値を更新する
     }
@@ -400,6 +437,8 @@ public class CharaController : MonoBehaviour
 
         if(col.gameObject.tag == "Heal")
         {
+            audioSource.PlayOneShot(healSE);   //回復アイテムをとったときの音を流す
+
             col.gameObject.TryGetComponent(out HealItemScript healItem);     //接触した回復アイテムを取得する。
 
             currentHp += healItem.healCount;

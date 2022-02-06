@@ -17,7 +17,7 @@ MonoBehaviour:
     weaponNo: 1
     weaponSprite: {fileID: 21300000, guid: b470ab7c97b83a74e975b5a05c262293, type: 3}
     weaponAttackPower: 500
-    attackRange: 60
+    attackRange: 100
     maxBullet: 10
     bulletPrefab: {fileID: 7082902867995960198, guid: 37aa47c79f61b03479dbdab958a84e42, type: 3}
     reloadEnergy: 30
@@ -59,7 +59,7 @@ MonoBehaviour:
     weaponNo: 4
     weaponSprite: {fileID: 21300000, guid: 17e68478b19249d4cba22653135c4cdc, type: 3}
     weaponAttackPower: 300
-    attackRange: 300
+    attackRange: 150
     maxBullet: 10
     bulletPrefab: {fileID: 498758988360352184, guid: becd2418a4cdf4e42b936aa85450d108, type: 3}
     reloadEnergy: 30
